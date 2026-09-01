@@ -411,8 +411,9 @@ function participantStyle(
   participant: ChooserParticipant,
   sizePercent: number,
 ): CSSProperties {
+  const displayColor = participant.targetColor ?? participant.color;
   return {
-    "--participant-color": `rgb(${participant.color.r} ${participant.color.g} ${participant.color.b})`,
+    "--participant-color": `rgb(${displayColor.r} ${displayColor.g} ${displayColor.b})`,
     "--participant-scale": Math.max(0.5, Math.min(1.5, sizePercent / 100)),
     left: `${participant.position.x}px`,
     top: `${participant.position.y}px`,

@@ -28,15 +28,27 @@ export interface ChooserParticipant {
   readonly position: Readonly<ChooserPosition>;
   readonly color: Readonly<ChooserColor>;
   readonly createdAtMs: number;
-  readonly state: "active" | "selected" | "retiring";
+  readonly state: "active" | "selected" | "retiring" | "grouped";
+  readonly groupId?: number;
+  readonly targetColor?: Readonly<ChooserColor>;
 }
 
-/** The settled result shape for the Single selection mode. */
-export type ChooserResult = Readonly<{
-  readonly kind: "single";
-  readonly selectedParticipantIds: readonly string[];
-  readonly background: Readonly<ChooserColor>;
-}>;
+/** The settled result shapes for the supported selection modes. */
+export type ChooserResult =
+  | Readonly<{
+      readonly kind: "single";
+      readonly selectedParticipantIds: readonly string[];
+      readonly background: Readonly<ChooserColor>;
+    }>
+  | Readonly<{
+      readonly kind: "group";
+      readonly groups: readonly Readonly<{
+        readonly groupId: number;
+        readonly participantIds: readonly string[];
+        readonly color: Readonly<ChooserColor>;
+      }>[];
+      readonly background: Readonly<ChooserColor>;
+    }>;
 
 export interface ChooserSnapshot {
   readonly phase: ChooserPhase;
@@ -122,6 +134,8 @@ interface InternalParticipant {
   readonly color: ChooserColor;
   readonly createdAtMs: number;
   state: ChooserParticipant["state"];
+  groupId?: number;
+  targetColor?: ChooserColor;
 }
 
 interface PendingMouseActivation {
@@ -138,6 +152,11 @@ interface ScheduledSelection {
 
 const DEFAULT_POSITION: ChooserPosition = Object.freeze({ x: 0, y: 0 });
 const DEFAULT_COLOR: ChooserColor = Object.freeze({ r: 0, g: 0, b: 0 });
+const GROUP_PARTICIPANT_COLOR: ChooserColor = Object.freeze({
+  r: 255,
+  g: 255,
+  b: 255,
+});
 const MOUSE_CLICK_MOVEMENT_TOLERANCE_PX = 10;
 
 /**
@@ -290,7 +309,10 @@ export function createChooserSession(options: {
       pointerId: event.pointerId,
       inputFamily: "direct",
       position: clonePosition(event.position),
-      color: cloneColor(event.color ?? randomColor()),
+      color:
+        settings.selectionMode === "group"
+          ? cloneColor(GROUP_PARTICIPANT_COLOR)
+          : cloneColor(event.color ?? randomColor()),
       createdAtMs: options.clock.now(),
       state: "active",
     };
@@ -400,7 +422,10 @@ export function createChooserSession(options: {
       pointerId: undefined,
       inputFamily: "simulated",
       position: clonePosition(pending.position),
-      color: cloneColor(randomColor()),
+      color:
+        settings.selectionMode === "group"
+          ? cloneColor(GROUP_PARTICIPANT_COLOR)
+          : cloneColor(randomColor()),
       createdAtMs: options.clock.now(),
       state: "active",
     });
@@ -510,13 +535,18 @@ export function createChooserSession(options: {
     selectionWork = undefined;
 
     if (
-      settings.selectionMode !== "single" ||
+      (settings.selectionMode !== "single" &&
+        settings.selectionMode !== "group") ||
       activeParticipantCount() <= settings.selectionCount
     ) {
       return;
     }
 
-    settleSingle(scheduledGeneration);
+    if (settings.selectionMode === "single") {
+      settleSingle(scheduledGeneration);
+    } else {
+      settleGroup(scheduledGeneration);
+    }
   }
 
   function settleSingle(scheduledGeneration: number) {
@@ -561,6 +591,101 @@ export function createChooserSession(options: {
     publish();
   }
 
+  function settleGroup(scheduledGeneration: number) {
+    if (generation !== scheduledGeneration || phase !== "collecting") {
+      return;
+    }
+
+    const groupedParticipants = participants.filter(
+      (participant) => participant.state === "active",
+    );
+    const groupCount = settings.selectionCount;
+    if (groupedParticipants.length <= groupCount) {
+      return;
+    }
+
+    shuffle(groupedParticipants);
+    const palette = createGroupPalette(groupCount);
+    const groups: Array<{
+      readonly groupId: number;
+      readonly participantIds: readonly string[];
+      readonly color: Readonly<ChooserColor>;
+    }> = [];
+    const baseGroupSize = Math.floor(groupedParticipants.length / groupCount);
+    const extraGroupCount = groupedParticipants.length % groupCount;
+    let participantOffset = 0;
+
+    for (let groupId = 0; groupId < groupCount; groupId += 1) {
+      const groupSize = baseGroupSize + (groupId < extraGroupCount ? 1 : 0);
+      const color = palette[groupId];
+      if (color === undefined) {
+        return;
+      }
+
+      const groupParticipants = groupedParticipants.slice(
+        participantOffset,
+        participantOffset + groupSize,
+      );
+      const participantIds = Object.freeze(
+        groupParticipants.map((participant) => participant.id),
+      );
+      groups.push(
+        Object.freeze({
+          groupId,
+          participantIds,
+          color,
+        }),
+      );
+      groupParticipants.forEach((participant) => {
+        participant.state = "grouped";
+        participant.groupId = groupId;
+        participant.targetColor = color;
+      });
+      participantOffset += groupSize;
+    }
+
+    background = cloneColor(DEFAULT_COLOR);
+    result = Object.freeze({
+      kind: "group" as const,
+      groups: Object.freeze(groups),
+      background: cloneColor(background),
+    });
+    phase = "result";
+    generation += 1;
+    cancelSelectionWork();
+    vibrate(100);
+    publish();
+  }
+
+  function shuffle<T>(values: T[]) {
+    for (let index = values.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(randomFraction() * (index + 1));
+      const value = values[index];
+      const replacement = values[swapIndex];
+      if (value === undefined || replacement === undefined) {
+        return;
+      }
+      values[index] = replacement;
+      values[swapIndex] = value;
+    }
+  }
+
+  function createGroupPalette(groupCount: number) {
+    const hueStep = 360 / groupCount;
+    const initialHue = randomFraction() * hueStep;
+    const palette: ChooserColor[] = [];
+
+    for (let groupId = 0; groupId < groupCount; groupId += 1) {
+      const hue = (initialHue + groupId * hueStep) % 360;
+      const saturation = 0.5 + randomFraction() * 0.5;
+      const value = 0.5 + randomFraction() * 0.5;
+      palette.push(hsvToColor(hue, saturation, value));
+    }
+
+    shuffle(palette);
+    return palette;
+  }
+
   function isCurrentSelection(scheduledGeneration: number) {
     return (
       !destroyed &&
@@ -598,6 +723,12 @@ export function createChooserSession(options: {
         color: cloneColor(participant.color),
         createdAtMs: participant.createdAtMs,
         state: participant.state,
+        ...(participant.groupId === undefined
+          ? {}
+          : { groupId: participant.groupId }),
+        ...(participant.targetColor === undefined
+          ? {}
+          : { targetColor: cloneColor(participant.targetColor) }),
       }),
     );
 
@@ -713,6 +844,49 @@ function averageColor(colors: readonly Readonly<ChooserColor>[]) {
     r: Math.floor(totals.r / colors.length),
     g: Math.floor(totals.g / colors.length),
     b: Math.floor(totals.b / colors.length),
+  });
+}
+
+function hsvToColor(hue: number, saturation: number, value: number) {
+  const chroma = value * saturation;
+  const hueSegment = hue / 60;
+  const secondary = chroma * (1 - Math.abs((hueSegment % 2) - 1));
+  const match = value - chroma;
+  let red = 0;
+  let green = 0;
+  let blue = 0;
+
+  switch (Math.floor(hueSegment)) {
+    case 0:
+      red = chroma;
+      green = secondary;
+      break;
+    case 1:
+      red = secondary;
+      green = chroma;
+      break;
+    case 2:
+      green = chroma;
+      blue = secondary;
+      break;
+    case 3:
+      green = secondary;
+      blue = chroma;
+      break;
+    case 4:
+      red = secondary;
+      blue = chroma;
+      break;
+    default:
+      red = chroma;
+      blue = secondary;
+      break;
+  }
+
+  return Object.freeze({
+    r: Math.round((red + match) * 255),
+    g: Math.round((green + match) * 255),
+    b: Math.round((blue + match) * 255),
   });
 }
 
