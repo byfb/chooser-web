@@ -140,7 +140,19 @@ describe("Cloudflare deployment guard", () => {
           }
           if (args.includes("list")) {
             return {
-              stdout: JSON.stringify({ success: true, result: [] }),
+              stdout: JSON.stringify([
+                {
+                  "Project Name": "quick-qr-scan",
+                  "Project Domains": "quick-qr-scan.pages.dev, qr.example.com",
+                  "Git Provider": "No",
+                },
+                {
+                  "Project Name": "draw-card-simulator",
+                  "Project Domains":
+                    "draw-card-simulator.pages.dev, draw.example.com",
+                  "Git Provider": "No",
+                },
+              ]),
               stderr: "",
             };
           }

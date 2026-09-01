@@ -826,6 +826,23 @@ function normalizeCommandResult(result) {
 }
 
 function parseJsonOutput(value) {
+  if (Buffer.isBuffer(value)) {
+    return parseJsonOutput(value.toString("utf8"));
+  }
+  if (value && typeof value === "object") {
+    return value;
+  }
+  if (typeof value === "string") {
+    const text = value.trim();
+    if (text) {
+      try {
+        return JSON.parse(text);
+      } catch {
+        // Fall through to newline-delimited Wrangler output below.
+      }
+    }
+  }
+
   const records = parseJsonRecords(value);
   if (records.length === 0) {
     throw new DeployGuardError(
