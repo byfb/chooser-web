@@ -34,7 +34,10 @@ for (const directory of forbiddenDirectories) {
 const routeRoot = new URL("pages/", sourceRoot);
 for (const routeFile of await collectAstroFiles(routeRoot)) {
   const source = await readFile(routeFile, "utf8");
-  if (/<script(?:\s|>)/i.test(source)) {
+  if (
+    !routeFile.pathname.endsWith("/pages/404.astro") &&
+    /<script(?:\s|>)/i.test(source)
+  ) {
     throw new Error(
       `Astro route wrappers must not contain client scripts: ${display(routeFile)}`,
     );

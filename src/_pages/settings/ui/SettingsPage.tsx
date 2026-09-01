@@ -28,6 +28,7 @@ export interface FullscreenControlState {
 
 interface SettingsPageProps {
   fullscreen: FullscreenControlState;
+  offline: "Preparing" | "Ready" | "Unavailable";
   persistence: "saved" | "not-saved";
   settings: Readonly<SettingsValues>;
   vibrationSupported: boolean;
@@ -40,6 +41,7 @@ interface SettingsPageProps {
 
 export function SettingsPage({
   fullscreen,
+  offline,
   persistence,
   settings,
   vibrationSupported,
@@ -220,7 +222,13 @@ export function SettingsPage({
         <SettingsSection id="app-section" title="App">
           <div className={styles.readonlyRow}>
             <span>Offline</span>
-            <span className={styles.statusValue}>Preparing</span>
+            <span
+              aria-atomic="true"
+              aria-live="polite"
+              className={styles.statusValue}
+            >
+              {offline}
+            </span>
           </div>
         </SettingsSection>
 

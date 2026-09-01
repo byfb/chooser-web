@@ -1,8 +1,53 @@
 ---
 // SPDX-FileCopyrightText: 2026 byfb
 // SPDX-License-Identifier: GPL-3.0-or-later
-
-import { AppDocument } from "@/app";
 ---
 
-<AppDocument />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Chooser — Page not found</title>
+    <script is:inline>
+      const pathname = window.location.pathname;
+      const isReservedPath =
+        pathname === "/legal" ||
+        pathname.startsWith("/legal/") ||
+        pathname === "/source" ||
+        pathname.startsWith("/source/");
+
+      if (!isReservedPath) {
+        window.location.replace("/");
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: system-ui, sans-serif;
+        background: #000;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background: #000;
+      }
+
+      main {
+        box-sizing: border-box;
+        min-height: 100dvh;
+        padding: 2rem;
+        color: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body class="no-shell-404">
+    <main>
+      <h1>Page not found</h1>
+      <p>This Chooser page does not exist.</p>
+    </main>
+  </body>
+</html>

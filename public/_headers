@@ -1,0 +1,26 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), geolocation=(), microphone=(), payment=(), usb=(), fullscreen=(self)
+
+/sw.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate
+  Service-Worker-Allowed: /
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: no-cache
+
+/legal/gpl-3.0.txt
+  Content-Type: text/plain; charset=utf-8
+
+/legal/notice.txt
+  Content-Type: text/plain; charset=utf-8
+
+/legal/third-party-notices.txt
+  Content-Type: text/plain; charset=utf-8
+
+/legal/asset-provenance.txt
+  Content-Type: text/plain; charset=utf-8

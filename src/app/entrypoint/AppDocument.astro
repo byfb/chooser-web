@@ -20,6 +20,12 @@ const initialPathname = Astro.url.pathname;
     />
     <meta name="description" content={APP_DESCRIPTION} />
     <meta name="theme-color" content={APP_THEME_COLOR} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
     <title>{APP_NAME}</title>
   </head>
   <body>

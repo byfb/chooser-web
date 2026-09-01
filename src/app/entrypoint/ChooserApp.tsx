@@ -26,6 +26,13 @@ import {
   type SettingsStorage,
 } from "../model";
 import {
+  createChooserPwaRuntime,
+  type ChooserPwaBrowserPort,
+  type ChooserPwaRuntime,
+  type ChooserPwaSnapshot,
+  type ChooserServiceWorkerContainer,
+} from "../pwa";
+import {
   createChooserRouter,
   resolveRoute,
   type ChooserBrowserPort,
@@ -55,6 +62,9 @@ const serverCapabilitySnapshot: SettingsCapabilitySnapshot = Object.freeze({
     status: "Unavailable",
   }),
 });
+const serverPwaSnapshot: ChooserPwaSnapshot = Object.freeze({
+  offline: "Preparing",
+});
 
 export function ChooserApp({ initialPathname }: ChooserAppProps) {
   const initialRoute = resolveRoute(initialPathname);
@@ -73,6 +83,11 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
       ? null
       : createSettingsCapabilityModel(createWindowCapabilityBrowser()),
   );
+  const [pwaRuntime] = useState<ChooserPwaRuntime | null>(() =>
+    typeof window === "undefined"
+      ? null
+      : createChooserPwaRuntime(createWindowPwaBrowser(), __CHOOSER_BUILD_ID__),
+  );
   const [feedback] = useState<ChooserFeedback>(() => createChooserFeedback());
   const route = useSyncExternalStore(
     router?.subscribe ?? emptySubscribe,
@@ -89,9 +104,15 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
     capabilityModel?.getSnapshot ?? (() => serverCapabilitySnapshot),
     () => serverCapabilitySnapshot,
   );
+  const pwaSnapshot = useSyncExternalStore(
+    pwaRuntime?.subscribe ?? emptySubscribe,
+    pwaRuntime?.getSnapshot ?? (() => serverPwaSnapshot),
+    () => serverPwaSnapshot,
+  );
 
   useEffect(() => router?.start(), [router]);
   useEffect(() => capabilityModel?.start(), [capabilityModel]);
+  useEffect(() => pwaRuntime?.start(), [pwaRuntime]);
   useEffect(() => {
     const unlock = (event: Event) => {
       feedback.unlockFromInteraction(event.isTrusted);
@@ -148,6 +169,7 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
     return (
       <SettingsPage
         fullscreen={capabilitySnapshot.fullscreen}
+        offline={pwaSnapshot.offline}
         onBack={() => router?.back()}
         onOpenLegal={() => router?.navigate(APP_ROUTES.legal)}
         onReset={() => settingsStore?.reset()}
@@ -199,5 +221,14 @@ function createWindowCapabilityBrowser(): SettingsCapabilityBrowser {
     document,
     navigator,
     matchMedia: (query) => window.matchMedia(query),
+  };
+}
+
+function createWindowPwaBrowser(): ChooserPwaBrowserPort {
+  return {
+    serviceWorker:
+      navigator.serviceWorker as unknown as ChooserServiceWorkerContainer,
+    setTimeout: (callback, timeoutMs) => window.setTimeout(callback, timeoutMs),
+    clearTimeout: (handle) => window.clearTimeout(handle as number),
   };
 }

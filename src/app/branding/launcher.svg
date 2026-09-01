@@ -1,0 +1,39 @@
+<!--
+SPDX-FileCopyrightText: 2026 byfb
+SPDX-License-Identifier: GPL-3.0-or-later
+
+Original Chooser Web launcher artwork. The constellation expresses a shared
+choice without copying or tracing the reference application's vector paths.
+The artwork stays inside the central maskable safe zone.
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="launcher-title launcher-description"
+>
+  <title id="launcher-title">Chooser</title>
+  <desc id="launcher-description">A central constellation of connected choices.</desc>
+
+  <rect width="512" height="512" rx="112" fill="#000" />
+
+  <g
+    fill="none"
+    stroke="#8ab4ff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M177 184 256 147 335 184 335 328 256 365 177 328Z" stroke-width="12" />
+    <path d="m177 184 79 53 79-53M256 237v128M177 328l79-91 79 91" stroke-width="8" opacity=".82" />
+  </g>
+
+  <g fill="#fff">
+    <circle cx="256" cy="256" r="38" />
+    <circle cx="177" cy="184" r="18" />
+    <circle cx="335" cy="184" r="18" />
+    <circle cx="177" cy="328" r="18" />
+    <circle cx="335" cy="328" r="18" />
+  </g>
+
+  <circle cx="256" cy="256" r="13" fill="#8ab4ff" />
+</svg>
