@@ -23,7 +23,8 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "pages:dev": "wrangler pages dev dist --port 8788",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "deploy": "node scripts/release/deploy.mjs"
   },
   "dependencies": {
     "react": "19.2.8",

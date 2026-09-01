@@ -78,6 +78,30 @@ with that deterministic release build. Release metadata stays outside the
 deployable tree under ignored `.artifacts/release/`; `dist` contains only the
 static application and its SHA-named source archive.
 
+## Deployment
+
+Deployment is local and does not use GitHub or a workflow. For the clean commit
+being released, create ignored `.artifacts/release/source-approval.json` with
+the exact full SHA and its same-origin archive URL:
+
+```json
+{
+  "schemaVersion": 1,
+  "status": "approved",
+  "immutable": true,
+  "sourceRevision": "<full-sha>",
+  "sourceUrl": "https://chooser-web.pages.dev/source/chooser-web-<full-sha>.tar.gz"
+}
+```
+
+Then run `pnpm deploy`. The command executes `pnpm verify`, rechecks the clean
+SHA and canonical artifact digest, safely creates or reuses the `chooser-web`
+Direct Upload Pages project, and uploads `dist` once on production branch
+`main`. It refuses unresolved or mismatched source, Legal, manifest, archive,
+worktree, project, and Wrangler state. Custom-domain association is a separate
+Cloudflare Pages setting; the application does not add rollback or GitHub
+deployment machinery.
+
 The source follows Feature-Sliced Design: application concerns live under
 `src/app`, page slices under `src/_pages`, shared configuration under
 `src/shared`, and Astro route wrappers under `src/pages`. Fixed public assets
