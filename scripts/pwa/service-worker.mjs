@@ -108,6 +108,7 @@ export async function writeServiceWorker(distDir, options = {}) {
     sourceStatus: options.sourceStatus,
     sourceUrl: options.sourceUrl,
   });
+  await normalizeAstroIslandUids(distDir, buildId);
   await prependReleaseBanners(distDir, releaseBanner);
   const precacheUrls = await collectPrecacheUrls(distDir);
   assertValidPrecacheUrls(precacheUrls);
@@ -128,6 +129,45 @@ export async function writeServiceWorker(distDir, options = {}) {
     precacheUrls,
     source,
   };
+}
+
+/**
+ * Astro assigns hydration-island UIDs from process-local randomness. They are
+ * opaque DOM attributes, so replace them with route/index hashes before the
+ * release comparison and service-worker manifest are generated.
+ */
+export async function normalizeAstroIslandUids(distDir, buildId) {
+  const normalizedBuildId = normalizeBuildId(buildId);
+  const htmlFiles = (await collectFiles(distDir))
+    .filter((file) => file.endsWith(".html"))
+    .sort(compareUrls);
+  const changed = [];
+
+  for (const file of htmlFiles) {
+    const path = join(distDir, file);
+    const source = await readFile(path, "utf8");
+    let islandIndex = 0;
+    const normalized = source.replace(
+      /(<astro-island\b[^>]*\buid=")[^"]*(")/gu,
+      (_match, prefix, suffix) => {
+        const uid = createHash("sha256")
+          .update(normalizedBuildId)
+          .update("\0")
+          .update(file.split(sep).join("/"))
+          .update("\0")
+          .update(String(islandIndex++))
+          .digest("hex")
+          .slice(0, 12);
+        return `${prefix}${uid}${suffix}`;
+      },
+    );
+    if (normalized !== source) {
+      await writeFile(path, normalized, "utf8");
+      changed.push(`/${file.split(sep).join("/")}`);
+    }
+  }
+
+  return changed;
 }
 
 /**

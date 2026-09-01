@@ -18,6 +18,7 @@ import {
   cacheNameForBuild,
   collectPrecacheUrls,
   createChooserPwaIntegration,
+  normalizeAstroIslandUids,
   validateServiceWorkerRelease,
   validateServiceWorkerSource,
   writeServiceWorker,
@@ -167,6 +168,29 @@ describe("Chooser generated service worker", () => {
       }),
     ).toBe(
       `/*! Chooser Web | GPL-3.0-or-later | Source revision: ${buildId} | Corresponding Source: https://example.invalid/chooser/${buildId}.tar.gz */`,
+    );
+  });
+
+  it("normalizes random Astro island UIDs to stable route identities", async () => {
+    const first = await createDist();
+    const second = await createDist();
+    await writeFile(
+      join(first, "index.html"),
+      '<astro-island uid="random-a" component-url="/app.js"></astro-island>',
+    );
+    await writeFile(
+      join(second, "index.html"),
+      '<astro-island uid="random-b" component-url="/app.js"></astro-island>',
+    );
+
+    await normalizeAstroIslandUids(first, "stable-build");
+    await normalizeAstroIslandUids(second, "stable-build");
+
+    expect(await readFile(join(first, "index.html"), "utf8")).toBe(
+      await readFile(join(second, "index.html"), "utf8"),
+    );
+    expect(await readFile(join(first, "index.html"), "utf8")).toMatch(
+      /uid="[0-9a-f]{12}"/u,
     );
   });
 
