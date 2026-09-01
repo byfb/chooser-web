@@ -1,0 +1,41 @@
+diff --git a/app/src/main/java/com/uravgcode/chooser/chooser/presentation/Chooser.kt b/app/src/main/java/com/uravgcode/chooser/chooser/presentation/Chooser.kt
+index 784382b6f046b97953d23f63db1c9eb0530100fe..f96e63f997cd32ce2ba744168fbed67656ae3074 100644
+--- a/app/src/main/java/com/uravgcode/chooser/chooser/presentation/Chooser.kt
++++ b/app/src/main/java/com/uravgcode/chooser/chooser/presentation/Chooser.kt
+@@ -64,6 +64,7 @@ class Chooser(
+     private val numbers = mutableListOf<Number>()
+ 
+     private var winnerChosen = false
++    private var resetTriggered = false
+ 
+     private val circleSize = 50.0f
+     private val blackRadiusSize = 105.0f
+@@ -84,7 +85,7 @@ class Chooser(
+ 
+         circles.update(deltaTime)
+ 
+-        if (winnerChosen && mode == Mode.SINGLE) {
++        if (winnerChosen && mode == Mode.SINGLE && !resetTriggered) {
+             blackSpeed += deltaTime * 0.04f * sign(blackSpeed)
+             blackRadius = max(
+                 blackRadius + blackSpeed * deltaTime,
+@@ -177,6 +178,10 @@ class Chooser(
+     }
+ 
+     private fun resetGameAfterSelection() {
++        // Immediately stop black circle animation and set background to black
++        resetTriggered = true
++        setBackgroundColor(Color.BLACK)
++        
+         // Force all circles to start disappearing
+         circles.forceAllCirclesToDisappear()
+         
+@@ -192,7 +197,7 @@ class Chooser(
+         handler.postDelayed({
+             setButtonVisibility(true)
+             winnerChosen = false
+-            setBackgroundColor(Color.BLACK)
++            resetTriggered = false
+         }, maxLifetime + 150)
+     }
+ 

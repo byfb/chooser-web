@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 byfb
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 import { access, readdir, readFile } from "node:fs/promises";
 import { relative } from "node:path";
 

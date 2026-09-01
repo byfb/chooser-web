@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 byfb
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 import eslint from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import reactHooks from "eslint-plugin-react-hooks";

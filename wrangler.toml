@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 byfb
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 name = "chooser-web"
 compatibility_date = "2026-09-01"
 pages_build_output_dir = "./dist"

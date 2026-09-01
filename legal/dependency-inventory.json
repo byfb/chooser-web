@@ -1,0 +1,4741 @@
+{
+  "schemaVersion": 1,
+  "lockfileSha256": "0daa2f3d3f8f3583ce52639441785725247f2990114e6a1d3ac2e06149cf6a17",
+  "generatedBy": "scripts/legal/generate-dependency-inventory.mjs",
+  "shipped": [
+    {
+      "name": "@astrojs/react",
+      "version": "6.0.5",
+      "license": "MIT",
+      "homepage": "https://docs.astro.build/en/guides/integrations-guide/react/",
+      "source": "https://www.npmjs.com/package/@astrojs/react/v/6.0.5"
+    },
+    {
+      "name": "astro",
+      "version": "7.2.10",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/astro/v/7.2.10"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.2.8",
+      "license": "MIT",
+      "homepage": "https://react.dev/",
+      "source": "https://www.npmjs.com/package/react-dom/v/19.2.8"
+    },
+    {
+      "name": "react",
+      "version": "19.2.8",
+      "license": "MIT",
+      "homepage": "https://react.dev/",
+      "source": "https://www.npmjs.com/package/react/v/19.2.8"
+    },
+    {
+      "name": "rolldown",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/rolldown/v/1.2.6"
+    },
+    {
+      "name": "scheduler",
+      "version": "0.27.0",
+      "license": "MIT",
+      "homepage": "https://react.dev/",
+      "source": "https://www.npmjs.com/package/scheduler/v/0.27.0"
+    }
+  ],
+  "buildOnly": [
+    {
+      "name": "@astrojs/check",
+      "version": "0.9.10",
+      "license": "MIT",
+      "homepage": "https://github.com/withastro/astro/tree/main/packages/language-tools/astro-check",
+      "source": "https://www.npmjs.com/package/@astrojs/check/v/0.9.10"
+    },
+    {
+      "name": "@astrojs/compiler-binding-darwin-arm64",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-darwin-arm64/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-darwin-x64",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-darwin-x64/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-linux-arm64-gnu",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-linux-arm64-gnu/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-linux-arm64-musl",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-linux-arm64-musl/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-linux-x64-gnu",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-linux-x64-gnu/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-linux-x64-musl",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-linux-x64-musl/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-wasm32-wasi",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-wasm32-wasi/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-win32-arm64-msvc",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-win32-arm64-msvc/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding-win32-x64-msvc",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding-win32-x64-msvc/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-binding",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-binding/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler-rs",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler-rs/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/compiler",
+      "version": "2.13.1",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/compiler/v/2.13.1"
+    },
+    {
+      "name": "@astrojs/internal-helpers",
+      "version": "0.11.0",
+      "license": "MIT",
+      "homepage": "https://github.com/withastro/astro#readme",
+      "source": "https://www.npmjs.com/package/@astrojs/internal-helpers/v/0.11.0"
+    },
+    {
+      "name": "@astrojs/language-server",
+      "version": "2.16.16",
+      "license": "MIT",
+      "homepage": "https://github.com/withastro/astro#readme",
+      "source": "https://www.npmjs.com/package/@astrojs/language-server/v/2.16.16"
+    },
+    {
+      "name": "@astrojs/markdown-satteri",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/markdown-satteri/v/0.4.0"
+    },
+    {
+      "name": "@astrojs/prism",
+      "version": "4.0.2",
+      "license": "MIT",
+      "homepage": "https://docs.astro.build/en/reference/api-reference/#prism-",
+      "source": "https://www.npmjs.com/package/@astrojs/prism/v/4.0.2"
+    },
+    {
+      "name": "@astrojs/telemetry",
+      "version": "3.3.3",
+      "license": "MIT",
+      "homepage": "https://astro.build",
+      "source": "https://www.npmjs.com/package/@astrojs/telemetry/v/3.3.3"
+    },
+    {
+      "name": "@astrojs/yaml2ts",
+      "version": "0.2.4",
+      "license": "MIT",
+      "homepage": "https://github.com/withastro/astro#readme",
+      "source": "https://www.npmjs.com/package/@astrojs/yaml2ts/v/0.2.4"
+    },
+    {
+      "name": "@babel/code-frame",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-code-frame",
+      "source": "https://www.npmjs.com/package/@babel/code-frame/v/7.29.7"
+    },
+    {
+      "name": "@babel/compat-data",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://github.com/babel/babel#readme",
+      "source": "https://www.npmjs.com/package/@babel/compat-data/v/7.29.7"
+    },
+    {
+      "name": "@babel/core",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-core",
+      "source": "https://www.npmjs.com/package/@babel/core/v/7.29.7"
+    },
+    {
+      "name": "@babel/generator",
+      "version": "7.29.8",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-generator",
+      "source": "https://www.npmjs.com/package/@babel/generator/v/7.29.8"
+    },
+    {
+      "name": "@babel/helper-compilation-targets",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://github.com/babel/babel#readme",
+      "source": "https://www.npmjs.com/package/@babel/helper-compilation-targets/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-globals",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://github.com/babel/babel#readme",
+      "source": "https://www.npmjs.com/package/@babel/helper-globals/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-module-imports",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-helper-module-imports",
+      "source": "https://www.npmjs.com/package/@babel/helper-module-imports/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-module-transforms",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-helper-module-transforms",
+      "source": "https://www.npmjs.com/package/@babel/helper-module-transforms/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-plugin-utils",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-helper-plugin-utils",
+      "source": "https://www.npmjs.com/package/@babel/helper-plugin-utils/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-string-parser",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-helper-string-parser",
+      "source": "https://www.npmjs.com/package/@babel/helper-string-parser/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-validator-identifier",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://github.com/babel/babel#readme",
+      "source": "https://www.npmjs.com/package/@babel/helper-validator-identifier/v/7.29.7"
+    },
+    {
+      "name": "@babel/helper-validator-option",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://github.com/babel/babel#readme",
+      "source": "https://www.npmjs.com/package/@babel/helper-validator-option/v/7.29.7"
+    },
+    {
+      "name": "@babel/helpers",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-helpers",
+      "source": "https://www.npmjs.com/package/@babel/helpers/v/7.29.7"
+    },
+    {
+      "name": "@babel/parser",
+      "version": "7.29.8",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-parser",
+      "source": "https://www.npmjs.com/package/@babel/parser/v/7.29.8"
+    },
+    {
+      "name": "@babel/plugin-transform-react-jsx-self",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-plugin-transform-react-jsx-self",
+      "source": "https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-self/v/7.29.7"
+    },
+    {
+      "name": "@babel/plugin-transform-react-jsx-source",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-plugin-transform-react-jsx-source",
+      "source": "https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source/v/7.29.7"
+    },
+    {
+      "name": "@babel/template",
+      "version": "7.29.7",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-template",
+      "source": "https://www.npmjs.com/package/@babel/template/v/7.29.7"
+    },
+    {
+      "name": "@babel/traverse",
+      "version": "7.29.8",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-traverse",
+      "source": "https://www.npmjs.com/package/@babel/traverse/v/7.29.8"
+    },
+    {
+      "name": "@babel/types",
+      "version": "7.29.8",
+      "license": "MIT",
+      "homepage": "https://babel.dev/docs/en/next/babel-types",
+      "source": "https://www.npmjs.com/package/@babel/types/v/7.29.8"
+    },
+    {
+      "name": "@bcoe/v8-coverage",
+      "version": "1.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/bcoe/v8-coverage#readme",
+      "source": "https://www.npmjs.com/package/@bcoe/v8-coverage/v/1.0.2"
+    },
+    {
+      "name": "@bruits/satteri-darwin-arm64",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-darwin-arm64/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-darwin-x64",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-darwin-x64/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-linux-arm64-gnu",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-linux-arm64-gnu/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-linux-arm64-musl",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-linux-arm64-musl/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-linux-x64-gnu",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-linux-x64-gnu/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-linux-x64-musl",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-linux-x64-musl/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-wasm32-wasi",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-wasm32-wasi/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-win32-arm64-msvc",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-win32-arm64-msvc/v/0.10.5"
+    },
+    {
+      "name": "@bruits/satteri-win32-x64-msvc",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/@bruits/satteri-win32-x64-msvc/v/0.10.5"
+    },
+    {
+      "name": "@capsizecss/unpack",
+      "version": "4.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/seek-oss/capsize#readme",
+      "source": "https://www.npmjs.com/package/@capsizecss/unpack/v/4.0.1"
+    },
+    {
+      "name": "@clack/core",
+      "version": "0.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/bombshell-dev/clack/tree/main/packages/core#readme",
+      "source": "https://www.npmjs.com/package/@clack/core/v/0.4.1"
+    },
+    {
+      "name": "@clack/core",
+      "version": "1.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/bombshell-dev/clack/tree/main/packages/core#readme",
+      "source": "https://www.npmjs.com/package/@clack/core/v/1.4.3"
+    },
+    {
+      "name": "@clack/prompts",
+      "version": "0.9.1",
+      "license": "MIT",
+      "homepage": "https://github.com/bombshell-dev/clack/tree/main/packages/prompts#readme",
+      "source": "https://www.npmjs.com/package/@clack/prompts/v/0.9.1"
+    },
+    {
+      "name": "@clack/prompts",
+      "version": "1.7.0",
+      "license": "MIT",
+      "homepage": "https://github.com/bombshell-dev/clack/tree/main/packages/prompts#readme",
+      "source": "https://www.npmjs.com/package/@clack/prompts/v/1.7.0"
+    },
+    {
+      "name": "@cloudflare/kv-asset-handler",
+      "version": "0.5.0",
+      "license": "MIT OR Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/kv-asset-handler/v/0.5.0"
+    },
+    {
+      "name": "@cloudflare/unenv-preset",
+      "version": "2.16.1",
+      "license": "MIT OR Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/unenv-preset/v/2.16.1"
+    },
+    {
+      "name": "@cloudflare/workerd-darwin-64",
+      "version": "1.20260828.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workerd#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/workerd-darwin-64/v/1.20260828.1"
+    },
+    {
+      "name": "@cloudflare/workerd-darwin-arm64",
+      "version": "1.20260828.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workerd#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/workerd-darwin-arm64/v/1.20260828.1"
+    },
+    {
+      "name": "@cloudflare/workerd-linux-64",
+      "version": "1.20260828.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workerd#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/workerd-linux-64/v/1.20260828.1"
+    },
+    {
+      "name": "@cloudflare/workerd-linux-arm64",
+      "version": "1.20260828.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workerd#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/workerd-linux-arm64/v/1.20260828.1"
+    },
+    {
+      "name": "@cloudflare/workerd-windows-64",
+      "version": "1.20260828.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workerd#readme",
+      "source": "https://www.npmjs.com/package/@cloudflare/workerd-windows-64/v/1.20260828.1"
+    },
+    {
+      "name": "@cspotcode/source-map-support",
+      "version": "0.8.1",
+      "license": "MIT",
+      "homepage": "https://github.com/cspotcode/node-source-map-support#readme",
+      "source": "https://www.npmjs.com/package/@cspotcode/source-map-support/v/0.8.1"
+    },
+    {
+      "name": "@emmetio/abbreviation",
+      "version": "2.3.3",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/emmet#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/abbreviation/v/2.3.3"
+    },
+    {
+      "name": "@emmetio/css-abbreviation",
+      "version": "2.1.8",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/emmet#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/css-abbreviation/v/2.1.8"
+    },
+    {
+      "name": "@emmetio/css-parser",
+      "version": "0.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/css-parser#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/css-parser/v/0.4.1"
+    },
+    {
+      "name": "@emmetio/html-matcher",
+      "version": "1.3.0",
+      "license": "ISC",
+      "homepage": "https://github.com/emmetio/html-matcher#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/html-matcher/v/1.3.0"
+    },
+    {
+      "name": "@emmetio/scanner",
+      "version": "1.0.4",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/emmet#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/scanner/v/1.0.4"
+    },
+    {
+      "name": "@emmetio/stream-reader-utils",
+      "version": "0.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/stream-reader-utils#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/stream-reader-utils/v/0.1.0"
+    },
+    {
+      "name": "@emmetio/stream-reader",
+      "version": "2.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/stream-reader#readme",
+      "source": "https://www.npmjs.com/package/@emmetio/stream-reader/v/2.2.0"
+    },
+    {
+      "name": "@emnapi/core",
+      "version": "1.11.1",
+      "license": "MIT",
+      "homepage": "https://github.com/toyobayashi/emnapi#readme",
+      "source": "https://www.npmjs.com/package/@emnapi/core/v/1.11.1"
+    },
+    {
+      "name": "@emnapi/runtime",
+      "version": "1.11.1",
+      "license": "MIT",
+      "homepage": "https://github.com/toyobayashi/emnapi#readme",
+      "source": "https://www.npmjs.com/package/@emnapi/runtime/v/1.11.1"
+    },
+    {
+      "name": "@emnapi/runtime",
+      "version": "1.11.3",
+      "license": "MIT",
+      "homepage": "https://github.com/toyobayashi/emnapi#readme",
+      "source": "https://www.npmjs.com/package/@emnapi/runtime/v/1.11.3"
+    },
+    {
+      "name": "@emnapi/wasi-threads",
+      "version": "1.2.2",
+      "license": "MIT",
+      "homepage": "https://github.com/toyobayashi/emnapi#readme",
+      "source": "https://www.npmjs.com/package/@emnapi/wasi-threads/v/1.2.2"
+    },
+    {
+      "name": "@esbuild/aix-ppc64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/aix-ppc64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/aix-ppc64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/aix-ppc64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/android-arm",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/android-arm/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/android-arm",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/android-arm/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/android-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/android-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/android-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/android-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/android-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/android-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/android-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/android-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/darwin-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/darwin-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/darwin-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/darwin-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/darwin-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/darwin-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/darwin-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/darwin-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/freebsd-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/freebsd-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/freebsd-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/freebsd-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/freebsd-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/freebsd-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/freebsd-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/freebsd-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-arm",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-arm/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-arm",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-arm/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-ia32",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-ia32/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-ia32",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-ia32/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-loong64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-loong64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-loong64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-loong64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-mips64el",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-mips64el/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-mips64el",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-mips64el/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-ppc64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-ppc64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-ppc64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-ppc64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-riscv64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-riscv64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-riscv64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-riscv64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-s390x",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-s390x/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-s390x",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-s390x/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/linux-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/linux-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/linux-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/netbsd-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/netbsd-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/netbsd-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/netbsd-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/netbsd-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/netbsd-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/netbsd-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/netbsd-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/openbsd-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/openbsd-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/openbsd-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/openbsd-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/openbsd-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/openbsd-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/openbsd-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/openbsd-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/openharmony-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/openharmony-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/openharmony-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/openharmony-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/sunos-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/sunos-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/sunos-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/sunos-x64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/win32-arm64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/win32-arm64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/win32-arm64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/win32-arm64/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/win32-ia32",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/win32-ia32/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/win32-ia32",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/win32-ia32/v/0.28.2"
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/win32-x64/v/0.28.1"
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/@esbuild/win32-x64/v/0.28.2"
+    },
+    {
+      "name": "@eslint-community/eslint-utils",
+      "version": "4.10.1",
+      "license": "MIT",
+      "homepage": "https://github.com/eslint-community/eslint-utils#readme",
+      "source": "https://www.npmjs.com/package/@eslint-community/eslint-utils/v/4.10.1"
+    },
+    {
+      "name": "@eslint-community/regexpp",
+      "version": "4.12.2",
+      "license": "MIT",
+      "homepage": "https://github.com/eslint-community/regexpp#readme",
+      "source": "https://www.npmjs.com/package/@eslint-community/regexpp/v/4.12.2"
+    },
+    {
+      "name": "@eslint/config-array",
+      "version": "0.23.5",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/rewrite/tree/main/packages/config-array#readme",
+      "source": "https://www.npmjs.com/package/@eslint/config-array/v/0.23.5"
+    },
+    {
+      "name": "@eslint/config-helpers",
+      "version": "0.7.0",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/rewrite/tree/main/packages/config-helpers#readme",
+      "source": "https://www.npmjs.com/package/@eslint/config-helpers/v/0.7.0"
+    },
+    {
+      "name": "@eslint/core",
+      "version": "1.2.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/rewrite/tree/main/packages/core#readme",
+      "source": "https://www.npmjs.com/package/@eslint/core/v/1.2.1"
+    },
+    {
+      "name": "@eslint/js",
+      "version": "10.0.1",
+      "license": "MIT",
+      "homepage": "https://eslint.org",
+      "source": "https://www.npmjs.com/package/@eslint/js/v/10.0.1"
+    },
+    {
+      "name": "@eslint/object-schema",
+      "version": "3.0.5",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/rewrite/tree/main/packages/object-schema#readme",
+      "source": "https://www.npmjs.com/package/@eslint/object-schema/v/3.0.5"
+    },
+    {
+      "name": "@eslint/plugin-kit",
+      "version": "0.7.2",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/rewrite/tree/main/packages/plugin-kit#readme",
+      "source": "https://www.npmjs.com/package/@eslint/plugin-kit/v/0.7.2"
+    },
+    {
+      "name": "@feature-sliced/filesystem",
+      "version": "3.1.1",
+      "license": "ISC",
+      "homepage": "https://github.com/feature-sliced/filesystem",
+      "source": "https://www.npmjs.com/package/@feature-sliced/filesystem/v/3.1.1"
+    },
+    {
+      "name": "@feature-sliced/steiger-plugin",
+      "version": "0.7.0",
+      "license": "MIT",
+      "homepage": "https://github.com/feature-sliced/steiger",
+      "source": "https://www.npmjs.com/package/@feature-sliced/steiger-plugin/v/0.7.0"
+    },
+    {
+      "name": "@humanfs/core",
+      "version": "0.19.2",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/humanwhocodes/humanfs#readme",
+      "source": "https://www.npmjs.com/package/@humanfs/core/v/0.19.2"
+    },
+    {
+      "name": "@humanfs/node",
+      "version": "0.16.8",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/humanwhocodes/humanfs#readme",
+      "source": "https://www.npmjs.com/package/@humanfs/node/v/0.16.8"
+    },
+    {
+      "name": "@humanfs/types",
+      "version": "0.15.0",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/humanwhocodes/humanfs#readme",
+      "source": "https://www.npmjs.com/package/@humanfs/types/v/0.15.0"
+    },
+    {
+      "name": "@humanwhocodes/module-importer",
+      "version": "1.0.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/humanwhocodes/module-importer#readme",
+      "source": "https://www.npmjs.com/package/@humanwhocodes/module-importer/v/1.0.1"
+    },
+    {
+      "name": "@humanwhocodes/retry",
+      "version": "0.4.3",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/humanwhocodes/retry#readme",
+      "source": "https://www.npmjs.com/package/@humanwhocodes/retry/v/0.4.3"
+    },
+    {
+      "name": "@img/colour",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/lovell/colour#readme",
+      "source": "https://www.npmjs.com/package/@img/colour/v/1.1.0"
+    },
+    {
+      "name": "@img/sharp-darwin-arm64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-darwin-arm64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-darwin-arm64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-darwin-arm64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-darwin-x64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-darwin-x64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-darwin-x64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-darwin-x64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-freebsd-wasm32",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-freebsd-wasm32/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-freebsd-wasm32",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-freebsd-wasm32/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-libvips-darwin-arm64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-darwin-arm64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-darwin-arm64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-darwin-arm64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-darwin-x64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-darwin-x64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-darwin-x64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-darwin-x64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-arm",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-arm/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-arm",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-arm/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-arm64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-arm64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-arm64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-arm64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-ppc64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-ppc64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-ppc64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-ppc64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-riscv64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-riscv64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-riscv64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-riscv64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-s390x",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-s390x/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-s390x",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-s390x/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-x64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-x64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linux-x64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linux-x64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linuxmusl-arm64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linuxmusl-arm64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linuxmusl-arm64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linuxmusl-arm64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "version": "1.3.1",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linuxmusl-x64/v/1.3.1"
+    },
+    {
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "version": "1.3.3",
+      "license": "LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-libvips-linuxmusl-x64/v/1.3.3"
+    },
+    {
+      "name": "@img/sharp-linux-arm",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-arm/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linux-arm",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-arm/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linux-arm64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-arm64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linux-arm64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-arm64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linux-ppc64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-ppc64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linux-ppc64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-ppc64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linux-riscv64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-riscv64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linux-riscv64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-riscv64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linux-s390x",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-s390x/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linux-s390x",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-s390x/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linux-x64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-x64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linux-x64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linux-x64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linuxmusl-arm64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linuxmusl-arm64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linuxmusl-arm64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linuxmusl-arm64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-linuxmusl-x64",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linuxmusl-x64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-linuxmusl-x64",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-linuxmusl-x64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-wasm32",
+      "version": "0.35.2",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-wasm32/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-wasm32",
+      "version": "0.35.4",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-wasm32/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-webcontainers-wasm32",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-webcontainers-wasm32/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-webcontainers-wasm32",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-webcontainers-wasm32/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-win32-arm64",
+      "version": "0.35.2",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-win32-arm64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-win32-arm64",
+      "version": "0.35.4",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-win32-arm64/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-win32-ia32",
+      "version": "0.35.2",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-win32-ia32/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-win32-ia32",
+      "version": "0.35.4",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-win32-ia32/v/0.35.4"
+    },
+    {
+      "name": "@img/sharp-win32-x64",
+      "version": "0.35.2",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-win32-x64/v/0.35.2"
+    },
+    {
+      "name": "@img/sharp-win32-x64",
+      "version": "0.35.4",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/@img/sharp-win32-x64/v/0.35.4"
+    },
+    {
+      "name": "@jridgewell/gen-mapping",
+      "version": "0.3.13",
+      "license": "MIT",
+      "homepage": "https://github.com/jridgewell/sourcemaps/tree/main/packages/gen-mapping",
+      "source": "https://www.npmjs.com/package/@jridgewell/gen-mapping/v/0.3.13"
+    },
+    {
+      "name": "@jridgewell/remapping",
+      "version": "2.3.5",
+      "license": "MIT",
+      "homepage": "https://github.com/jridgewell/sourcemaps/tree/main/packages/remapping",
+      "source": "https://www.npmjs.com/package/@jridgewell/remapping/v/2.3.5"
+    },
+    {
+      "name": "@jridgewell/resolve-uri",
+      "version": "3.1.2",
+      "license": "MIT",
+      "homepage": "https://github.com/jridgewell/resolve-uri#readme",
+      "source": "https://www.npmjs.com/package/@jridgewell/resolve-uri/v/3.1.2"
+    },
+    {
+      "name": "@jridgewell/sourcemap-codec",
+      "version": "1.6.0",
+      "license": "MIT",
+      "homepage": "https://github.com/jridgewell/sourcemaps/tree/main/packages/sourcemap-codec",
+      "source": "https://www.npmjs.com/package/@jridgewell/sourcemap-codec/v/1.6.0"
+    },
+    {
+      "name": "@jridgewell/trace-mapping",
+      "version": "0.3.31",
+      "license": "MIT",
+      "homepage": "https://github.com/jridgewell/sourcemaps/tree/main/packages/trace-mapping",
+      "source": "https://www.npmjs.com/package/@jridgewell/trace-mapping/v/0.3.31"
+    },
+    {
+      "name": "@jridgewell/trace-mapping",
+      "version": "0.3.9",
+      "license": "MIT",
+      "homepage": "https://github.com/jridgewell/sourcemaps/tree/main/packages/trace-mapping",
+      "source": "https://www.npmjs.com/package/@jridgewell/trace-mapping/v/0.3.9"
+    },
+    {
+      "name": "@napi-rs/wasm-runtime",
+      "version": "1.2.3",
+      "license": "MIT",
+      "homepage": "https://napi.rs/",
+      "source": "https://www.npmjs.com/package/@napi-rs/wasm-runtime/v/1.2.3"
+    },
+    {
+      "name": "@nodelib/fs.scandir",
+      "version": "2.1.5",
+      "license": "MIT",
+      "homepage": "https://github.com/nodelib/nodelib/tree/master#readme",
+      "source": "https://www.npmjs.com/package/@nodelib/fs.scandir/v/2.1.5"
+    },
+    {
+      "name": "@nodelib/fs.stat",
+      "version": "2.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/nodelib/nodelib/tree/master#readme",
+      "source": "https://www.npmjs.com/package/@nodelib/fs.stat/v/2.0.5"
+    },
+    {
+      "name": "@nodelib/fs.walk",
+      "version": "1.2.8",
+      "license": "MIT",
+      "homepage": "https://github.com/nodelib/nodelib/tree/master#readme",
+      "source": "https://www.npmjs.com/package/@nodelib/fs.walk/v/1.2.8"
+    },
+    {
+      "name": "@oslojs/encoding",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/oslo-project/encoding#readme",
+      "source": "https://www.npmjs.com/package/@oslojs/encoding/v/1.1.0"
+    },
+    {
+      "name": "@oxc-project/types",
+      "version": "0.147.0",
+      "license": "MIT",
+      "homepage": "https://oxc.rs",
+      "source": "https://www.npmjs.com/package/@oxc-project/types/v/0.147.0"
+    },
+    {
+      "name": "@poppinss/colors",
+      "version": "4.1.6",
+      "license": "MIT",
+      "homepage": "https://github.com/poppinss/colors#readme",
+      "source": "https://www.npmjs.com/package/@poppinss/colors/v/4.1.6"
+    },
+    {
+      "name": "@poppinss/dumper",
+      "version": "0.6.5",
+      "license": "MIT",
+      "homepage": "https://github.com/poppinss/dumper#readme",
+      "source": "https://www.npmjs.com/package/@poppinss/dumper/v/0.6.5"
+    },
+    {
+      "name": "@poppinss/exception",
+      "version": "1.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/poppinss/exception#readme",
+      "source": "https://www.npmjs.com/package/@poppinss/exception/v/1.2.3"
+    },
+    {
+      "name": "@rolldown/binding-android-arm-eabi",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-android-arm-eabi/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-android-arm64",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-android-arm64/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-darwin-arm64",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-darwin-arm64/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-darwin-x64",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-darwin-x64/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-freebsd-x64",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-freebsd-x64/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-arm-gnueabihf",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-arm-gnueabihf/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-arm64-gnu",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-arm64-gnu/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-arm64-musl",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-arm64-musl/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-ppc64-gnu",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-ppc64-gnu/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-s390x-gnu",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-s390x-gnu/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-x64-gnu",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-x64-gnu/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-linux-x64-musl",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-linux-x64-musl/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-openharmony-arm64",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-openharmony-arm64/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-win32-arm64-msvc",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-win32-arm64-msvc/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/binding-win32-x64-msvc",
+      "version": "1.2.6",
+      "license": "MIT",
+      "homepage": "https://rolldown.rs/",
+      "source": "https://www.npmjs.com/package/@rolldown/binding-win32-x64-msvc/v/1.2.6"
+    },
+    {
+      "name": "@rolldown/pluginutils",
+      "version": "1.0.0-rc.3",
+      "license": "MIT",
+      "homepage": "https://github.com/rolldown/plugins/tree/main/packages/pluginutils#readme",
+      "source": "https://www.npmjs.com/package/@rolldown/pluginutils/v/1.0.0-rc.3"
+    },
+    {
+      "name": "@rolldown/pluginutils",
+      "version": "1.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/rolldown/plugins/tree/main/packages/pluginutils#readme",
+      "source": "https://www.npmjs.com/package/@rolldown/pluginutils/v/1.0.1"
+    },
+    {
+      "name": "@shikijs/core",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/core/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/engine-javascript",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/engine-javascript/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/engine-oniguruma",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/engine-oniguruma/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/langs",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/langs/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/primitive",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/primitive/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/themes",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/themes/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/types",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/types/v/4.4.3"
+    },
+    {
+      "name": "@shikijs/vscode-textmate",
+      "version": "10.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/vscode-textmate#readme",
+      "source": "https://www.npmjs.com/package/@shikijs/vscode-textmate/v/10.0.2"
+    },
+    {
+      "name": "@sindresorhus/is",
+      "version": "7.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/is#readme",
+      "source": "https://www.npmjs.com/package/@sindresorhus/is/v/7.2.0"
+    },
+    {
+      "name": "@sindresorhus/merge-streams",
+      "version": "2.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/merge-streams#readme",
+      "source": "https://www.npmjs.com/package/@sindresorhus/merge-streams/v/2.3.0"
+    },
+    {
+      "name": "@speed-highlight/core",
+      "version": "1.2.24",
+      "license": "CC0-1.0",
+      "homepage": "https://github.com/speed-highlight/core#readme",
+      "source": "https://www.npmjs.com/package/@speed-highlight/core/v/1.2.24"
+    },
+    {
+      "name": "@standard-schema/spec",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://standardschema.dev",
+      "source": "https://www.npmjs.com/package/@standard-schema/spec/v/1.1.0"
+    },
+    {
+      "name": "@tybys/wasm-util",
+      "version": "0.10.3",
+      "license": "MIT",
+      "homepage": "https://github.com/toyobayashi/wasm-util#readme",
+      "source": "https://www.npmjs.com/package/@tybys/wasm-util/v/0.10.3"
+    },
+    {
+      "name": "@types/babel__core",
+      "version": "7.20.5",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__core",
+      "source": "https://www.npmjs.com/package/@types/babel__core/v/7.20.5"
+    },
+    {
+      "name": "@types/babel__generator",
+      "version": "7.27.0",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__generator",
+      "source": "https://www.npmjs.com/package/@types/babel__generator/v/7.27.0"
+    },
+    {
+      "name": "@types/babel__template",
+      "version": "7.4.4",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__template",
+      "source": "https://www.npmjs.com/package/@types/babel__template/v/7.4.4"
+    },
+    {
+      "name": "@types/babel__traverse",
+      "version": "7.28.0",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__traverse",
+      "source": "https://www.npmjs.com/package/@types/babel__traverse/v/7.28.0"
+    },
+    {
+      "name": "@types/chai",
+      "version": "5.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/chai",
+      "source": "https://www.npmjs.com/package/@types/chai/v/5.2.3"
+    },
+    {
+      "name": "@types/deep-eql",
+      "version": "4.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/deep-eql",
+      "source": "https://www.npmjs.com/package/@types/deep-eql/v/4.0.2"
+    },
+    {
+      "name": "@types/esrecurse",
+      "version": "4.3.1",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/esrecurse",
+      "source": "https://www.npmjs.com/package/@types/esrecurse/v/4.3.1"
+    },
+    {
+      "name": "@types/estree-jsx",
+      "version": "1.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/estree-jsx",
+      "source": "https://www.npmjs.com/package/@types/estree-jsx/v/1.0.5"
+    },
+    {
+      "name": "@types/estree",
+      "version": "1.0.9",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/estree",
+      "source": "https://www.npmjs.com/package/@types/estree/v/1.0.9"
+    },
+    {
+      "name": "@types/hast",
+      "version": "3.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/hast",
+      "source": "https://www.npmjs.com/package/@types/hast/v/3.0.5"
+    },
+    {
+      "name": "@types/json-schema",
+      "version": "7.0.15",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/json-schema",
+      "source": "https://www.npmjs.com/package/@types/json-schema/v/7.0.15"
+    },
+    {
+      "name": "@types/mdast",
+      "version": "4.0.4",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/mdast",
+      "source": "https://www.npmjs.com/package/@types/mdast/v/4.0.4"
+    },
+    {
+      "name": "@types/nlcst",
+      "version": "2.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/nlcst",
+      "source": "https://www.npmjs.com/package/@types/nlcst/v/2.0.3"
+    },
+    {
+      "name": "@types/node",
+      "version": "26.4.0",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
+      "source": "https://www.npmjs.com/package/@types/node/v/26.4.0"
+    },
+    {
+      "name": "@types/react-dom",
+      "version": "19.2.5",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom",
+      "source": "https://www.npmjs.com/package/@types/react-dom/v/19.2.5"
+    },
+    {
+      "name": "@types/react",
+      "version": "19.2.18",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react",
+      "source": "https://www.npmjs.com/package/@types/react/v/19.2.18"
+    },
+    {
+      "name": "@types/unist",
+      "version": "3.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/unist",
+      "source": "https://www.npmjs.com/package/@types/unist/v/3.0.3"
+    },
+    {
+      "name": "@typescript-eslint/eslint-plugin",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io/packages/eslint-plugin",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/parser",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io/packages/parser",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/parser/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/project-service",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/project-service/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/scope-manager",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io/packages/scope-manager",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/scope-manager/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/tsconfig-utils",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/tsconfig-utils/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/type-utils",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/type-utils/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/types",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/types/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/typescript-estree",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io/packages/typescript-estree",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/typescript-estree/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/utils",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io/packages/utils",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/utils/v/8.69.0"
+    },
+    {
+      "name": "@typescript-eslint/visitor-keys",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io",
+      "source": "https://www.npmjs.com/package/@typescript-eslint/visitor-keys/v/8.69.0"
+    },
+    {
+      "name": "@ungap/structured-clone",
+      "version": "1.4.0",
+      "license": "ISC",
+      "homepage": "https://github.com/ungap/structured-clone#readme",
+      "source": "https://www.npmjs.com/package/@ungap/structured-clone/v/1.4.0"
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "version": "5.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#readme",
+      "source": "https://www.npmjs.com/package/@vitejs/plugin-react/v/5.2.0"
+    },
+    {
+      "name": "@vitest/coverage-v8",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://vitest.dev/guide/coverage",
+      "source": "https://www.npmjs.com/package/@vitest/coverage-v8/v/4.1.11"
+    },
+    {
+      "name": "@vitest/expect",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://vitest.dev/api/expect",
+      "source": "https://www.npmjs.com/package/@vitest/expect/v/4.1.11"
+    },
+    {
+      "name": "@vitest/mocker",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://github.com/vitest-dev/vitest/tree/main/packages/mocker",
+      "source": "https://www.npmjs.com/package/@vitest/mocker/v/4.1.11"
+    },
+    {
+      "name": "@vitest/pretty-format",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://github.com/vitest-dev/vitest/tree/main/packages/pretty-format",
+      "source": "https://www.npmjs.com/package/@vitest/pretty-format/v/4.1.11"
+    },
+    {
+      "name": "@vitest/runner",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://vitest.dev/api/advanced/runner",
+      "source": "https://www.npmjs.com/package/@vitest/runner/v/4.1.11"
+    },
+    {
+      "name": "@vitest/snapshot",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://vitest.dev/guide/snapshot",
+      "source": "https://www.npmjs.com/package/@vitest/snapshot/v/4.1.11"
+    },
+    {
+      "name": "@vitest/spy",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://vitest.dev/api/mock",
+      "source": "https://www.npmjs.com/package/@vitest/spy/v/4.1.11"
+    },
+    {
+      "name": "@vitest/utils",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://github.com/vitest-dev/vitest/tree/main/packages/utils",
+      "source": "https://www.npmjs.com/package/@vitest/utils/v/4.1.11"
+    },
+    {
+      "name": "@volar/kit",
+      "version": "2.4.28",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/volar.js#readme",
+      "source": "https://www.npmjs.com/package/@volar/kit/v/2.4.28"
+    },
+    {
+      "name": "@volar/language-core",
+      "version": "2.4.28",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/volar.js#readme",
+      "source": "https://www.npmjs.com/package/@volar/language-core/v/2.4.28"
+    },
+    {
+      "name": "@volar/language-server",
+      "version": "2.4.28",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/volar.js#readme",
+      "source": "https://www.npmjs.com/package/@volar/language-server/v/2.4.28"
+    },
+    {
+      "name": "@volar/language-service",
+      "version": "2.4.28",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/volar.js#readme",
+      "source": "https://www.npmjs.com/package/@volar/language-service/v/2.4.28"
+    },
+    {
+      "name": "@volar/source-map",
+      "version": "2.4.28",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/volar.js#readme",
+      "source": "https://www.npmjs.com/package/@volar/source-map/v/2.4.28"
+    },
+    {
+      "name": "@volar/typescript",
+      "version": "2.4.28",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/volar.js#readme",
+      "source": "https://www.npmjs.com/package/@volar/typescript/v/2.4.28"
+    },
+    {
+      "name": "@vscode/emmet-helper",
+      "version": "2.11.0",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-emmet-helper#readme",
+      "source": "https://www.npmjs.com/package/@vscode/emmet-helper/v/2.11.0"
+    },
+    {
+      "name": "@vscode/l10n",
+      "version": "0.0.18",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-l10n#readme",
+      "source": "https://www.npmjs.com/package/@vscode/l10n/v/0.0.18"
+    },
+    {
+      "name": "acorn-jsx",
+      "version": "5.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/acornjs/acorn-jsx",
+      "source": "https://www.npmjs.com/package/acorn-jsx/v/5.3.2"
+    },
+    {
+      "name": "acorn",
+      "version": "8.18.0",
+      "license": "MIT",
+      "homepage": "https://github.com/acornjs/acorn",
+      "source": "https://www.npmjs.com/package/acorn/v/8.18.0"
+    },
+    {
+      "name": "ajv-draft-04",
+      "version": "1.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/ajv-validator/ajv-draft-04#readme",
+      "source": "https://www.npmjs.com/package/ajv-draft-04/v/1.0.0"
+    },
+    {
+      "name": "ajv-i18n",
+      "version": "4.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/epoberezkin/ajv-i18n#readme",
+      "source": "https://www.npmjs.com/package/ajv-i18n/v/4.2.0"
+    },
+    {
+      "name": "ajv",
+      "version": "6.15.0",
+      "license": "MIT",
+      "homepage": "https://ajv.js.org",
+      "source": "https://www.npmjs.com/package/ajv/v/6.15.0"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "license": "MIT",
+      "homepage": "https://ajv.js.org",
+      "source": "https://www.npmjs.com/package/ajv/v/8.20.0"
+    },
+    {
+      "name": "am-i-vibing",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://github.com/ascorbic/am-i-vibing",
+      "source": "https://www.npmjs.com/package/am-i-vibing/v/0.4.0"
+    },
+    {
+      "name": "ansi-regex",
+      "version": "5.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/ansi-regex#readme",
+      "source": "https://www.npmjs.com/package/ansi-regex/v/5.0.1"
+    },
+    {
+      "name": "ansi-regex",
+      "version": "6.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/ansi-regex#readme",
+      "source": "https://www.npmjs.com/package/ansi-regex/v/6.3.0"
+    },
+    {
+      "name": "ansi-styles",
+      "version": "4.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/ansi-styles#readme",
+      "source": "https://www.npmjs.com/package/ansi-styles/v/4.3.0"
+    },
+    {
+      "name": "ansi-styles",
+      "version": "6.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/ansi-styles#readme",
+      "source": "https://www.npmjs.com/package/ansi-styles/v/6.2.3"
+    },
+    {
+      "name": "anymatch",
+      "version": "3.1.3",
+      "license": "ISC",
+      "homepage": "https://github.com/micromatch/anymatch",
+      "source": "https://www.npmjs.com/package/anymatch/v/3.1.3"
+    },
+    {
+      "name": "argparse",
+      "version": "2.0.1",
+      "license": "Python-2.0",
+      "homepage": "https://github.com/nodeca/argparse#readme",
+      "source": "https://www.npmjs.com/package/argparse/v/2.0.1"
+    },
+    {
+      "name": "aria-query",
+      "version": "5.3.2",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/A11yance/aria-query#readme",
+      "source": "https://www.npmjs.com/package/aria-query/v/5.3.2"
+    },
+    {
+      "name": "assertion-error",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/chaijs/assertion-error#readme",
+      "source": "https://www.npmjs.com/package/assertion-error/v/2.0.1"
+    },
+    {
+      "name": "ast-v8-to-istanbul",
+      "version": "1.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/AriPerkkio/ast-v8-to-istanbul",
+      "source": "https://www.npmjs.com/package/ast-v8-to-istanbul/v/1.0.5"
+    },
+    {
+      "name": "axobject-query",
+      "version": "4.1.0",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/A11yance/axobject-query#readme",
+      "source": "https://www.npmjs.com/package/axobject-query/v/4.1.0"
+    },
+    {
+      "name": "bail",
+      "version": "2.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/bail#readme",
+      "source": "https://www.npmjs.com/package/bail/v/2.0.2"
+    },
+    {
+      "name": "balanced-match",
+      "version": "4.0.4",
+      "license": "MIT",
+      "homepage": "https://github.com/juliangruber/balanced-match#readme",
+      "source": "https://www.npmjs.com/package/balanced-match/v/4.0.4"
+    },
+    {
+      "name": "baseline-browser-mapping",
+      "version": "2.11.20",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
+      "source": "https://www.npmjs.com/package/baseline-browser-mapping/v/2.11.20"
+    },
+    {
+      "name": "blake3-wasm",
+      "version": "2.1.5",
+      "license": "MIT",
+      "homepage": "https://github.com/connor4312/blake3#readme",
+      "source": "https://www.npmjs.com/package/blake3-wasm/v/2.1.5"
+    },
+    {
+      "name": "boolbase",
+      "version": "1.0.0",
+      "license": "ISC",
+      "homepage": "https://github.com/fb55/boolbase",
+      "source": "https://www.npmjs.com/package/boolbase/v/1.0.0"
+    },
+    {
+      "name": "brace-expansion",
+      "version": "5.0.9",
+      "license": "MIT",
+      "homepage": "https://github.com/juliangruber/brace-expansion#readme",
+      "source": "https://www.npmjs.com/package/brace-expansion/v/5.0.9"
+    },
+    {
+      "name": "braces",
+      "version": "3.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/micromatch/braces",
+      "source": "https://www.npmjs.com/package/braces/v/3.0.3"
+    },
+    {
+      "name": "browserslist",
+      "version": "4.28.8",
+      "license": "MIT",
+      "homepage": "https://github.com/browserslist/browserslist#readme",
+      "source": "https://www.npmjs.com/package/browserslist/v/4.28.8"
+    },
+    {
+      "name": "callsites",
+      "version": "3.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/callsites#readme",
+      "source": "https://www.npmjs.com/package/callsites/v/3.1.0"
+    },
+    {
+      "name": "caniuse-lite",
+      "version": "1.0.30001810",
+      "license": "CC-BY-4.0",
+      "homepage": "https://github.com/browserslist/caniuse-lite#readme",
+      "source": "https://www.npmjs.com/package/caniuse-lite/v/1.0.30001810"
+    },
+    {
+      "name": "ccount",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/ccount#readme",
+      "source": "https://www.npmjs.com/package/ccount/v/2.0.1"
+    },
+    {
+      "name": "chai",
+      "version": "6.2.2",
+      "license": "MIT",
+      "homepage": "http://chaijs.com",
+      "source": "https://www.npmjs.com/package/chai/v/6.2.2"
+    },
+    {
+      "name": "character-entities-html4",
+      "version": "2.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/character-entities-html4#readme",
+      "source": "https://www.npmjs.com/package/character-entities-html4/v/2.1.0"
+    },
+    {
+      "name": "character-entities-legacy",
+      "version": "3.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/character-entities-legacy#readme",
+      "source": "https://www.npmjs.com/package/character-entities-legacy/v/3.0.0"
+    },
+    {
+      "name": "chokidar",
+      "version": "4.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/paulmillr/chokidar",
+      "source": "https://www.npmjs.com/package/chokidar/v/4.0.3"
+    },
+    {
+      "name": "chokidar",
+      "version": "5.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/paulmillr/chokidar",
+      "source": "https://www.npmjs.com/package/chokidar/v/5.0.0"
+    },
+    {
+      "name": "ci-info",
+      "version": "4.4.0",
+      "license": "MIT",
+      "homepage": "https://github.com/watson/ci-info",
+      "source": "https://www.npmjs.com/package/ci-info/v/4.4.0"
+    },
+    {
+      "name": "cliui",
+      "version": "8.0.1",
+      "license": "ISC",
+      "homepage": "https://github.com/yargs/cliui#readme",
+      "source": "https://www.npmjs.com/package/cliui/v/8.0.1"
+    },
+    {
+      "name": "cliui",
+      "version": "9.0.1",
+      "license": "ISC",
+      "homepage": "https://github.com/yargs/cliui#readme",
+      "source": "https://www.npmjs.com/package/cliui/v/9.0.1"
+    },
+    {
+      "name": "clsx",
+      "version": "2.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/clsx#readme",
+      "source": "https://www.npmjs.com/package/clsx/v/2.1.1"
+    },
+    {
+      "name": "color-convert",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/Qix-/color-convert#readme",
+      "source": "https://www.npmjs.com/package/color-convert/v/2.0.1"
+    },
+    {
+      "name": "color-name",
+      "version": "1.1.4",
+      "license": "MIT",
+      "homepage": "https://github.com/colorjs/color-name",
+      "source": "https://www.npmjs.com/package/color-name/v/1.1.4"
+    },
+    {
+      "name": "comma-separated-tokens",
+      "version": "2.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/comma-separated-tokens#readme",
+      "source": "https://www.npmjs.com/package/comma-separated-tokens/v/2.0.3"
+    },
+    {
+      "name": "commander",
+      "version": "11.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/tj/commander.js#readme",
+      "source": "https://www.npmjs.com/package/commander/v/11.1.0"
+    },
+    {
+      "name": "common-ancestor-path",
+      "version": "2.0.0",
+      "license": "BlueOak-1.0.0",
+      "homepage": "https://github.com/isaacs/common-ancestor-path#readme",
+      "source": "https://www.npmjs.com/package/common-ancestor-path/v/2.0.0"
+    },
+    {
+      "name": "convert-source-map",
+      "version": "2.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/thlorenz/convert-source-map",
+      "source": "https://www.npmjs.com/package/convert-source-map/v/2.0.0"
+    },
+    {
+      "name": "cookie-es",
+      "version": "1.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/cookie-es#readme",
+      "source": "https://www.npmjs.com/package/cookie-es/v/1.2.3"
+    },
+    {
+      "name": "cookie",
+      "version": "1.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/jshttp/cookie#readme",
+      "source": "https://www.npmjs.com/package/cookie/v/1.1.1"
+    },
+    {
+      "name": "cookie",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/jshttp/cookie#readme",
+      "source": "https://www.npmjs.com/package/cookie/v/2.0.1"
+    },
+    {
+      "name": "cosmiconfig",
+      "version": "9.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/cosmiconfig/cosmiconfig#readme",
+      "source": "https://www.npmjs.com/package/cosmiconfig/v/9.0.2"
+    },
+    {
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "license": "MIT",
+      "homepage": "https://github.com/moxystudio/node-cross-spawn",
+      "source": "https://www.npmjs.com/package/cross-spawn/v/7.0.6"
+    },
+    {
+      "name": "crossws",
+      "version": "0.3.5",
+      "license": "MIT",
+      "homepage": "https://crossws.h3.dev",
+      "source": "https://www.npmjs.com/package/crossws/v/0.3.5"
+    },
+    {
+      "name": "css-select",
+      "version": "6.0.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/css-select#readme",
+      "source": "https://www.npmjs.com/package/css-select/v/6.0.0"
+    },
+    {
+      "name": "css-tree",
+      "version": "2.2.1",
+      "license": "MIT",
+      "homepage": "https://github.com/csstree/csstree#readme",
+      "source": "https://www.npmjs.com/package/css-tree/v/2.2.1"
+    },
+    {
+      "name": "css-tree",
+      "version": "3.2.1",
+      "license": "MIT",
+      "homepage": "https://github.com/csstree/csstree#readme",
+      "source": "https://www.npmjs.com/package/css-tree/v/3.2.1"
+    },
+    {
+      "name": "css-what",
+      "version": "7.0.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/css-what#readme",
+      "source": "https://www.npmjs.com/package/css-what/v/7.0.0"
+    },
+    {
+      "name": "csso",
+      "version": "5.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/css/csso#readme",
+      "source": "https://www.npmjs.com/package/csso/v/5.0.5"
+    },
+    {
+      "name": "csstype",
+      "version": "3.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/frenic/csstype#readme",
+      "source": "https://www.npmjs.com/package/csstype/v/3.2.3"
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/debug-js/debug#readme",
+      "source": "https://www.npmjs.com/package/debug/v/4.4.3"
+    },
+    {
+      "name": "deep-is",
+      "version": "0.1.4",
+      "license": "MIT",
+      "homepage": "https://github.com/thlorenz/deep-is#readme",
+      "source": "https://www.npmjs.com/package/deep-is/v/0.1.4"
+    },
+    {
+      "name": "defu",
+      "version": "6.1.7",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/defu#readme",
+      "source": "https://www.npmjs.com/package/defu/v/6.1.7"
+    },
+    {
+      "name": "dequal",
+      "version": "2.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/dequal#readme",
+      "source": "https://www.npmjs.com/package/dequal/v/2.0.3"
+    },
+    {
+      "name": "destr",
+      "version": "2.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/destr#readme",
+      "source": "https://www.npmjs.com/package/destr/v/2.0.5"
+    },
+    {
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/lovell/detect-libc#readme",
+      "source": "https://www.npmjs.com/package/detect-libc/v/2.1.2"
+    },
+    {
+      "name": "devalue",
+      "version": "5.9.2",
+      "license": "MIT",
+      "homepage": "https://github.com/sveltejs/devalue#readme",
+      "source": "https://www.npmjs.com/package/devalue/v/5.9.2"
+    },
+    {
+      "name": "devlop",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/devlop#readme",
+      "source": "https://www.npmjs.com/package/devlop/v/1.1.0"
+    },
+    {
+      "name": "diff",
+      "version": "9.0.0",
+      "license": "BSD-3-Clause",
+      "homepage": "https://github.com/kpdecker/jsdiff#readme",
+      "source": "https://www.npmjs.com/package/diff/v/9.0.0"
+    },
+    {
+      "name": "dom-serializer",
+      "version": "2.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/cheeriojs/dom-serializer#readme",
+      "source": "https://www.npmjs.com/package/dom-serializer/v/2.0.0"
+    },
+    {
+      "name": "domelementtype",
+      "version": "2.3.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/domelementtype#readme",
+      "source": "https://www.npmjs.com/package/domelementtype/v/2.3.0"
+    },
+    {
+      "name": "domhandler",
+      "version": "5.0.3",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/domhandler#readme",
+      "source": "https://www.npmjs.com/package/domhandler/v/5.0.3"
+    },
+    {
+      "name": "domutils",
+      "version": "3.2.2",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/domutils#readme",
+      "source": "https://www.npmjs.com/package/domutils/v/3.2.2"
+    },
+    {
+      "name": "dset",
+      "version": "3.1.4",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/dset#readme",
+      "source": "https://www.npmjs.com/package/dset/v/3.1.4"
+    },
+    {
+      "name": "effector",
+      "version": "23.4.4",
+      "license": "MIT",
+      "homepage": "https://effector.dev",
+      "source": "https://www.npmjs.com/package/effector/v/23.4.4"
+    },
+    {
+      "name": "electron-to-chromium",
+      "version": "1.5.418",
+      "license": "ISC",
+      "homepage": "https://github.com/Kilian/electron-to-chromium#readme",
+      "source": "https://www.npmjs.com/package/electron-to-chromium/v/1.5.418"
+    },
+    {
+      "name": "emmet",
+      "version": "2.4.11",
+      "license": "MIT",
+      "homepage": "https://github.com/emmetio/emmet#readme",
+      "source": "https://www.npmjs.com/package/emmet/v/2.4.11"
+    },
+    {
+      "name": "emoji-regex",
+      "version": "10.6.0",
+      "license": "MIT",
+      "homepage": "https://mths.be/emoji-regex",
+      "source": "https://www.npmjs.com/package/emoji-regex/v/10.6.0"
+    },
+    {
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "license": "MIT",
+      "homepage": "https://mths.be/emoji-regex",
+      "source": "https://www.npmjs.com/package/emoji-regex/v/8.0.0"
+    },
+    {
+      "name": "empathic",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/empathic#readme",
+      "source": "https://www.npmjs.com/package/empathic/v/1.1.0"
+    },
+    {
+      "name": "entities",
+      "version": "4.5.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/entities#readme",
+      "source": "https://www.npmjs.com/package/entities/v/4.5.0"
+    },
+    {
+      "name": "env-paths",
+      "version": "2.2.1",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/env-paths#readme",
+      "source": "https://www.npmjs.com/package/env-paths/v/2.2.1"
+    },
+    {
+      "name": "error-ex",
+      "version": "1.3.4",
+      "license": "MIT",
+      "homepage": "https://github.com/qix-/node-error-ex#readme",
+      "source": "https://www.npmjs.com/package/error-ex/v/1.3.4"
+    },
+    {
+      "name": "error-stack-parser-es",
+      "version": "1.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/antfu/error-stack-parser-es#readme",
+      "source": "https://www.npmjs.com/package/error-stack-parser-es/v/1.0.5"
+    },
+    {
+      "name": "es-module-lexer",
+      "version": "2.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/guybedford/es-module-lexer#readme",
+      "source": "https://www.npmjs.com/package/es-module-lexer/v/2.3.2"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.28.1",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/esbuild/v/0.28.1"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.28.2",
+      "license": "MIT",
+      "homepage": "https://github.com/evanw/esbuild#readme",
+      "source": "https://www.npmjs.com/package/esbuild/v/0.28.2"
+    },
+    {
+      "name": "escalade",
+      "version": "3.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/escalade#readme",
+      "source": "https://www.npmjs.com/package/escalade/v/3.2.0"
+    },
+    {
+      "name": "escape-string-regexp",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/escape-string-regexp#readme",
+      "source": "https://www.npmjs.com/package/escape-string-regexp/v/4.0.0"
+    },
+    {
+      "name": "eslint-config-prettier",
+      "version": "10.1.8",
+      "license": "MIT",
+      "homepage": "https://github.com/prettier/eslint-config-prettier#readme",
+      "source": "https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8"
+    },
+    {
+      "name": "eslint-plugin-react-hooks",
+      "version": "7.1.1",
+      "license": "MIT",
+      "homepage": "https://react.dev/",
+      "source": "https://www.npmjs.com/package/eslint-plugin-react-hooks/v/7.1.1"
+    },
+    {
+      "name": "eslint-scope",
+      "version": "9.1.2",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/eslint/js/blob/main/packages/eslint-scope/README.md",
+      "source": "https://www.npmjs.com/package/eslint-scope/v/9.1.2"
+    },
+    {
+      "name": "eslint-visitor-keys",
+      "version": "3.4.3",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/js/blob/main/packages/eslint-visitor-keys/README.md",
+      "source": "https://www.npmjs.com/package/eslint-visitor-keys/v/3.4.3"
+    },
+    {
+      "name": "eslint-visitor-keys",
+      "version": "5.0.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/eslint/js/blob/main/packages/eslint-visitor-keys/README.md",
+      "source": "https://www.npmjs.com/package/eslint-visitor-keys/v/5.0.1"
+    },
+    {
+      "name": "eslint",
+      "version": "10.9.1",
+      "license": "MIT",
+      "homepage": "https://eslint.org",
+      "source": "https://www.npmjs.com/package/eslint/v/10.9.1"
+    },
+    {
+      "name": "espree",
+      "version": "11.2.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/eslint/js/blob/main/packages/espree/README.md",
+      "source": "https://www.npmjs.com/package/espree/v/11.2.0"
+    },
+    {
+      "name": "esquery",
+      "version": "1.7.0",
+      "license": "BSD-3-Clause",
+      "homepage": "https://github.com/estools/esquery/",
+      "source": "https://www.npmjs.com/package/esquery/v/1.7.0"
+    },
+    {
+      "name": "esrecurse",
+      "version": "4.3.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/estools/esrecurse",
+      "source": "https://www.npmjs.com/package/esrecurse/v/4.3.0"
+    },
+    {
+      "name": "estraverse",
+      "version": "5.3.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/estools/estraverse",
+      "source": "https://www.npmjs.com/package/estraverse/v/5.3.0"
+    },
+    {
+      "name": "estree-walker",
+      "version": "3.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/Rich-Harris/estree-walker#readme",
+      "source": "https://www.npmjs.com/package/estree-walker/v/3.0.3"
+    },
+    {
+      "name": "esutils",
+      "version": "2.0.3",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/estools/esutils",
+      "source": "https://www.npmjs.com/package/esutils/v/2.0.3"
+    },
+    {
+      "name": "eventemitter3",
+      "version": "5.0.4",
+      "license": "MIT",
+      "homepage": "https://github.com/primus/eventemitter3#readme",
+      "source": "https://www.npmjs.com/package/eventemitter3/v/5.0.4"
+    },
+    {
+      "name": "expect-type",
+      "version": "1.4.0",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/mmkal/expect-type#readme",
+      "source": "https://www.npmjs.com/package/expect-type/v/1.4.0"
+    },
+    {
+      "name": "extend",
+      "version": "3.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/justmoon/node-extend#readme",
+      "source": "https://www.npmjs.com/package/extend/v/3.0.2"
+    },
+    {
+      "name": "fast-check",
+      "version": "4.9.0",
+      "license": "MIT",
+      "homepage": "https://fast-check.dev/",
+      "source": "https://www.npmjs.com/package/fast-check/v/4.9.0"
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "homepage": "https://github.com/epoberezkin/fast-deep-equal#readme",
+      "source": "https://www.npmjs.com/package/fast-deep-equal/v/3.1.3"
+    },
+    {
+      "name": "fast-glob",
+      "version": "3.3.3",
+      "license": "MIT",
+      "homepage": "https://github.com/mrmlnc/fast-glob#readme",
+      "source": "https://www.npmjs.com/package/fast-glob/v/3.3.3"
+    },
+    {
+      "name": "fast-json-stable-stringify",
+      "version": "2.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/epoberezkin/fast-json-stable-stringify",
+      "source": "https://www.npmjs.com/package/fast-json-stable-stringify/v/2.1.0"
+    },
+    {
+      "name": "fast-levenshtein",
+      "version": "2.0.6",
+      "license": "MIT",
+      "homepage": "https://github.com/hiddentao/fast-levenshtein#readme",
+      "source": "https://www.npmjs.com/package/fast-levenshtein/v/2.0.6"
+    },
+    {
+      "name": "fast-string-truncated-width",
+      "version": "3.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/fabiospampinato/fast-string-truncated-width#readme",
+      "source": "https://www.npmjs.com/package/fast-string-truncated-width/v/3.0.3"
+    },
+    {
+      "name": "fast-string-width",
+      "version": "3.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/fabiospampinato/fast-string-width#readme",
+      "source": "https://www.npmjs.com/package/fast-string-width/v/3.0.2"
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.6",
+      "license": "BSD-3-Clause",
+      "homepage": "https://github.com/fastify/fast-uri",
+      "source": "https://www.npmjs.com/package/fast-uri/v/3.1.6"
+    },
+    {
+      "name": "fast-wrap-ansi",
+      "version": "0.2.2",
+      "license": "MIT",
+      "homepage": "https://github.com/43081j/fast-wrap-ansi#readme",
+      "source": "https://www.npmjs.com/package/fast-wrap-ansi/v/0.2.2"
+    },
+    {
+      "name": "fastest-levenshtein",
+      "version": "1.0.16",
+      "license": "MIT",
+      "homepage": "https://github.com/ka-weihe/fastest-levenshtein#README",
+      "source": "https://www.npmjs.com/package/fastest-levenshtein/v/1.0.16"
+    },
+    {
+      "name": "fastq",
+      "version": "1.20.3",
+      "license": "ISC",
+      "homepage": "https://github.com/mcollina/fastq#readme",
+      "source": "https://www.npmjs.com/package/fastq/v/1.20.3"
+    },
+    {
+      "name": "fdir",
+      "version": "6.5.0",
+      "license": "MIT",
+      "homepage": "https://github.com/thecodrr/fdir#readme",
+      "source": "https://www.npmjs.com/package/fdir/v/6.5.0"
+    },
+    {
+      "name": "file-entry-cache",
+      "version": "8.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/jaredwray/file-entry-cache#readme",
+      "source": "https://www.npmjs.com/package/file-entry-cache/v/8.0.0"
+    },
+    {
+      "name": "fill-range",
+      "version": "7.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/jonschlinkert/fill-range",
+      "source": "https://www.npmjs.com/package/fill-range/v/7.1.1"
+    },
+    {
+      "name": "find-proc",
+      "version": "0.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/gameroman-npm/find-proc#readme",
+      "source": "https://www.npmjs.com/package/find-proc/v/0.1.0"
+    },
+    {
+      "name": "find-up",
+      "version": "5.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/find-up#readme",
+      "source": "https://www.npmjs.com/package/find-up/v/5.0.0"
+    },
+    {
+      "name": "flat-cache",
+      "version": "4.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/jaredwray/flat-cache#readme",
+      "source": "https://www.npmjs.com/package/flat-cache/v/4.0.1"
+    },
+    {
+      "name": "flatted",
+      "version": "3.4.4",
+      "license": "ISC",
+      "homepage": "https://github.com/WebReflection/flatted#readme",
+      "source": "https://www.npmjs.com/package/flatted/v/3.4.4"
+    },
+    {
+      "name": "flattie",
+      "version": "1.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/flattie#readme",
+      "source": "https://www.npmjs.com/package/flattie/v/1.1.1"
+    },
+    {
+      "name": "fontace",
+      "version": "0.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/delucis/fontace#readme",
+      "source": "https://www.npmjs.com/package/fontace/v/0.4.1"
+    },
+    {
+      "name": "fontkitten",
+      "version": "1.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/delucis/fontkitten#readme",
+      "source": "https://www.npmjs.com/package/fontkitten/v/1.0.3"
+    },
+    {
+      "name": "fsevents",
+      "version": "2.3.3",
+      "license": "MIT",
+      "homepage": "https://github.com/fsevents/fsevents",
+      "source": "https://www.npmjs.com/package/fsevents/v/2.3.3"
+    },
+    {
+      "name": "gensync",
+      "version": "1.0.0-beta.2",
+      "license": "MIT",
+      "homepage": "https://github.com/loganfsmyth/gensync",
+      "source": "https://www.npmjs.com/package/gensync/v/1.0.0-beta.2"
+    },
+    {
+      "name": "get-caller-file",
+      "version": "2.0.5",
+      "license": "ISC",
+      "homepage": "https://github.com/stefanpenner/get-caller-file#readme",
+      "source": "https://www.npmjs.com/package/get-caller-file/v/2.0.5"
+    },
+    {
+      "name": "get-east-asian-width",
+      "version": "1.6.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/get-east-asian-width#readme",
+      "source": "https://www.npmjs.com/package/get-east-asian-width/v/1.6.0"
+    },
+    {
+      "name": "get-tsconfig",
+      "version": "5.0.0-beta.4",
+      "license": "MIT",
+      "homepage": "https://github.com/privatenumber/get-tsconfig#readme",
+      "source": "https://www.npmjs.com/package/get-tsconfig/v/5.0.0-beta.4"
+    },
+    {
+      "name": "github-slugger",
+      "version": "2.0.0",
+      "license": "ISC",
+      "homepage": "https://github.com/Flet/github-slugger",
+      "source": "https://www.npmjs.com/package/github-slugger/v/2.0.0"
+    },
+    {
+      "name": "glob-parent",
+      "version": "5.1.2",
+      "license": "ISC",
+      "homepage": "https://github.com/gulpjs/glob-parent#readme",
+      "source": "https://www.npmjs.com/package/glob-parent/v/5.1.2"
+    },
+    {
+      "name": "glob-parent",
+      "version": "6.0.2",
+      "license": "ISC",
+      "homepage": "https://github.com/gulpjs/glob-parent#readme",
+      "source": "https://www.npmjs.com/package/glob-parent/v/6.0.2"
+    },
+    {
+      "name": "globals",
+      "version": "17.11.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/globals#readme",
+      "source": "https://www.npmjs.com/package/globals/v/17.11.0"
+    },
+    {
+      "name": "globby",
+      "version": "14.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/globby#readme",
+      "source": "https://www.npmjs.com/package/globby/v/14.1.0"
+    },
+    {
+      "name": "h3",
+      "version": "1.15.11",
+      "license": "MIT",
+      "homepage": "https://github.com/h3js/h3#readme",
+      "source": "https://www.npmjs.com/package/h3/v/1.15.11"
+    },
+    {
+      "name": "has-flag",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/has-flag#readme",
+      "source": "https://www.npmjs.com/package/has-flag/v/4.0.0"
+    },
+    {
+      "name": "hast-util-to-html",
+      "version": "9.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/hast-util-to-html#readme",
+      "source": "https://www.npmjs.com/package/hast-util-to-html/v/9.0.5"
+    },
+    {
+      "name": "hast-util-whitespace",
+      "version": "3.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/hast-util-whitespace#readme",
+      "source": "https://www.npmjs.com/package/hast-util-whitespace/v/3.0.0"
+    },
+    {
+      "name": "hermes-estree",
+      "version": "0.25.1",
+      "license": "MIT",
+      "homepage": "https://github.com/facebook/hermes#readme",
+      "source": "https://www.npmjs.com/package/hermes-estree/v/0.25.1"
+    },
+    {
+      "name": "hermes-parser",
+      "version": "0.25.1",
+      "license": "MIT",
+      "homepage": "https://github.com/facebook/hermes#readme",
+      "source": "https://www.npmjs.com/package/hermes-parser/v/0.25.1"
+    },
+    {
+      "name": "html-escaper",
+      "version": "2.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/WebReflection/html-escaper",
+      "source": "https://www.npmjs.com/package/html-escaper/v/2.0.2"
+    },
+    {
+      "name": "html-escaper",
+      "version": "3.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/WebReflection/html-escaper",
+      "source": "https://www.npmjs.com/package/html-escaper/v/3.0.3"
+    },
+    {
+      "name": "html-void-elements",
+      "version": "3.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/html-void-elements#readme",
+      "source": "https://www.npmjs.com/package/html-void-elements/v/3.0.0"
+    },
+    {
+      "name": "http-cache-semantics",
+      "version": "4.2.0",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/kornelski/http-cache-semantics#readme",
+      "source": "https://www.npmjs.com/package/http-cache-semantics/v/4.2.0"
+    },
+    {
+      "name": "ignore",
+      "version": "5.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/kaelzhang/node-ignore#readme",
+      "source": "https://www.npmjs.com/package/ignore/v/5.3.2"
+    },
+    {
+      "name": "ignore",
+      "version": "7.0.8",
+      "license": "MIT",
+      "homepage": "https://github.com/kaelzhang/node-ignore#readme",
+      "source": "https://www.npmjs.com/package/ignore/v/7.0.8"
+    },
+    {
+      "name": "immer",
+      "version": "10.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/immerjs/immer#readme",
+      "source": "https://www.npmjs.com/package/immer/v/10.2.0"
+    },
+    {
+      "name": "import-fresh",
+      "version": "3.3.1",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/import-fresh#readme",
+      "source": "https://www.npmjs.com/package/import-fresh/v/3.3.1"
+    },
+    {
+      "name": "imurmurhash",
+      "version": "0.1.4",
+      "license": "MIT",
+      "homepage": "https://github.com/jensyt/imurmurhash-js",
+      "source": "https://www.npmjs.com/package/imurmurhash/v/0.1.4"
+    },
+    {
+      "name": "iron-webcrypto",
+      "version": "1.2.1",
+      "license": "MIT",
+      "homepage": "https://github.com/brc-dd/iron-webcrypto#readme",
+      "source": "https://www.npmjs.com/package/iron-webcrypto/v/1.2.1"
+    },
+    {
+      "name": "is-arrayish",
+      "version": "0.2.1",
+      "license": "MIT",
+      "homepage": "https://github.com/qix-/node-is-arrayish#readme",
+      "source": "https://www.npmjs.com/package/is-arrayish/v/0.2.1"
+    },
+    {
+      "name": "is-docker",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/is-docker#readme",
+      "source": "https://www.npmjs.com/package/is-docker/v/4.0.0"
+    },
+    {
+      "name": "is-extglob",
+      "version": "2.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/jonschlinkert/is-extglob",
+      "source": "https://www.npmjs.com/package/is-extglob/v/2.1.1"
+    },
+    {
+      "name": "is-fullwidth-code-point",
+      "version": "3.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/is-fullwidth-code-point#readme",
+      "source": "https://www.npmjs.com/package/is-fullwidth-code-point/v/3.0.0"
+    },
+    {
+      "name": "is-glob",
+      "version": "4.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/micromatch/is-glob",
+      "source": "https://www.npmjs.com/package/is-glob/v/4.0.3"
+    },
+    {
+      "name": "is-number",
+      "version": "7.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/jonschlinkert/is-number",
+      "source": "https://www.npmjs.com/package/is-number/v/7.0.0"
+    },
+    {
+      "name": "is-plain-obj",
+      "version": "4.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/is-plain-obj#readme",
+      "source": "https://www.npmjs.com/package/is-plain-obj/v/4.1.0"
+    },
+    {
+      "name": "isexe",
+      "version": "2.0.0",
+      "license": "ISC",
+      "homepage": "https://github.com/isaacs/isexe#readme",
+      "source": "https://www.npmjs.com/package/isexe/v/2.0.0"
+    },
+    {
+      "name": "istanbul-lib-coverage",
+      "version": "3.2.2",
+      "license": "BSD-3-Clause",
+      "homepage": "https://istanbul.js.org/",
+      "source": "https://www.npmjs.com/package/istanbul-lib-coverage/v/3.2.2"
+    },
+    {
+      "name": "istanbul-lib-report",
+      "version": "3.0.1",
+      "license": "BSD-3-Clause",
+      "homepage": "https://istanbul.js.org/",
+      "source": "https://www.npmjs.com/package/istanbul-lib-report/v/3.0.1"
+    },
+    {
+      "name": "istanbul-reports",
+      "version": "3.2.0",
+      "license": "BSD-3-Clause",
+      "homepage": "https://istanbul.js.org/",
+      "source": "https://www.npmjs.com/package/istanbul-reports/v/3.2.0"
+    },
+    {
+      "name": "js-tokens",
+      "version": "10.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/lydell/js-tokens#readme",
+      "source": "https://www.npmjs.com/package/js-tokens/v/10.0.0"
+    },
+    {
+      "name": "js-tokens",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/lydell/js-tokens#readme",
+      "source": "https://www.npmjs.com/package/js-tokens/v/4.0.0"
+    },
+    {
+      "name": "js-yaml",
+      "version": "4.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/nodeca/js-yaml#readme",
+      "source": "https://www.npmjs.com/package/js-yaml/v/4.3.2"
+    },
+    {
+      "name": "jsesc",
+      "version": "3.1.0",
+      "license": "MIT",
+      "homepage": "https://mths.be/jsesc",
+      "source": "https://www.npmjs.com/package/jsesc/v/3.1.0"
+    },
+    {
+      "name": "json-buffer",
+      "version": "3.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/dominictarr/json-buffer",
+      "source": "https://www.npmjs.com/package/json-buffer/v/3.0.1"
+    },
+    {
+      "name": "json-parse-even-better-errors",
+      "version": "2.3.1",
+      "license": "MIT",
+      "homepage": "https://github.com/npm/json-parse-even-better-errors#readme",
+      "source": "https://www.npmjs.com/package/json-parse-even-better-errors/v/2.3.1"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "0.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/epoberezkin/json-schema-traverse#readme",
+      "source": "https://www.npmjs.com/package/json-schema-traverse/v/0.4.1"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/epoberezkin/json-schema-traverse#readme",
+      "source": "https://www.npmjs.com/package/json-schema-traverse/v/1.0.0"
+    },
+    {
+      "name": "json-stable-stringify-without-jsonify",
+      "version": "1.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/samn/json-stable-stringify",
+      "source": "https://www.npmjs.com/package/json-stable-stringify-without-jsonify/v/1.0.1"
+    },
+    {
+      "name": "json5",
+      "version": "2.2.3",
+      "license": "MIT",
+      "homepage": "http://json5.org/",
+      "source": "https://www.npmjs.com/package/json5/v/2.2.3"
+    },
+    {
+      "name": "jsonc-parser",
+      "version": "2.3.1",
+      "license": "MIT",
+      "homepage": "https://github.com/microsoft/node-jsonc-parser#readme",
+      "source": "https://www.npmjs.com/package/jsonc-parser/v/2.3.1"
+    },
+    {
+      "name": "jsonc-parser",
+      "version": "3.3.1",
+      "license": "MIT",
+      "homepage": "https://github.com/microsoft/node-jsonc-parser#readme",
+      "source": "https://www.npmjs.com/package/jsonc-parser/v/3.3.1"
+    },
+    {
+      "name": "keyv",
+      "version": "4.5.4",
+      "license": "MIT",
+      "homepage": "https://github.com/jaredwray/keyv",
+      "source": "https://www.npmjs.com/package/keyv/v/4.5.4"
+    },
+    {
+      "name": "kleur",
+      "version": "4.1.5",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/kleur#readme",
+      "source": "https://www.npmjs.com/package/kleur/v/4.1.5"
+    },
+    {
+      "name": "levn",
+      "version": "0.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/gkz/levn",
+      "source": "https://www.npmjs.com/package/levn/v/0.4.1"
+    },
+    {
+      "name": "lightningcss-android-arm64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-android-arm64/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-darwin-arm64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-darwin-arm64/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-darwin-x64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-darwin-x64/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-freebsd-x64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-freebsd-x64/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-linux-arm-gnueabihf",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-linux-arm-gnueabihf/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-linux-arm64-gnu",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-linux-arm64-gnu/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-linux-arm64-musl",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-linux-arm64-musl/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-linux-x64-gnu",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-linux-x64-gnu/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-linux-x64-musl",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-linux-x64-musl/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-win32-arm64-msvc",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-win32-arm64-msvc/v/1.33.0"
+    },
+    {
+      "name": "lightningcss-win32-x64-msvc",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss-win32-x64-msvc/v/1.33.0"
+    },
+    {
+      "name": "lightningcss",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "homepage": "https://github.com/parcel-bundler/lightningcss#readme",
+      "source": "https://www.npmjs.com/package/lightningcss/v/1.33.0"
+    },
+    {
+      "name": "lines-and-columns",
+      "version": "1.2.4",
+      "license": "MIT",
+      "homepage": "https://github.com/eventualbuddha/lines-and-columns#readme",
+      "source": "https://www.npmjs.com/package/lines-and-columns/v/1.2.4"
+    },
+    {
+      "name": "locate-path",
+      "version": "6.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/locate-path#readme",
+      "source": "https://www.npmjs.com/package/locate-path/v/6.0.0"
+    },
+    {
+      "name": "lodash-es",
+      "version": "4.18.1",
+      "license": "MIT",
+      "homepage": "https://lodash.com/custom-builds",
+      "source": "https://www.npmjs.com/package/lodash-es/v/4.18.1"
+    },
+    {
+      "name": "lru-cache",
+      "version": "11.5.2",
+      "license": "BlueOak-1.0.0",
+      "homepage": "https://github.com/isaacs/node-lru-cache#readme",
+      "source": "https://www.npmjs.com/package/lru-cache/v/11.5.2"
+    },
+    {
+      "name": "lru-cache",
+      "version": "5.1.1",
+      "license": "ISC",
+      "homepage": "https://github.com/isaacs/node-lru-cache#readme",
+      "source": "https://www.npmjs.com/package/lru-cache/v/5.1.1"
+    },
+    {
+      "name": "magic-string",
+      "version": "0.30.21",
+      "license": "MIT",
+      "homepage": "https://github.com/Rich-Harris/magic-string#readme",
+      "source": "https://www.npmjs.com/package/magic-string/v/0.30.21"
+    },
+    {
+      "name": "magic-string",
+      "version": "1.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/Rich-Harris/magic-string#readme",
+      "source": "https://www.npmjs.com/package/magic-string/v/1.2.3"
+    },
+    {
+      "name": "magicast",
+      "version": "0.5.4",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/magicast#readme",
+      "source": "https://www.npmjs.com/package/magicast/v/0.5.4"
+    },
+    {
+      "name": "make-dir",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/make-dir#readme",
+      "source": "https://www.npmjs.com/package/make-dir/v/4.0.0"
+    },
+    {
+      "name": "mdast-util-to-hast",
+      "version": "13.2.1",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/mdast-util-to-hast#readme",
+      "source": "https://www.npmjs.com/package/mdast-util-to-hast/v/13.2.1"
+    },
+    {
+      "name": "mdn-data",
+      "version": "2.0.28",
+      "license": "CC0-1.0",
+      "homepage": "https://developer.mozilla.org",
+      "source": "https://www.npmjs.com/package/mdn-data/v/2.0.28"
+    },
+    {
+      "name": "mdn-data",
+      "version": "2.27.1",
+      "license": "CC0-1.0",
+      "homepage": "https://developer.mozilla.org",
+      "source": "https://www.npmjs.com/package/mdn-data/v/2.27.1"
+    },
+    {
+      "name": "merge2",
+      "version": "1.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/teambition/merge2",
+      "source": "https://www.npmjs.com/package/merge2/v/1.4.1"
+    },
+    {
+      "name": "micromark-util-character",
+      "version": "2.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/micromark/micromark/tree/main#readme",
+      "source": "https://www.npmjs.com/package/micromark-util-character/v/2.1.1"
+    },
+    {
+      "name": "micromark-util-encode",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/micromark/micromark/tree/main#readme",
+      "source": "https://www.npmjs.com/package/micromark-util-encode/v/2.0.1"
+    },
+    {
+      "name": "micromark-util-sanitize-uri",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/micromark/micromark/tree/main#readme",
+      "source": "https://www.npmjs.com/package/micromark-util-sanitize-uri/v/2.0.1"
+    },
+    {
+      "name": "micromark-util-symbol",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/micromark/micromark/tree/main#readme",
+      "source": "https://www.npmjs.com/package/micromark-util-symbol/v/2.0.1"
+    },
+    {
+      "name": "micromark-util-types",
+      "version": "2.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/micromark/micromark/tree/main#readme",
+      "source": "https://www.npmjs.com/package/micromark-util-types/v/2.0.2"
+    },
+    {
+      "name": "micromatch",
+      "version": "4.0.8",
+      "license": "MIT",
+      "homepage": "https://github.com/micromatch/micromatch",
+      "source": "https://www.npmjs.com/package/micromatch/v/4.0.8"
+    },
+    {
+      "name": "miniflare",
+      "version": "5.20260828.0-alpha",
+      "license": "MIT",
+      "homepage": "https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#readme",
+      "source": "https://www.npmjs.com/package/miniflare/v/5.20260828.0-alpha"
+    },
+    {
+      "name": "minimatch",
+      "version": "10.2.6",
+      "license": "BlueOak-1.0.0",
+      "homepage": "https://github.com/isaacs/minimatch#readme",
+      "source": "https://www.npmjs.com/package/minimatch/v/10.2.6"
+    },
+    {
+      "name": "mrmime",
+      "version": "2.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/lukeed/mrmime#readme",
+      "source": "https://www.npmjs.com/package/mrmime/v/2.0.1"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "license": "MIT",
+      "homepage": "https://github.com/vercel/ms#readme",
+      "source": "https://www.npmjs.com/package/ms/v/2.1.3"
+    },
+    {
+      "name": "muggle-string",
+      "version": "0.4.1",
+      "license": "MIT",
+      "homepage": "https://github.com/johnsoncodehk/muggle-string#readme",
+      "source": "https://www.npmjs.com/package/muggle-string/v/0.4.1"
+    },
+    {
+      "name": "nanoid",
+      "version": "3.3.18",
+      "license": "MIT",
+      "homepage": "https://github.com/ai/nanoid#readme",
+      "source": "https://www.npmjs.com/package/nanoid/v/3.3.18"
+    },
+    {
+      "name": "natural-compare",
+      "version": "1.4.0",
+      "license": "MIT",
+      "homepage": "https://github.com/litejs/natural-compare-lite#readme",
+      "source": "https://www.npmjs.com/package/natural-compare/v/1.4.0"
+    },
+    {
+      "name": "neotraverse",
+      "version": "1.0.1",
+      "license": "MIT",
+      "homepage": "https://neotraverse.puruvj.dev",
+      "source": "https://www.npmjs.com/package/neotraverse/v/1.0.1"
+    },
+    {
+      "name": "nlcst-to-string",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/nlcst-to-string#readme",
+      "source": "https://www.npmjs.com/package/nlcst-to-string/v/4.0.0"
+    },
+    {
+      "name": "node-fetch-native",
+      "version": "1.6.7",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/node-fetch-native#readme",
+      "source": "https://www.npmjs.com/package/node-fetch-native/v/1.6.7"
+    },
+    {
+      "name": "node-mock-http",
+      "version": "1.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/node-mock-http#readme",
+      "source": "https://www.npmjs.com/package/node-mock-http/v/1.0.5"
+    },
+    {
+      "name": "node-releases",
+      "version": "2.0.54",
+      "license": "MIT",
+      "homepage": "https://github.com/chicoxyzzy/node-releases#readme",
+      "source": "https://www.npmjs.com/package/node-releases/v/2.0.54"
+    },
+    {
+      "name": "normalize-path",
+      "version": "3.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/jonschlinkert/normalize-path",
+      "source": "https://www.npmjs.com/package/normalize-path/v/3.0.0"
+    },
+    {
+      "name": "nth-check",
+      "version": "2.1.1",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/fb55/nth-check",
+      "source": "https://www.npmjs.com/package/nth-check/v/2.1.1"
+    },
+    {
+      "name": "obug",
+      "version": "2.1.4",
+      "license": "MIT",
+      "homepage": "https://github.com/sxzz/obug#readme",
+      "source": "https://www.npmjs.com/package/obug/v/2.1.4"
+    },
+    {
+      "name": "ofetch",
+      "version": "1.5.1",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/ofetch#readme",
+      "source": "https://www.npmjs.com/package/ofetch/v/1.5.1"
+    },
+    {
+      "name": "ohash",
+      "version": "2.0.12",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/ohash#readme",
+      "source": "https://www.npmjs.com/package/ohash/v/2.0.12"
+    },
+    {
+      "name": "oniguruma-parser",
+      "version": "0.12.2",
+      "license": "MIT",
+      "homepage": "https://github.com/slevithan/oniguruma-parser#readme",
+      "source": "https://www.npmjs.com/package/oniguruma-parser/v/0.12.2"
+    },
+    {
+      "name": "oniguruma-to-es",
+      "version": "4.3.6",
+      "license": "MIT",
+      "homepage": "https://github.com/slevithan/oniguruma-to-es#readme",
+      "source": "https://www.npmjs.com/package/oniguruma-to-es/v/4.3.6"
+    },
+    {
+      "name": "optionator",
+      "version": "0.9.4",
+      "license": "MIT",
+      "homepage": "https://github.com/gkz/optionator",
+      "source": "https://www.npmjs.com/package/optionator/v/0.9.4"
+    },
+    {
+      "name": "p-limit",
+      "version": "3.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/p-limit#readme",
+      "source": "https://www.npmjs.com/package/p-limit/v/3.1.0"
+    },
+    {
+      "name": "p-limit",
+      "version": "7.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/p-limit#readme",
+      "source": "https://www.npmjs.com/package/p-limit/v/7.3.2"
+    },
+    {
+      "name": "p-locate",
+      "version": "5.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/p-locate#readme",
+      "source": "https://www.npmjs.com/package/p-locate/v/5.0.0"
+    },
+    {
+      "name": "p-queue",
+      "version": "9.3.3",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/p-queue#readme",
+      "source": "https://www.npmjs.com/package/p-queue/v/9.3.3"
+    },
+    {
+      "name": "p-timeout",
+      "version": "7.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/p-timeout#readme",
+      "source": "https://www.npmjs.com/package/p-timeout/v/7.0.1"
+    },
+    {
+      "name": "package-manager-detector",
+      "version": "1.8.0",
+      "license": "MIT",
+      "homepage": "https://github.com/antfu-collective/package-manager-detector#readme",
+      "source": "https://www.npmjs.com/package/package-manager-detector/v/1.8.0"
+    },
+    {
+      "name": "parent-module",
+      "version": "1.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/parent-module#readme",
+      "source": "https://www.npmjs.com/package/parent-module/v/1.0.1"
+    },
+    {
+      "name": "parse-json",
+      "version": "5.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/parse-json#readme",
+      "source": "https://www.npmjs.com/package/parse-json/v/5.2.0"
+    },
+    {
+      "name": "path-browserify",
+      "version": "1.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/browserify/path-browserify",
+      "source": "https://www.npmjs.com/package/path-browserify/v/1.0.1"
+    },
+    {
+      "name": "path-exists",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/path-exists#readme",
+      "source": "https://www.npmjs.com/package/path-exists/v/4.0.0"
+    },
+    {
+      "name": "path-key",
+      "version": "3.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/path-key#readme",
+      "source": "https://www.npmjs.com/package/path-key/v/3.1.1"
+    },
+    {
+      "name": "path-to-regexp",
+      "version": "6.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/pillarjs/path-to-regexp#readme",
+      "source": "https://www.npmjs.com/package/path-to-regexp/v/6.3.0"
+    },
+    {
+      "name": "path-type",
+      "version": "6.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/path-type#readme",
+      "source": "https://www.npmjs.com/package/path-type/v/6.0.0"
+    },
+    {
+      "name": "pathe",
+      "version": "2.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/pathe#readme",
+      "source": "https://www.npmjs.com/package/pathe/v/2.0.3"
+    },
+    {
+      "name": "patronum",
+      "version": "2.3.0",
+      "license": "MIT",
+      "homepage": "https://patronum.effector.dev",
+      "source": "https://www.npmjs.com/package/patronum/v/2.3.0"
+    },
+    {
+      "name": "piccolore",
+      "version": "0.1.3",
+      "license": "ISC",
+      "homepage": "https://github.com/delucis/piccolore#readme",
+      "source": "https://www.npmjs.com/package/piccolore/v/0.1.3"
+    },
+    {
+      "name": "picocolors",
+      "version": "1.1.1",
+      "license": "ISC",
+      "homepage": "https://github.com/alexeyraspopov/picocolors#readme",
+      "source": "https://www.npmjs.com/package/picocolors/v/1.1.1"
+    },
+    {
+      "name": "picomatch",
+      "version": "2.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/micromatch/picomatch",
+      "source": "https://www.npmjs.com/package/picomatch/v/2.3.2"
+    },
+    {
+      "name": "picomatch",
+      "version": "4.0.7",
+      "license": "MIT",
+      "homepage": "https://github.com/micromatch/picomatch",
+      "source": "https://www.npmjs.com/package/picomatch/v/4.0.7"
+    },
+    {
+      "name": "pluralize",
+      "version": "8.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/blakeembrey/pluralize#readme",
+      "source": "https://www.npmjs.com/package/pluralize/v/8.0.0"
+    },
+    {
+      "name": "postcss",
+      "version": "8.5.26",
+      "license": "MIT",
+      "homepage": "https://postcss.org/",
+      "source": "https://www.npmjs.com/package/postcss/v/8.5.26"
+    },
+    {
+      "name": "prelude-ls",
+      "version": "1.2.1",
+      "license": "MIT",
+      "homepage": "http://preludels.com",
+      "source": "https://www.npmjs.com/package/prelude-ls/v/1.2.1"
+    },
+    {
+      "name": "prettier-plugin-astro",
+      "version": "0.14.1",
+      "license": "MIT",
+      "homepage": "https://github.com/withastro/prettier-plugin-astro/",
+      "source": "https://www.npmjs.com/package/prettier-plugin-astro/v/0.14.1"
+    },
+    {
+      "name": "prettier",
+      "version": "3.9.6",
+      "license": "MIT",
+      "homepage": "https://prettier.io",
+      "source": "https://www.npmjs.com/package/prettier/v/3.9.6"
+    },
+    {
+      "name": "prexit",
+      "version": "2.3.0",
+      "license": "WTFPL",
+      "homepage": "https://github.com/porsager/prexit#readme",
+      "source": "https://www.npmjs.com/package/prexit/v/2.3.0"
+    },
+    {
+      "name": "prismjs",
+      "version": "1.30.0",
+      "license": "MIT",
+      "homepage": "https://github.com/PrismJS/prism#readme",
+      "source": "https://www.npmjs.com/package/prismjs/v/1.30.0"
+    },
+    {
+      "name": "process-ancestry",
+      "version": "0.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/ascorbic/process-ancestry",
+      "source": "https://www.npmjs.com/package/process-ancestry/v/0.1.0"
+    },
+    {
+      "name": "property-information",
+      "version": "7.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/property-information#readme",
+      "source": "https://www.npmjs.com/package/property-information/v/7.2.0"
+    },
+    {
+      "name": "punycode",
+      "version": "2.3.1",
+      "license": "MIT",
+      "homepage": "https://mths.be/punycode",
+      "source": "https://www.npmjs.com/package/punycode/v/2.3.1"
+    },
+    {
+      "name": "pure-rand",
+      "version": "8.4.2",
+      "license": "MIT",
+      "homepage": "https://github.com/dubzzz/pure-rand#readme",
+      "source": "https://www.npmjs.com/package/pure-rand/v/8.4.2"
+    },
+    {
+      "name": "queue-microtask",
+      "version": "1.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/feross/queue-microtask",
+      "source": "https://www.npmjs.com/package/queue-microtask/v/1.2.3"
+    },
+    {
+      "name": "radix3",
+      "version": "1.1.2",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/radix3#readme",
+      "source": "https://www.npmjs.com/package/radix3/v/1.1.2"
+    },
+    {
+      "name": "react-refresh",
+      "version": "0.18.0",
+      "license": "MIT",
+      "homepage": "https://react.dev/",
+      "source": "https://www.npmjs.com/package/react-refresh/v/0.18.0"
+    },
+    {
+      "name": "readdirp",
+      "version": "4.1.2",
+      "license": "MIT",
+      "homepage": "https://github.com/paulmillr/readdirp",
+      "source": "https://www.npmjs.com/package/readdirp/v/4.1.2"
+    },
+    {
+      "name": "readdirp",
+      "version": "5.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/paulmillr/readdirp",
+      "source": "https://www.npmjs.com/package/readdirp/v/5.1.1"
+    },
+    {
+      "name": "regex-recursion",
+      "version": "6.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/slevithan/regex-recursion#readme",
+      "source": "https://www.npmjs.com/package/regex-recursion/v/6.0.2"
+    },
+    {
+      "name": "regex-utilities",
+      "version": "2.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/slevithan/regex-utilities#readme",
+      "source": "https://www.npmjs.com/package/regex-utilities/v/2.3.0"
+    },
+    {
+      "name": "regex",
+      "version": "6.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/slevithan/regex#readme",
+      "source": "https://www.npmjs.com/package/regex/v/6.1.0"
+    },
+    {
+      "name": "request-light",
+      "version": "0.5.8",
+      "license": "MIT",
+      "homepage": "https://github.com/microsoft/node-request-light#readme",
+      "source": "https://www.npmjs.com/package/request-light/v/0.5.8"
+    },
+    {
+      "name": "request-light",
+      "version": "0.7.0",
+      "license": "MIT",
+      "homepage": "https://github.com/microsoft/node-request-light#readme",
+      "source": "https://www.npmjs.com/package/request-light/v/0.7.0"
+    },
+    {
+      "name": "require-directory",
+      "version": "2.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/troygoode/node-require-directory/",
+      "source": "https://www.npmjs.com/package/require-directory/v/2.1.1"
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/floatdrop/require-from-string#readme",
+      "source": "https://www.npmjs.com/package/require-from-string/v/2.0.2"
+    },
+    {
+      "name": "resolve-from",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/resolve-from#readme",
+      "source": "https://www.npmjs.com/package/resolve-from/v/4.0.0"
+    },
+    {
+      "name": "resolve-pkg-maps",
+      "version": "1.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/privatenumber/resolve-pkg-maps#readme",
+      "source": "https://www.npmjs.com/package/resolve-pkg-maps/v/1.0.0"
+    },
+    {
+      "name": "retext-smartypants",
+      "version": "6.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/retextjs/retext-smartypants#readme",
+      "source": "https://www.npmjs.com/package/retext-smartypants/v/6.2.0"
+    },
+    {
+      "name": "reusify",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/mcollina/reusify#readme",
+      "source": "https://www.npmjs.com/package/reusify/v/1.1.0"
+    },
+    {
+      "name": "run-parallel",
+      "version": "1.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/feross/run-parallel",
+      "source": "https://www.npmjs.com/package/run-parallel/v/1.2.0"
+    },
+    {
+      "name": "s.color",
+      "version": "0.0.15",
+      "license": "MIT",
+      "homepage": "https://github.com/TheRealSyler/s.color#readme",
+      "source": "https://www.npmjs.com/package/s.color/v/0.0.15"
+    },
+    {
+      "name": "sass-formatter",
+      "version": "0.7.9",
+      "license": "MIT",
+      "homepage": "https://github.com/TheRealSyler/sass-formatter#readme",
+      "source": "https://www.npmjs.com/package/sass-formatter/v/0.7.9"
+    },
+    {
+      "name": "satteri",
+      "version": "0.10.5",
+      "license": "MIT",
+      "homepage": "https://github.com/bruits/satteri#readme",
+      "source": "https://www.npmjs.com/package/satteri/v/0.10.5"
+    },
+    {
+      "name": "sax",
+      "version": "1.6.1",
+      "license": "BlueOak-1.0.0",
+      "homepage": "https://github.com/isaacs/sax-js#readme",
+      "source": "https://www.npmjs.com/package/sax/v/1.6.1"
+    },
+    {
+      "name": "semver",
+      "version": "6.3.1",
+      "license": "ISC",
+      "homepage": "https://github.com/npm/node-semver#readme",
+      "source": "https://www.npmjs.com/package/semver/v/6.3.1"
+    },
+    {
+      "name": "semver",
+      "version": "7.8.5",
+      "license": "ISC",
+      "homepage": "https://github.com/npm/node-semver#readme",
+      "source": "https://www.npmjs.com/package/semver/v/7.8.5"
+    },
+    {
+      "name": "sharp",
+      "version": "0.35.2",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/sharp/v/0.35.2"
+    },
+    {
+      "name": "sharp",
+      "version": "0.35.4",
+      "license": "Apache-2.0",
+      "homepage": "https://sharp.pixelplumbing.com",
+      "source": "https://www.npmjs.com/package/sharp/v/0.35.4"
+    },
+    {
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/kevva/shebang-command#readme",
+      "source": "https://www.npmjs.com/package/shebang-command/v/2.0.0"
+    },
+    {
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/shebang-regex#readme",
+      "source": "https://www.npmjs.com/package/shebang-regex/v/3.0.0"
+    },
+    {
+      "name": "shiki",
+      "version": "4.4.3",
+      "license": "MIT",
+      "homepage": "https://github.com/shikijs/shiki#readme",
+      "source": "https://www.npmjs.com/package/shiki/v/4.4.3"
+    },
+    {
+      "name": "siginfo",
+      "version": "2.0.0",
+      "license": "ISC",
+      "homepage": "https://github.com/emilbayes/siginfo#readme",
+      "source": "https://www.npmjs.com/package/siginfo/v/2.0.0"
+    },
+    {
+      "name": "sisteransi",
+      "version": "1.0.5",
+      "license": "MIT",
+      "homepage": "https://github.com/terkelg/sisteransi#readme",
+      "source": "https://www.npmjs.com/package/sisteransi/v/1.0.5"
+    },
+    {
+      "name": "slash",
+      "version": "5.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/slash#readme",
+      "source": "https://www.npmjs.com/package/slash/v/5.1.0"
+    },
+    {
+      "name": "smol-toml",
+      "version": "1.8.0",
+      "license": "BSD-3-Clause",
+      "homepage": "https://github.com/squirrelchat/smol-toml#readme",
+      "source": "https://www.npmjs.com/package/smol-toml/v/1.8.0"
+    },
+    {
+      "name": "source-map-js",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "homepage": "https://github.com/7rulnik/source-map-js",
+      "source": "https://www.npmjs.com/package/source-map-js/v/1.2.1"
+    },
+    {
+      "name": "space-separated-tokens",
+      "version": "2.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/space-separated-tokens#readme",
+      "source": "https://www.npmjs.com/package/space-separated-tokens/v/2.0.2"
+    },
+    {
+      "name": "stackback",
+      "version": "0.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/shtylman/node-stackback#readme",
+      "source": "https://www.npmjs.com/package/stackback/v/0.0.2"
+    },
+    {
+      "name": "std-env",
+      "version": "4.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/std-env#readme",
+      "source": "https://www.npmjs.com/package/std-env/v/4.2.0"
+    },
+    {
+      "name": "steiger",
+      "version": "0.6.0",
+      "license": "MIT",
+      "homepage": "https://github.com/feature-sliced/steiger",
+      "source": "https://www.npmjs.com/package/steiger/v/0.6.0"
+    },
+    {
+      "name": "string-width",
+      "version": "4.2.3",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/string-width#readme",
+      "source": "https://www.npmjs.com/package/string-width/v/4.2.3"
+    },
+    {
+      "name": "string-width",
+      "version": "7.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/string-width#readme",
+      "source": "https://www.npmjs.com/package/string-width/v/7.2.0"
+    },
+    {
+      "name": "string-width",
+      "version": "8.2.2",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/string-width#readme",
+      "source": "https://www.npmjs.com/package/string-width/v/8.2.2"
+    },
+    {
+      "name": "stringify-entities",
+      "version": "4.0.4",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/stringify-entities#readme",
+      "source": "https://www.npmjs.com/package/stringify-entities/v/4.0.4"
+    },
+    {
+      "name": "strip-ansi",
+      "version": "6.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/strip-ansi#readme",
+      "source": "https://www.npmjs.com/package/strip-ansi/v/6.0.1"
+    },
+    {
+      "name": "strip-ansi",
+      "version": "7.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/strip-ansi#readme",
+      "source": "https://www.npmjs.com/package/strip-ansi/v/7.2.0"
+    },
+    {
+      "name": "suf-log",
+      "version": "2.5.3",
+      "license": "MIT",
+      "homepage": "https://github.com/TheRealSyler/suf-log#readme",
+      "source": "https://www.npmjs.com/package/suf-log/v/2.5.3"
+    },
+    {
+      "name": "supports-color",
+      "version": "10.2.2",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/supports-color#readme",
+      "source": "https://www.npmjs.com/package/supports-color/v/10.2.2"
+    },
+    {
+      "name": "supports-color",
+      "version": "7.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/supports-color#readme",
+      "source": "https://www.npmjs.com/package/supports-color/v/7.2.0"
+    },
+    {
+      "name": "svgo",
+      "version": "4.1.0",
+      "license": "MIT",
+      "homepage": "https://svgo.dev",
+      "source": "https://www.npmjs.com/package/svgo/v/4.1.0"
+    },
+    {
+      "name": "tiny-inflate",
+      "version": "1.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/devongovett/tiny-inflate",
+      "source": "https://www.npmjs.com/package/tiny-inflate/v/1.0.3"
+    },
+    {
+      "name": "tinybench",
+      "version": "2.9.0",
+      "license": "MIT",
+      "homepage": "https://github.com/tinylibs/tinybench#readme",
+      "source": "https://www.npmjs.com/package/tinybench/v/2.9.0"
+    },
+    {
+      "name": "tinyclip",
+      "version": "0.1.15",
+      "license": "MIT",
+      "homepage": "https://github.com/tinylibs/tinyclip#readme",
+      "source": "https://www.npmjs.com/package/tinyclip/v/0.1.15"
+    },
+    {
+      "name": "tinyexec",
+      "version": "1.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/tinylibs/tinyexec#readme",
+      "source": "https://www.npmjs.com/package/tinyexec/v/1.3.0"
+    },
+    {
+      "name": "tinyglobby",
+      "version": "0.2.17",
+      "license": "MIT",
+      "homepage": "https://superchupu.dev/tinyglobby",
+      "source": "https://www.npmjs.com/package/tinyglobby/v/0.2.17"
+    },
+    {
+      "name": "tinyrainbow",
+      "version": "3.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/tinylibs/tinyrainbow#readme",
+      "source": "https://www.npmjs.com/package/tinyrainbow/v/3.1.1"
+    },
+    {
+      "name": "to-regex-range",
+      "version": "5.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/micromatch/to-regex-range",
+      "source": "https://www.npmjs.com/package/to-regex-range/v/5.0.1"
+    },
+    {
+      "name": "trim-lines",
+      "version": "3.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/trim-lines#readme",
+      "source": "https://www.npmjs.com/package/trim-lines/v/3.0.1"
+    },
+    {
+      "name": "trough",
+      "version": "2.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/trough#readme",
+      "source": "https://www.npmjs.com/package/trough/v/2.2.0"
+    },
+    {
+      "name": "ts-api-utils",
+      "version": "2.5.0",
+      "license": "MIT",
+      "homepage": "https://github.com/JoshuaKGoldberg/ts-api-utils#readme",
+      "source": "https://www.npmjs.com/package/ts-api-utils/v/2.5.0"
+    },
+    {
+      "name": "tsconfck",
+      "version": "3.1.6",
+      "license": "MIT",
+      "homepage": "https://github.com/dominikg/tsconfck/tree/main/packages/tsconfck#readme",
+      "source": "https://www.npmjs.com/package/tsconfck/v/3.1.6"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "homepage": "https://www.typescriptlang.org/",
+      "source": "https://www.npmjs.com/package/tslib/v/2.8.1"
+    },
+    {
+      "name": "type-check",
+      "version": "0.4.0",
+      "license": "MIT",
+      "homepage": "https://github.com/gkz/type-check",
+      "source": "https://www.npmjs.com/package/type-check/v/0.4.0"
+    },
+    {
+      "name": "typesafe-path",
+      "version": "0.2.2",
+      "license": "MIT",
+      "homepage": "https://github.com/johnsoncodehk/typesafe-path#readme",
+      "source": "https://www.npmjs.com/package/typesafe-path/v/0.2.2"
+    },
+    {
+      "name": "typescript-auto-import-cache",
+      "version": "0.3.6",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/typescript-auto-import-cache#readme",
+      "source": "https://www.npmjs.com/package/typescript-auto-import-cache/v/0.3.6"
+    },
+    {
+      "name": "typescript-eslint",
+      "version": "8.69.0",
+      "license": "MIT",
+      "homepage": "https://typescript-eslint.io/packages/typescript-eslint",
+      "source": "https://www.npmjs.com/package/typescript-eslint/v/8.69.0"
+    },
+    {
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "homepage": "https://www.typescriptlang.org/",
+      "source": "https://www.npmjs.com/package/typescript/v/5.9.3"
+    },
+    {
+      "name": "ufo",
+      "version": "1.6.4",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/ufo#readme",
+      "source": "https://www.npmjs.com/package/ufo/v/1.6.4"
+    },
+    {
+      "name": "ultrahtml",
+      "version": "1.7.0",
+      "license": "MIT",
+      "homepage": "https://github.com/natemoo-re/ultrahtml#README",
+      "source": "https://www.npmjs.com/package/ultrahtml/v/1.7.0"
+    },
+    {
+      "name": "uncrypto",
+      "version": "0.1.3",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/uncrypto#readme",
+      "source": "https://www.npmjs.com/package/uncrypto/v/0.1.3"
+    },
+    {
+      "name": "undici-types",
+      "version": "8.3.0",
+      "license": "MIT",
+      "homepage": "https://undici.nodejs.org",
+      "source": "https://www.npmjs.com/package/undici-types/v/8.3.0"
+    },
+    {
+      "name": "undici",
+      "version": "7.29.0",
+      "license": "MIT",
+      "homepage": "https://undici.nodejs.org",
+      "source": "https://www.npmjs.com/package/undici/v/7.29.0"
+    },
+    {
+      "name": "undici",
+      "version": "8.10.1",
+      "license": "MIT",
+      "homepage": "https://undici.nodejs.org",
+      "source": "https://www.npmjs.com/package/undici/v/8.10.1"
+    },
+    {
+      "name": "unenv",
+      "version": "2.0.0-rc.24",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/unenv#readme",
+      "source": "https://www.npmjs.com/package/unenv/v/2.0.0-rc.24"
+    },
+    {
+      "name": "unicorn-magic",
+      "version": "0.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/unicorn-magic#readme",
+      "source": "https://www.npmjs.com/package/unicorn-magic/v/0.3.0"
+    },
+    {
+      "name": "unified",
+      "version": "11.0.5",
+      "license": "MIT",
+      "homepage": "https://unifiedjs.com",
+      "source": "https://www.npmjs.com/package/unified/v/11.0.5"
+    },
+    {
+      "name": "unifont",
+      "version": "0.7.5",
+      "license": "MIT",
+      "homepage": "https://github.com/unjs/unifont#readme",
+      "source": "https://www.npmjs.com/package/unifont/v/0.7.5"
+    },
+    {
+      "name": "unist-util-is",
+      "version": "6.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/unist-util-is#readme",
+      "source": "https://www.npmjs.com/package/unist-util-is/v/6.0.1"
+    },
+    {
+      "name": "unist-util-position",
+      "version": "5.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/unist-util-position#readme",
+      "source": "https://www.npmjs.com/package/unist-util-position/v/5.0.0"
+    },
+    {
+      "name": "unist-util-stringify-position",
+      "version": "4.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/unist-util-stringify-position#readme",
+      "source": "https://www.npmjs.com/package/unist-util-stringify-position/v/4.0.0"
+    },
+    {
+      "name": "unist-util-visit-parents",
+      "version": "6.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/unist-util-visit-parents#readme",
+      "source": "https://www.npmjs.com/package/unist-util-visit-parents/v/6.0.2"
+    },
+    {
+      "name": "unist-util-visit",
+      "version": "5.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/syntax-tree/unist-util-visit#readme",
+      "source": "https://www.npmjs.com/package/unist-util-visit/v/5.1.0"
+    },
+    {
+      "name": "unstorage",
+      "version": "1.17.5",
+      "license": "MIT",
+      "homepage": "https://unstorage.unjs.io",
+      "source": "https://www.npmjs.com/package/unstorage/v/1.17.5"
+    },
+    {
+      "name": "update-browserslist-db",
+      "version": "1.3.2",
+      "license": "MIT",
+      "homepage": "https://github.com/browserslist/update-db#readme",
+      "source": "https://www.npmjs.com/package/update-browserslist-db/v/1.3.2"
+    },
+    {
+      "name": "uri-js",
+      "version": "4.4.1",
+      "license": "BSD-2-Clause",
+      "homepage": "https://github.com/garycourt/uri-js",
+      "source": "https://www.npmjs.com/package/uri-js/v/4.4.1"
+    },
+    {
+      "name": "vfile-message",
+      "version": "4.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/vfile/vfile-message#readme",
+      "source": "https://www.npmjs.com/package/vfile-message/v/4.0.3"
+    },
+    {
+      "name": "vfile",
+      "version": "6.0.3",
+      "license": "MIT",
+      "homepage": "https://github.com/vfile/vfile#readme",
+      "source": "https://www.npmjs.com/package/vfile/v/6.0.3"
+    },
+    {
+      "name": "vite",
+      "version": "8.2.2",
+      "license": "MIT",
+      "homepage": "https://vite.dev",
+      "source": "https://www.npmjs.com/package/vite/v/8.2.2"
+    },
+    {
+      "name": "vitefu",
+      "version": "1.1.3",
+      "license": "MIT",
+      "homepage": "https://github.com/svitejs/vitefu#readme",
+      "source": "https://www.npmjs.com/package/vitefu/v/1.1.3"
+    },
+    {
+      "name": "vitest",
+      "version": "4.1.11",
+      "license": "MIT",
+      "homepage": "https://vitest.dev",
+      "source": "https://www.npmjs.com/package/vitest/v/4.1.11"
+    },
+    {
+      "name": "volar-service-css",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/css",
+      "source": "https://www.npmjs.com/package/volar-service-css/v/0.0.71"
+    },
+    {
+      "name": "volar-service-emmet",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/emmet",
+      "source": "https://www.npmjs.com/package/volar-service-emmet/v/0.0.71"
+    },
+    {
+      "name": "volar-service-html",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/html",
+      "source": "https://www.npmjs.com/package/volar-service-html/v/0.0.71"
+    },
+    {
+      "name": "volar-service-prettier",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/prettier",
+      "source": "https://www.npmjs.com/package/volar-service-prettier/v/0.0.71"
+    },
+    {
+      "name": "volar-service-typescript-twoslash-queries",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/typescript-twoslash-queries",
+      "source": "https://www.npmjs.com/package/volar-service-typescript-twoslash-queries/v/0.0.71"
+    },
+    {
+      "name": "volar-service-typescript",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/typescript",
+      "source": "https://www.npmjs.com/package/volar-service-typescript/v/0.0.71"
+    },
+    {
+      "name": "volar-service-yaml",
+      "version": "0.0.71",
+      "license": "MIT",
+      "homepage": "https://github.com/volarjs/services/tree/master/packages/yaml",
+      "source": "https://www.npmjs.com/package/volar-service-yaml/v/0.0.71"
+    },
+    {
+      "name": "vscode-css-languageservice",
+      "version": "6.3.10",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-css-languageservice#readme",
+      "source": "https://www.npmjs.com/package/vscode-css-languageservice/v/6.3.10"
+    },
+    {
+      "name": "vscode-html-languageservice",
+      "version": "5.6.2",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-html-languageservice#readme",
+      "source": "https://www.npmjs.com/package/vscode-html-languageservice/v/5.6.2"
+    },
+    {
+      "name": "vscode-json-languageservice",
+      "version": "4.1.8",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-json-languageservice#readme",
+      "source": "https://www.npmjs.com/package/vscode-json-languageservice/v/4.1.8"
+    },
+    {
+      "name": "vscode-jsonrpc",
+      "version": "8.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-jsonrpc/v/8.2.0"
+    },
+    {
+      "name": "vscode-jsonrpc",
+      "version": "9.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-jsonrpc/v/9.0.2"
+    },
+    {
+      "name": "vscode-languageserver-protocol",
+      "version": "3.17.5",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-languageserver-protocol/v/3.17.5"
+    },
+    {
+      "name": "vscode-languageserver-protocol",
+      "version": "3.18.3",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-languageserver-protocol/v/3.18.3"
+    },
+    {
+      "name": "vscode-languageserver-textdocument",
+      "version": "1.0.14",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-languageserver-textdocument/v/1.0.14"
+    },
+    {
+      "name": "vscode-languageserver-types",
+      "version": "3.17.5",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-languageserver-types/v/3.17.5"
+    },
+    {
+      "name": "vscode-languageserver-types",
+      "version": "3.18.3",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-languageserver-types/v/3.18.3"
+    },
+    {
+      "name": "vscode-languageserver",
+      "version": "9.0.1",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-languageserver-node#readme",
+      "source": "https://www.npmjs.com/package/vscode-languageserver/v/9.0.1"
+    },
+    {
+      "name": "vscode-nls",
+      "version": "5.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/Microsoft/vscode-nls#readme",
+      "source": "https://www.npmjs.com/package/vscode-nls/v/5.2.0"
+    },
+    {
+      "name": "vscode-uri",
+      "version": "3.2.0",
+      "license": "MIT",
+      "homepage": "https://github.com/microsoft/vscode-uri#readme",
+      "source": "https://www.npmjs.com/package/vscode-uri/v/3.2.0"
+    },
+    {
+      "name": "web-tree-sitter",
+      "version": "0.26.13",
+      "license": "MIT",
+      "homepage": "https://github.com/tree-sitter/tree-sitter#readme",
+      "source": "https://www.npmjs.com/package/web-tree-sitter/v/0.26.13"
+    },
+    {
+      "name": "which",
+      "version": "2.0.2",
+      "license": "ISC",
+      "homepage": "https://github.com/isaacs/node-which#readme",
+      "source": "https://www.npmjs.com/package/which/v/2.0.2"
+    },
+    {
+      "name": "why-is-node-running",
+      "version": "2.3.0",
+      "license": "MIT",
+      "homepage": "https://github.com/mafintosh/why-is-node-running",
+      "source": "https://www.npmjs.com/package/why-is-node-running/v/2.3.0"
+    },
+    {
+      "name": "word-wrap",
+      "version": "1.2.5",
+      "license": "MIT",
+      "homepage": "https://github.com/jonschlinkert/word-wrap",
+      "source": "https://www.npmjs.com/package/word-wrap/v/1.2.5"
+    },
+    {
+      "name": "workerd",
+      "version": "1.20260828.1",
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workerd#readme",
+      "source": "https://www.npmjs.com/package/workerd/v/1.20260828.1"
+    },
+    {
+      "name": "wrangler",
+      "version": "4.127.1",
+      "license": "MIT OR Apache-2.0",
+      "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+      "source": "https://www.npmjs.com/package/wrangler/v/4.127.1"
+    },
+    {
+      "name": "wrap-ansi",
+      "version": "7.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/wrap-ansi#readme",
+      "source": "https://www.npmjs.com/package/wrap-ansi/v/7.0.0"
+    },
+    {
+      "name": "wrap-ansi",
+      "version": "9.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/chalk/wrap-ansi#readme",
+      "source": "https://www.npmjs.com/package/wrap-ansi/v/9.0.2"
+    },
+    {
+      "name": "ws",
+      "version": "8.21.0",
+      "license": "MIT",
+      "homepage": "https://github.com/websockets/ws",
+      "source": "https://www.npmjs.com/package/ws/v/8.21.0"
+    },
+    {
+      "name": "xxhash-wasm",
+      "version": "1.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/jungomi/xxhash-wasm#readme",
+      "source": "https://www.npmjs.com/package/xxhash-wasm/v/1.1.0"
+    },
+    {
+      "name": "y18n",
+      "version": "5.0.8",
+      "license": "ISC",
+      "homepage": "https://github.com/yargs/y18n",
+      "source": "https://www.npmjs.com/package/y18n/v/5.0.8"
+    },
+    {
+      "name": "yallist",
+      "version": "3.1.1",
+      "license": "ISC",
+      "homepage": "https://github.com/isaacs/yallist#readme",
+      "source": "https://www.npmjs.com/package/yallist/v/3.1.1"
+    },
+    {
+      "name": "yaml-language-server",
+      "version": "1.23.0",
+      "license": "MIT",
+      "homepage": "https://github.com/redhat-developer/yaml-language-server#readme",
+      "source": "https://www.npmjs.com/package/yaml-language-server/v/1.23.0"
+    },
+    {
+      "name": "yaml",
+      "version": "2.8.3",
+      "license": "ISC",
+      "homepage": "https://eemeli.org/yaml/",
+      "source": "https://www.npmjs.com/package/yaml/v/2.8.3"
+    },
+    {
+      "name": "yaml",
+      "version": "2.9.0",
+      "license": "ISC",
+      "homepage": "https://eemeli.org/yaml/",
+      "source": "https://www.npmjs.com/package/yaml/v/2.9.0"
+    },
+    {
+      "name": "yargs-parser",
+      "version": "21.1.1",
+      "license": "ISC",
+      "homepage": "https://github.com/yargs/yargs-parser#readme",
+      "source": "https://www.npmjs.com/package/yargs-parser/v/21.1.1"
+    },
+    {
+      "name": "yargs-parser",
+      "version": "22.0.0",
+      "license": "ISC",
+      "homepage": "https://github.com/yargs/yargs-parser#readme",
+      "source": "https://www.npmjs.com/package/yargs-parser/v/22.0.0"
+    },
+    {
+      "name": "yargs",
+      "version": "17.7.3",
+      "license": "MIT",
+      "homepage": "https://yargs.js.org/",
+      "source": "https://www.npmjs.com/package/yargs/v/17.7.3"
+    },
+    {
+      "name": "yargs",
+      "version": "18.1.0",
+      "license": "MIT",
+      "homepage": "https://yargs.js.org/",
+      "source": "https://www.npmjs.com/package/yargs/v/18.1.0"
+    },
+    {
+      "name": "yocto-queue",
+      "version": "0.1.0",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/yocto-queue#readme",
+      "source": "https://www.npmjs.com/package/yocto-queue/v/0.1.0"
+    },
+    {
+      "name": "yocto-queue",
+      "version": "1.2.2",
+      "license": "MIT",
+      "homepage": "https://github.com/sindresorhus/yocto-queue#readme",
+      "source": "https://www.npmjs.com/package/yocto-queue/v/1.2.2"
+    },
+    {
+      "name": "youch-core",
+      "version": "0.3.3",
+      "license": "MIT",
+      "homepage": "https://github.com/poppinss/youch-core#readme",
+      "source": "https://www.npmjs.com/package/youch-core/v/0.3.3"
+    },
+    {
+      "name": "youch",
+      "version": "4.1.0-beta.10",
+      "license": "MIT",
+      "homepage": "https://github.com/poppinss/youch#readme",
+      "source": "https://www.npmjs.com/package/youch/v/4.1.0-beta.10"
+    },
+    {
+      "name": "zod-validation-error",
+      "version": "3.5.4",
+      "license": "MIT",
+      "homepage": "https://github.com/causaly/zod-validation-error#readme",
+      "source": "https://www.npmjs.com/package/zod-validation-error/v/3.5.4"
+    },
+    {
+      "name": "zod-validation-error",
+      "version": "4.0.2",
+      "license": "MIT",
+      "homepage": "https://github.com/causaly/zod-validation-error#readme",
+      "source": "https://www.npmjs.com/package/zod-validation-error/v/4.0.2"
+    },
+    {
+      "name": "zod",
+      "version": "3.25.76",
+      "license": "MIT",
+      "homepage": "https://zod.dev",
+      "source": "https://www.npmjs.com/package/zod/v/3.25.76"
+    },
+    {
+      "name": "zod",
+      "version": "4.5.4",
+      "license": "MIT",
+      "homepage": "https://zod.dev",
+      "source": "https://www.npmjs.com/package/zod/v/4.5.4"
+    },
+    {
+      "name": "zwitch",
+      "version": "2.0.4",
+      "license": "MIT",
+      "homepage": "https://github.com/wooorm/zwitch#readme",
+      "source": "https://www.npmjs.com/package/zwitch/v/2.0.4"
+    }
+  ]
+}

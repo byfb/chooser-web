@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 byfb
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 import { spawn } from "node:child_process";
 
 const checks = [
@@ -5,6 +8,7 @@ const checks = [
   ["lint", ["lint"]],
   ["Astro and TypeScript", ["check"]],
   ["FSD boundaries", ["fsd:check"]],
+  ["GPL and provenance", ["legal:check"]],
   ["tests and coverage", ["test:coverage"]],
   ["static build", ["build"]],
 ];

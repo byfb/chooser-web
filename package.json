@@ -18,6 +18,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "fsd:check": "steiger ./src && node scripts/architecture/check.mjs",
+    "legal:check": "node scripts/legal/check.mjs",
+    "legal:inventory": "node scripts/legal/generate-dependency-inventory.mjs",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "pages:dev": "wrangler pages dev dist --port 8788",
