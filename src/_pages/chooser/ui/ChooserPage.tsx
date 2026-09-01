@@ -286,6 +286,7 @@ export function ChooserPage({
       ref={surfaceRef}
       aria-label="Chooser"
       className={`chooser-surface ${styles.surface}`}
+      data-phase={snapshot.phase}
       data-route="chooser"
       data-route-focus
       onContextMenu={(event) => event.preventDefault()}
@@ -303,6 +304,9 @@ export function ChooserPage({
       onPointerDown={(event) => sendSurfacePointer(event, "pointer-down")}
       onPointerMove={(event) => sendSurfacePointer(event, "pointer-move")}
       onPointerUp={(event) => sendSurfacePointer(event, "pointer-up")}
+      style={{
+        backgroundColor: `rgb(${snapshot.background.r} ${snapshot.background.g} ${snapshot.background.b})`,
+      }}
       tabIndex={0}
     >
       <div aria-hidden="true" className={styles.participantLayer}>

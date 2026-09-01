@@ -7,7 +7,9 @@ import type { ChooserSettings } from "./chooser-settings";
 import {
   createChooserSession,
   type ChooserClock,
+  type ChooserColor,
   type ChooserEffects,
+  type ChooserSnapshot,
   type ChooserScheduler,
 } from "./chooser-session";
 
@@ -286,14 +288,214 @@ describe("createChooserSession participant collection", () => {
   });
 });
 
+describe("createChooserSession Single selection", () => {
+  it.each([Number.NaN, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY])(
+    "falls back safely when selectionCount is %s",
+    (selectionCount) => {
+      const { scheduler, session } = setup({
+        settings: { ...SETTINGS, selectionCount },
+      });
+
+      session.send(directDown(1, 10, 10, { color: { r: 10, g: 20, b: 30 } }));
+      session.send(directDown(2, 20, 20, { color: { r: 40, g: 50, b: 60 } }));
+      scheduler.run(scheduler.latestTimeout());
+
+      const snapshot = session.getSnapshot();
+      expect(snapshot.selectionCount).toBe(1);
+      expect(singleResult(snapshot).selectedParticipantIds).toHaveLength(1);
+      expect(Object.values(snapshot.background).every(Number.isFinite)).toBe(
+        true,
+      );
+    },
+  );
+
+  it("keeps an equal-count round collecting because eligibility is strict", () => {
+    const { effects, scheduler, session } = setup({
+      settings: { ...SETTINGS, selectionCount: 2 },
+    });
+
+    session.send(directDown(1, 10, 10));
+    session.send(directDown(2, 20, 20));
+    const attempt = scheduler.latestTimeout();
+
+    expect(attempt.delayMs).toBe(3000);
+    scheduler.run(attempt);
+
+    expect(session.getSnapshot()).toMatchObject({
+      phase: "collecting",
+      activeParticipantCount: 2,
+      result: null,
+      background: { r: 0, g: 0, b: 0 },
+    });
+    expect(effects.sounds).toEqual(["down", "down"]);
+    expect(effects.vibrations).toEqual([]);
+
+    session.send(directDown(3, 30, 30));
+    const nextAttempt = scheduler.latestTimeout();
+    expect(nextAttempt).not.toBe(attempt);
+    expect(nextAttempt.delayMs).toBe(3000);
+    scheduler.run(nextAttempt);
+    expect(session.getSnapshot().phase).toBe("result");
+  });
+
+  it("selects exactly without replacement, retires nonwinners, and persists after release", () => {
+    const colors = new Map<number, ChooserColor>([
+      [1, { r: 1, g: 12, b: 23 }],
+      [2, { r: 8, g: 35, b: 62 }],
+      [3, { r: 20, g: 58, b: 97 }],
+    ]);
+    const { effects, scheduler, session } = setup({
+      random: createSequenceRandom([0.81, 0.19]),
+      settings: { ...SETTINGS, selectionCount: 2 },
+    });
+
+    colors.forEach((color, pointerId) => {
+      session.send(directDown(pointerId, pointerId * 10, 10, { color }));
+    });
+    const attempt = scheduler.latestTimeout();
+
+    expect(session.getSnapshot().phase).toBe("collecting");
+    scheduler.run(attempt);
+    scheduler.run(attempt);
+
+    const settled = session.getSnapshot();
+    const result = singleResult(settled);
+    const selectedIds = [...result.selectedParticipantIds];
+    expect(selectedIds).toHaveLength(2);
+    expect(new Set(selectedIds).size).toBe(2);
+    expect(settled.phase).toBe("result");
+    expect(settled.activeParticipantCount).toBe(0);
+    expect(settled.controlsVisible).toBe(false);
+
+    const selectedColors = selectedIds.map((id) => {
+      const participant = settled.participants.find(
+        (candidate) => candidate.id === id,
+      );
+      expect(participant).toBeDefined();
+      return participant?.color ?? { r: 0, g: 0, b: 0 };
+    });
+    const expectedBackground = averageColor(selectedColors);
+
+    expect(result.background).toEqual(expectedBackground);
+    expect(settled.background).toEqual(expectedBackground);
+    expect(settled.participants).toHaveLength(3);
+    settled.participants.forEach((participant) => {
+      expect(participant.state).toBe(
+        selectedIds.includes(participant.id) ? "selected" : "retiring",
+      );
+    });
+    expect(effects.sounds).toEqual(["down", "down", "down", "chosen"]);
+    expect(effects.vibrations).toEqual([100]);
+
+    session.send({ type: "pointer-up", pointerId: 1 });
+    session.send({ type: "pointer-up", pointerId: 2 });
+    session.send({ type: "pointer-up", pointerId: 3 });
+
+    expect(session.getSnapshot()).toEqual(settled);
+    expect(singleResult(session.getSnapshot())).toEqual(result);
+    expect(effects.sounds).toEqual(["down", "down", "down", "chosen"]);
+    expect(effects.vibrations).toEqual([100]);
+  });
+
+  it.each([
+    { soundEnabled: false, vibrationEnabled: true },
+    { soundEnabled: true, vibrationEnabled: false },
+    { soundEnabled: false, vibrationEnabled: false },
+  ])(
+    "gates result feedback when sound=$soundEnabled and vibration=$vibrationEnabled",
+    ({ soundEnabled, vibrationEnabled }) => {
+      const { effects, scheduler, session } = setup({
+        settings: {
+          ...SETTINGS,
+          soundEnabled,
+          vibrationEnabled,
+        },
+      });
+
+      session.send(directDown(1, 10, 10, { color: { r: 0, g: 0, b: 0 } }));
+      session.send(
+        directDown(2, 20, 20, { color: { r: 255, g: 255, b: 255 } }),
+      );
+      scheduler.run(scheduler.latestTimeout());
+
+      expect(effects.sounds.filter((cue) => cue === "chosen")).toHaveLength(
+        soundEnabled ? 1 : 0,
+      );
+      expect(effects.vibrations).toEqual(vibrationEnabled ? [100] : []);
+    },
+  );
+
+  it("resolves a zero delay on the next animation frame", () => {
+    const { scheduler, session } = setup({
+      settings: { ...SETTINGS, singleDelayMs: 0 },
+    });
+
+    session.send(directDown(1, 10, 10, { color: { r: 5, g: 10, b: 15 } }));
+    session.send(directDown(2, 20, 20, { color: { r: 25, g: 30, b: 35 } }));
+
+    expect(session.getSnapshot()).toMatchObject({
+      phase: "collecting",
+      result: null,
+    });
+    expect(scheduler.activeTimeouts()).toHaveLength(0);
+    expect(scheduler.activeFrames()).toHaveLength(1);
+
+    scheduler.run(scheduler.latestFrame());
+
+    expect(session.getSnapshot().phase).toBe("result");
+    expect(
+      singleResult(session.getSnapshot()).selectedParticipantIds,
+    ).toHaveLength(1);
+  });
+
+  it(
+    "keeps all four Single winners reachable across 100,000 fixed-seed samples",
+    { timeout: 30_000 },
+    () => {
+      const outcomeKeys = ["direct:1", "direct:2", "direct:3", "direct:4"];
+      const counts = sampleSingleOutcomes({
+        participantCount: 4,
+        sampleCount: 100_000,
+        seed: 0x4c11db7,
+        selectionCount: 1,
+        outcomeKeys,
+      });
+
+      expectChiSquareBelow(counts, 100_000, 16.2662362);
+    },
+  );
+
+  it(
+    "keeps all ten two-of-five subsets reachable across 100,000 fixed-seed samples",
+    { timeout: 30_000 },
+    () => {
+      const outcomeKeys = combinations(
+        ["direct:1", "direct:2", "direct:3", "direct:4", "direct:5"],
+        2,
+      ).map((ids) => ids.join("|"));
+      const counts = sampleSingleOutcomes({
+        participantCount: 5,
+        sampleCount: 100_000,
+        seed: 0x9e3779b9,
+        selectionCount: 2,
+        outcomeKeys,
+      });
+
+      expectChiSquareBelow(counts, 100_000, 27.8771649);
+    },
+  );
+});
+
 interface SetupOverrides {
+  effects?: FakeEffects;
+  random?: { next(): number };
   scheduler?: FakeScheduler;
   settings?: Readonly<ChooserSettings>;
 }
 
 function setup(overrides: SetupOverrides = {}) {
   const scheduler = overrides.scheduler ?? new FakeScheduler();
-  const effects = new FakeEffects();
+  const effects = overrides.effects ?? new FakeEffects();
   let now = 100;
   const clock: ChooserClock = {
     now: () => now++,
@@ -301,7 +503,7 @@ function setup(overrides: SetupOverrides = {}) {
   const session = createChooserSession({
     clock,
     effects,
-    random: { next: () => 0.25 },
+    random: overrides.random ?? { next: () => 0.25 },
     scheduler,
     settings: overrides.settings ?? SETTINGS,
   });
@@ -397,6 +599,14 @@ class FakeScheduler implements ChooserScheduler {
     return task;
   }
 
+  latestFrame() {
+    const task = this.tasks.findLast((candidate) => candidate.kind === "frame");
+    if (task === undefined) {
+      throw new Error("No animation frame was scheduled");
+    }
+    return task;
+  }
+
   run(task: FakeTask) {
     task.callback();
   }
@@ -431,4 +641,149 @@ class FakeEffects implements ChooserEffects {
   vibrate(durationMs: 40 | 100) {
     this.vibrations.push(durationMs);
   }
+}
+
+interface SingleResultContract {
+  readonly kind: "single";
+  readonly selectedParticipantIds: readonly string[];
+  readonly background: Readonly<ChooserColor>;
+}
+
+function singleResult(snapshot: Readonly<ChooserSnapshot>) {
+  const result = snapshot.result;
+  if (result?.kind !== "single") {
+    throw new Error(
+      `Expected a Single result, received ${result?.kind ?? "none"}`,
+    );
+  }
+  return result as unknown as SingleResultContract;
+}
+
+function averageColor(colors: readonly Readonly<ChooserColor>[]) {
+  const totals = colors.reduce(
+    (sum, color) => ({
+      r: sum.r + color.r,
+      g: sum.g + color.g,
+      b: sum.b + color.b,
+    }),
+    { r: 0, g: 0, b: 0 },
+  );
+  return {
+    r: Math.floor(totals.r / colors.length),
+    g: Math.floor(totals.g / colors.length),
+    b: Math.floor(totals.b / colors.length),
+  };
+}
+
+function createSequenceRandom(values: readonly number[]) {
+  let index = 0;
+  return {
+    next() {
+      const value = values[index % values.length];
+      index += 1;
+      return value ?? 0;
+    },
+  };
+}
+
+function createXorshift32(seed: number) {
+  let state = seed >>> 0;
+  return {
+    next() {
+      state ^= state << 13;
+      state ^= state >>> 17;
+      state ^= state << 5;
+      return (state >>> 0) / 0x1_0000_0000;
+    },
+  };
+}
+
+function sampleSingleOutcomes(options: {
+  readonly participantCount: number;
+  readonly sampleCount: number;
+  readonly seed: number;
+  readonly selectionCount: number;
+  readonly outcomeKeys: readonly string[];
+}) {
+  const counts = new Map(options.outcomeKeys.map((key) => [key, 0]));
+  const random = createXorshift32(options.seed);
+  const effects: ChooserEffects = {
+    playSound: () => undefined,
+    vibrate: () => undefined,
+  };
+  const clock: ChooserClock = { now: () => 0 };
+
+  for (let sample = 0; sample < options.sampleCount; sample += 1) {
+    const scheduler = new FakeScheduler();
+    const session = createChooserSession({
+      clock,
+      effects,
+      random,
+      scheduler,
+      settings: {
+        ...SETTINGS,
+        selectionCount: options.selectionCount,
+        soundEnabled: false,
+        vibrationEnabled: false,
+      },
+    });
+
+    for (
+      let pointerId = 1;
+      pointerId <= options.participantCount;
+      pointerId += 1
+    ) {
+      session.send(
+        directDown(pointerId, pointerId, pointerId, {
+          color: { r: pointerId, g: pointerId, b: pointerId },
+        }),
+      );
+    }
+    scheduler.run(scheduler.latestTimeout());
+
+    const key = [...singleResult(session.getSnapshot()).selectedParticipantIds]
+      .sort(compareParticipantIds)
+      .join("|");
+    const previousCount = counts.get(key);
+    if (previousCount === undefined) {
+      throw new Error(`Unexpected Single outcome: ${key}`);
+    }
+    counts.set(key, previousCount + 1);
+    session.destroy();
+  }
+
+  return counts;
+}
+
+function compareParticipantIds(left: string, right: string) {
+  return Number(left.split(":")[1]) - Number(right.split(":")[1]);
+}
+
+function expectChiSquareBelow(
+  counts: ReadonlyMap<string, number>,
+  sampleCount: number,
+  criticalValue: number,
+) {
+  const expected = sampleCount / counts.size;
+  expect(expected).toBeGreaterThan(5);
+  counts.forEach((count) => expect(count).toBeGreaterThan(0));
+
+  const statistic = [...counts.values()].reduce((sum, observed) => {
+    const difference = observed - expected;
+    return sum + (difference * difference) / expected;
+  }, 0);
+  expect(statistic).toBeLessThan(criticalValue);
+}
+
+function combinations<T>(values: readonly T[], count: number): T[][] {
+  if (count === 0) {
+    return [[]];
+  }
+
+  return values.flatMap((value, index) =>
+    combinations(values.slice(index + 1), count - 1).map((rest) => [
+      value,
+      ...rest,
+    ]),
+  );
 }

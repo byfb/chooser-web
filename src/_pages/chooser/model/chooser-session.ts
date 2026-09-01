@@ -28,13 +28,14 @@ export interface ChooserParticipant {
   readonly position: Readonly<ChooserPosition>;
   readonly color: Readonly<ChooserColor>;
   readonly createdAtMs: number;
-  readonly state: "active";
+  readonly state: "active" | "selected" | "retiring";
 }
 
-/** A deliberately open result shape for the Single, Group, and Order increments. */
+/** The settled result shape for the Single selection mode. */
 export type ChooserResult = Readonly<{
-  readonly kind: string;
-  readonly [key: string]: unknown;
+  readonly kind: "single";
+  readonly selectedParticipantIds: readonly string[];
+  readonly background: Readonly<ChooserColor>;
 }>;
 
 export interface ChooserSnapshot {
@@ -120,6 +121,7 @@ interface InternalParticipant {
   position: ChooserPosition;
   readonly color: ChooserColor;
   readonly createdAtMs: number;
+  state: ChooserParticipant["state"];
 }
 
 interface PendingMouseActivation {
@@ -163,6 +165,8 @@ export function createChooserSession(options: {
   let generation = 0;
   let simulatedSequence = 0;
   let destroyed = false;
+  let result: ChooserResult | null = null;
+  let background = cloneColor(DEFAULT_COLOR);
   let snapshot = createSnapshot();
 
   const session: ChooserSession = {
@@ -288,6 +292,7 @@ export function createChooserSession(options: {
       position: clonePosition(event.position),
       color: cloneColor(event.color ?? randomColor()),
       createdAtMs: options.clock.now(),
+      state: "active",
     };
     participants.push(participant);
     generation += 1;
@@ -375,6 +380,11 @@ export function createChooserSession(options: {
       return;
     }
 
+    if (phase !== "idle" && phase !== "collecting") {
+      pendingMouseActivations.delete(pointerId);
+      return;
+    }
+
     const removalIndex = findHitSimulatedParticipant(pending.position);
     if (removalIndex >= 0) {
       participants.splice(removalIndex, 1);
@@ -392,6 +402,7 @@ export function createChooserSession(options: {
       position: clonePosition(pending.position),
       color: cloneColor(randomColor()),
       createdAtMs: options.clock.now(),
+      state: "active",
     });
     generation += 1;
     scheduleSelectionAttempt();
@@ -400,8 +411,13 @@ export function createChooserSession(options: {
   }
 
   function removeDirectParticipant(pointerId: number, deliberate: boolean) {
+    if (phase !== "collecting") {
+      return false;
+    }
+
     const index = participants.findIndex(
       (participant) =>
+        participant.state === "active" &&
         participant.inputFamily === "direct" &&
         participant.pointerId === pointerId,
     );
@@ -419,7 +435,7 @@ export function createChooserSession(options: {
   }
 
   function removeLatestSimulatedParticipant() {
-    if (inputFamily !== "simulated") {
+    if (phase !== "collecting" || inputFamily !== "simulated") {
       return;
     }
 
@@ -467,7 +483,7 @@ export function createChooserSession(options: {
         if (!isCurrentSelection(scheduledGeneration)) {
           return;
         }
-        selectionWork = undefined;
+        finishSelectionAttempt(scheduledGeneration);
       });
       selectionWork = {
         kind: "frame",
@@ -481,13 +497,68 @@ export function createChooserSession(options: {
       if (!isCurrentSelection(scheduledGeneration)) {
         return;
       }
-      selectionWork = undefined;
+      finishSelectionAttempt(scheduledGeneration);
     }, delayMs);
     selectionWork = {
       kind: "timeout",
       handle,
       generation: scheduledGeneration,
     };
+  }
+
+  function finishSelectionAttempt(scheduledGeneration: number) {
+    selectionWork = undefined;
+
+    if (
+      settings.selectionMode !== "single" ||
+      activeParticipantCount() <= settings.selectionCount
+    ) {
+      return;
+    }
+
+    settleSingle(scheduledGeneration);
+  }
+
+  function settleSingle(scheduledGeneration: number) {
+    if (generation !== scheduledGeneration || phase !== "collecting") {
+      return;
+    }
+
+    const selectedParticipants = participants.slice();
+    const selectionCount = settings.selectionCount;
+    for (let index = 0; index < selectionCount; index += 1) {
+      const remainingCount = selectedParticipants.length - index;
+      const swapIndex = index + Math.floor(randomFraction() * remainingCount);
+      const participant = selectedParticipants[index];
+      const replacement = selectedParticipants[swapIndex];
+      if (participant === undefined || replacement === undefined) {
+        return;
+      }
+      selectedParticipants[index] = replacement;
+      selectedParticipants[swapIndex] = participant;
+    }
+
+    const winners = selectedParticipants.slice(0, selectionCount);
+    const winnerIds = winners.map((participant) => participant.id);
+    const winnerIdSet = new Set(winnerIds);
+    participants.forEach((participant) => {
+      participant.state = winnerIdSet.has(participant.id)
+        ? "selected"
+        : "retiring";
+    });
+
+    background = averageColor(winners.map((participant) => participant.color));
+    result = Object.freeze({
+      kind: "single",
+      selectedParticipantIds: Object.freeze(winnerIds),
+      background: cloneColor(background),
+    });
+    phase = "result";
+    generation += 1;
+    cancelSelectionWork();
+    playSound("chosen");
+    vibrate(100);
+    publish();
   }
 
   function isCurrentSelection(scheduledGeneration: number) {
@@ -526,7 +597,7 @@ export function createChooserSession(options: {
         position: clonePosition(participant.position),
         color: cloneColor(participant.color),
         createdAtMs: participant.createdAtMs,
-        state: "active" as const,
+        state: participant.state,
       }),
     );
 
@@ -536,11 +607,18 @@ export function createChooserSession(options: {
       selectionCount: settings.selectionCount,
       controlsVisible: phase === "idle",
       inputFamily,
-      activeParticipantCount: participants.length,
+      activeParticipantCount: activeParticipantCount(),
       participants: Object.freeze(frozenParticipants),
-      result: null,
-      background: cloneColor(DEFAULT_COLOR),
+      result,
+      background: cloneColor(background),
     });
+  }
+
+  function activeParticipantCount() {
+    return participants.reduce(
+      (count, participant) => count + (participant.state === "active" ? 1 : 0),
+      0,
+    );
   }
 
   function findHitSimulatedParticipant(position: Readonly<ChooserPosition>) {
@@ -608,6 +686,34 @@ export function createChooserSession(options: {
       // Feedback is best effort and must never interrupt selection semantics.
     }
   }
+
+  function vibrate(durationMs: 40 | 100) {
+    if (!settings.vibrationEnabled) {
+      return;
+    }
+
+    try {
+      options.effects.vibrate(durationMs);
+    } catch {
+      // Feedback is best effort and must never interrupt selection semantics.
+    }
+  }
+}
+
+function averageColor(colors: readonly Readonly<ChooserColor>[]) {
+  const totals = colors.reduce(
+    (sum, color) => ({
+      r: sum.r + color.r,
+      g: sum.g + color.g,
+      b: sum.b + color.b,
+    }),
+    { r: 0, g: 0, b: 0 },
+  );
+  return cloneColor({
+    r: Math.floor(totals.r / colors.length),
+    g: Math.floor(totals.g / colors.length),
+    b: Math.floor(totals.b / colors.length),
+  });
 }
 
 function isDirectPointer(pointerType: ChooserPointerType) {
@@ -633,10 +739,13 @@ function normalizeSettings(
 ): Readonly<ChooserSettings> {
   const selectionMode = settings.selectionMode;
   const minimum = selectionMode === "group" ? 2 : 1;
+  const requestedCount = Number.isFinite(settings.selectionCount)
+    ? Math.round(settings.selectionCount)
+    : minimum;
   const selectionCount =
     selectionMode === "order"
       ? 1
-      : Math.max(minimum, Math.min(5, Math.round(settings.selectionCount)));
+      : Math.max(minimum, Math.min(5, requestedCount));
 
   return Object.freeze({ ...settings, selectionCount });
 }

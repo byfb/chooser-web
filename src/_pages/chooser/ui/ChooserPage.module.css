@@ -45,6 +45,15 @@
   opacity: 0.96;
 }
 
+.participant[data-state="selected"] {
+  opacity: 1;
+}
+
+.participant[data-state="retiring"] {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
 .participant::after {
   position: absolute;
   inset: 7%;
