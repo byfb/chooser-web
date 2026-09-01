@@ -94,13 +94,14 @@ the exact full SHA and its same-origin archive URL:
 }
 ```
 
-Then run `pnpm deploy`. The command executes `pnpm verify`, rechecks the clean
-SHA and canonical artifact digest, safely creates or reuses the `chooser-web`
-Direct Upload Pages project, and uploads `dist` once on production branch
-`main`. It refuses unresolved or mismatched source, Legal, manifest, archive,
-worktree, project, and Wrangler state. Custom-domain association is a separate
-Cloudflare Pages setting; the application does not add rollback or GitHub
-deployment machinery.
+Then run `pnpm run deploy`. The explicit `run` is required because pnpm 10 also
+has an unrelated built-in command named `deploy`. The package script executes
+`pnpm verify`, rechecks the clean SHA and canonical artifact digest, safely
+creates or reuses the `chooser-web` Direct Upload Pages project, and uploads
+`dist` once on production branch `main`. It refuses unresolved or mismatched
+source, Legal, manifest, archive, worktree, project, and Wrangler state.
+Custom-domain association is a separate Cloudflare Pages setting; the
+application does not add rollback or GitHub deployment machinery.
 
 The source follows Feature-Sliced Design: application concerns live under
 `src/app`, page slices under `src/_pages`, shared configuration under
