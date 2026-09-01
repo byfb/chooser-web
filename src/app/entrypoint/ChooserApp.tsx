@@ -7,6 +7,7 @@ import { ChooserPage } from "@/_pages/chooser";
 import { LegalPage, SettingsPage } from "@/_pages/settings";
 import { APP_ROUTES } from "@/shared/config";
 
+import { createChooserSettingsStore, type SettingsStorage } from "../model";
 import {
   createChooserRouter,
   resolveRoute,
@@ -27,6 +28,11 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
       ? null
       : createChooserRouter(createWindowPort()),
   );
+  const [settingsStore] = useState(() =>
+    typeof window === "undefined"
+      ? null
+      : createChooserSettingsStore(createWindowSettingsStorage()),
+  );
   const route = useSyncExternalStore(
     router?.subscribe ?? emptySubscribe,
     router?.getSnapshot ?? (() => initialRoute),
@@ -34,6 +40,9 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
   );
 
   useEffect(() => router?.start(), [router]);
+  useEffect(() => {
+    settingsStore?.load();
+  }, [settingsStore]);
 
   useEffect(() => {
     if (!router || route === APP_ROUTES.chooser) {
@@ -81,5 +90,12 @@ function createWindowPort(): ChooserBrowserPort {
       window.addEventListener("popstate", listener),
     removeEventListener: (_type, listener) =>
       window.removeEventListener("popstate", listener),
+  };
+}
+
+function createWindowSettingsStorage(): SettingsStorage {
+  return {
+    getItem: (key) => window.localStorage.getItem(key),
+    setItem: (key, value) => window.localStorage.setItem(key, value),
   };
 }

@@ -11,13 +11,17 @@ export default defineConfig({
     },
   },
   test: {
-    passWithNoTests: true,
     coverage: {
       provider: "v8",
       reporter: ["text", "json-summary"],
       reportsDirectory: "coverage",
       include: ["src/**/*.ts", "scripts/**/*.mjs"],
       exclude: ["src/**/*.test.ts", "scripts/**/*.test.mjs"],
+      thresholds: {
+        "src/app/model/chooser-settings-store.ts": {
+          100: true,
+        },
+      },
     },
   },
 });
