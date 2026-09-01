@@ -1,0 +1,9 @@
+.astro/
+.artifacts/
+.wrangler/
+coverage/
+dist/
+node_modules/
+docs/research/
+docs/wayfinder/
+legal/upstream/*.patch

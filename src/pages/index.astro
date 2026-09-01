@@ -1,0 +1,24 @@
+---
+import { ChooserApp } from "@/app";
+import "@/app/styles/global.css";
+import { APP_DESCRIPTION, APP_NAME, APP_THEME_COLOR } from "@/shared/config";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="description" content={APP_DESCRIPTION} />
+    <meta name="theme-color" content={APP_THEME_COLOR} />
+    <title>{APP_NAME}</title>
+  </head>
+  <body>
+    <div id="chooser-root">
+      <ChooserApp client:load />
+    </div>
+  </body>
+</html>
