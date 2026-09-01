@@ -90,6 +90,9 @@ export interface ChooserEffects {
 
 export type ChooserPointerType = "mouse" | "pen" | "touch" | "trackpad";
 
+export type ChooserInterruptReason =
+  "hidden" | "pagehide" | "resize" | "orientationchange";
+
 export type ChooserEvent =
   | {
       readonly type: "settings-changed";
@@ -124,6 +127,13 @@ export type ChooserEvent =
     }
   | {
       readonly type: "remove-latest-simulated";
+    }
+  | {
+      readonly type: "dismiss";
+    }
+  | {
+      readonly type: "interrupt";
+      readonly reason: ChooserInterruptReason;
     };
 
 export type ChooserSessionListener = () => void;
@@ -165,6 +175,12 @@ interface ScheduledOrder {
   readonly token: number;
 }
 
+interface ScheduledReset {
+  readonly generation: number;
+  readonly handle: unknown;
+  readonly token: number;
+}
+
 type OrderRank = Readonly<{
   readonly participantId: string;
   readonly rank: number;
@@ -202,7 +218,9 @@ export function createChooserSession(options: {
   let inputFamily: ChooserInputFamily | null = null;
   let selectionWork: ScheduledSelection | undefined;
   let orderWork: ScheduledOrder | undefined;
+  let resetWork: ScheduledReset | undefined;
   let orderToken = 0;
+  let resetToken = 0;
   let orderRanks: readonly OrderRank[] = Object.freeze([]);
   let generation = 0;
   let simulatedSequence = 0;
@@ -256,6 +274,12 @@ export function createChooserSession(options: {
         case "remove-latest-simulated":
           removeLatestSimulatedParticipant();
           return;
+        case "dismiss":
+          beginReset();
+          return;
+        case "interrupt":
+          handleInterrupt();
+          return;
       }
     },
 
@@ -268,6 +292,7 @@ export function createChooserSession(options: {
       generation += 1;
       cancelSelectionWork();
       cancelOrderWork();
+      cancelResetWork();
       pendingMouseActivations.clear();
       listeners.clear();
     },
@@ -293,6 +318,15 @@ export function createChooserSession(options: {
     event: Extract<ChooserEvent, { type: "pointer-down" }>,
   ) {
     if (event.button !== 0) {
+      return;
+    }
+
+    if (phase === "result" || phase === "order-revealing") {
+      beginReset();
+      return;
+    }
+
+    if (phase === "resetting") {
       return;
     }
 
@@ -540,6 +574,78 @@ export function createChooserSession(options: {
 
   function clearPendingMouse(pointerId: number) {
     pendingMouseActivations.delete(pointerId);
+  }
+
+  function beginReset() {
+    if (phase !== "result" && phase !== "order-revealing") {
+      return;
+    }
+
+    generation += 1;
+    cancelSelectionWork();
+    cancelOrderWork();
+    cancelResetWork();
+    pendingMouseActivations.clear();
+    inputFamily = null;
+    background = cloneColor(DEFAULT_COLOR);
+    participants.forEach((participant) => {
+      participant.state = "retiring";
+    });
+    phase = "resetting";
+
+    const resetGeneration = generation;
+    const lifetimeMs = modeLifetime(settings);
+    if (lifetimeMs <= 0) {
+      completeReset(resetGeneration);
+      return;
+    }
+
+    const token = ++resetToken;
+    const handle = options.scheduler.setTimeout(() => {
+      if (!isCurrentReset(resetGeneration, token)) {
+        return;
+      }
+
+      resetWork = undefined;
+      completeReset(resetGeneration);
+    }, lifetimeMs);
+    resetWork = { generation: resetGeneration, handle, token };
+    publish();
+  }
+
+  function completeReset(resetGeneration: number) {
+    if (destroyed || phase !== "resetting" || generation !== resetGeneration) {
+      return;
+    }
+
+    generation += 1;
+    participants.length = 0;
+    pendingMouseActivations.clear();
+    orderRanks = Object.freeze([]);
+    result = null;
+    background = cloneColor(DEFAULT_COLOR);
+    inputFamily = null;
+    phase = "idle";
+    publish();
+  }
+
+  function handleInterrupt() {
+    if (phase !== "collecting" && phase !== "order-revealing") {
+      return;
+    }
+
+    generation += 1;
+    cancelSelectionWork();
+    cancelOrderWork();
+    cancelResetWork();
+    pendingMouseActivations.clear();
+    participants.length = 0;
+    orderRanks = Object.freeze([]);
+    result = null;
+    background = cloneColor(DEFAULT_COLOR);
+    inputFamily = null;
+    phase = "idle";
+    publish();
   }
 
   function scheduleSelectionAttempt() {
@@ -833,6 +939,16 @@ export function createChooserSession(options: {
     );
   }
 
+  function isCurrentReset(resetGeneration: number, token: number) {
+    return (
+      !destroyed &&
+      phase === "resetting" &&
+      generation === resetGeneration &&
+      resetWork?.generation === resetGeneration &&
+      resetWork.token === token
+    );
+  }
+
   function cancelSelectionWork() {
     if (selectionWork === undefined) {
       return;
@@ -852,6 +968,14 @@ export function createChooserSession(options: {
       orderWork = undefined;
     }
     orderToken += 1;
+  }
+
+  function cancelResetWork() {
+    if (resetWork !== undefined) {
+      options.scheduler.clearTimeout(resetWork.handle);
+      resetWork = undefined;
+    }
+    resetToken += 1;
   }
 
   function publish() {
@@ -1061,6 +1185,16 @@ function modeDelay(settings: Readonly<ChooserSettings>) {
         ? settings.groupDelayMs
         : settings.orderDelayMs;
   return Number.isFinite(delay) ? Math.max(0, delay) : 0;
+}
+
+function modeLifetime(settings: Readonly<ChooserSettings>) {
+  const lifetime =
+    settings.selectionMode === "single"
+      ? settings.singleLifetimeMs
+      : settings.selectionMode === "group"
+        ? settings.groupLifetimeMs
+        : settings.orderLifetimeMs;
+  return Number.isFinite(lifetime) ? Math.max(0, lifetime) : 0;
 }
 
 function normalizeSettings(

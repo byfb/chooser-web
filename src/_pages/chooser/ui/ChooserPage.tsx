@@ -67,6 +67,7 @@ export function ChooserPage({
   onUpdateSettings,
 }: ChooserPageProps) {
   const surfaceRef = useRef<HTMLElement | null>(null);
+  const surfaceSizeRef = useRef<{ height: number; width: number } | null>(null);
   const pendingHoldRef = useRef<PendingHold | null>(null);
   const suppressNextClickRef = useRef(false);
   const keyboardMarkerIndexRef = useRef(0);
@@ -119,6 +120,68 @@ export function ChooserPage({
       session.send({ type: "settings-changed", settings });
     }
   }, [session, settings, snapshot.phase]);
+
+  useEffect(() => {
+    const surface = surfaceRef.current;
+    if (surface === null) {
+      return;
+    }
+
+    const measureSurface = () => {
+      const rect = surface.getBoundingClientRect();
+      return { height: rect.height, width: rect.width };
+    };
+    const clearLifecycleHold = () => {
+      const pendingHold = pendingHoldRef.current;
+      if (pendingHold !== null) {
+        window.clearTimeout(pendingHold.timer);
+        pendingHoldRef.current = null;
+      }
+    };
+    const interrupt = (
+      reason: "hidden" | "orientationchange" | "pagehide" | "resize",
+    ) => {
+      clearLifecycleHold();
+      session.send({ type: "interrupt", reason });
+    };
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        interrupt("hidden");
+      }
+    };
+    const handlePageHide = () => interrupt("pagehide");
+    const handleResize = () => {
+      clearLifecycleHold();
+      const previousSize = surfaceSizeRef.current;
+      const nextSize = measureSurface();
+      surfaceSizeRef.current = nextSize;
+      if (
+        previousSize !== null &&
+        (previousSize.width !== nextSize.width ||
+          previousSize.height !== nextSize.height)
+      ) {
+        session.send({ type: "interrupt", reason: "resize" });
+      }
+    };
+    const handleOrientationChange = () => {
+      surfaceSizeRef.current = measureSurface();
+      interrupt("orientationchange");
+    };
+
+    surfaceSizeRef.current = measureSurface();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pagehide", handlePageHide);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleOrientationChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pagehide", handlePageHide);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleOrientationChange);
+      surfaceSizeRef.current = null;
+    };
+  }, [session]);
 
   const canChangeSettings = () => session.getSnapshot().phase === "idle";
 
@@ -262,6 +325,25 @@ export function ChooserPage({
 
   const handleSurfaceKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    const currentPhase = session.getSnapshot().phase;
+    const isDismissKey =
+      event.key === "Enter" || event.key === " " || event.key === "Spacebar";
+    if (
+      isDismissKey &&
+      (currentPhase === "result" || currentPhase === "order-revealing")
+    ) {
+      event.preventDefault();
+      session.send({ type: "dismiss" });
+      return;
+    }
+
+    if (currentPhase === "resetting") {
+      if (isDismissKey) {
+        event.preventDefault();
+      }
       return;
     }
 
