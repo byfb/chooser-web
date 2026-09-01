@@ -32,6 +32,7 @@ import {
   type ChooserPwaSnapshot,
   type ChooserServiceWorkerContainer,
 } from "../pwa";
+import { createChooserReleaseSnapshot } from "../release";
 import {
   createChooserRouter,
   resolveRoute,
@@ -64,6 +65,11 @@ const serverCapabilitySnapshot: SettingsCapabilitySnapshot = Object.freeze({
 });
 const serverPwaSnapshot: ChooserPwaSnapshot = Object.freeze({
   offline: "Preparing",
+});
+const releaseSnapshot = createChooserReleaseSnapshot({
+  buildIdentity: __CHOOSER_BUILD_ID__,
+  sourceStatus: __CHOOSER_SOURCE_STATUS__,
+  sourceUrl: __CHOOSER_SOURCE_URL__,
 });
 
 export function ChooserApp({ initialPathname }: ChooserAppProps) {
@@ -185,7 +191,9 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
   }
 
   if (route === APP_ROUTES.legal) {
-    return <LegalPage onBack={() => router?.back()} />;
+    return (
+      <LegalPage onBack={() => router?.back()} release={releaseSnapshot} />
+    );
   }
 
   return (

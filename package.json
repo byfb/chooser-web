@@ -11,7 +11,7 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/release/build.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "lint": "eslint .",

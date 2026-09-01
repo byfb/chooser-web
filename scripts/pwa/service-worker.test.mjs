@@ -27,6 +27,11 @@ import {
   PWA_ICON_CONTRACT,
   PWA_MANIFEST_IDENTITY,
 } from "./static-pwa-validator.mjs";
+import {
+  createReleaseBanner,
+  normalizeReleaseBannerOptions,
+  prependReleaseBanners,
+} from "./release-banner.mjs";
 
 const temporaryDirectories = [];
 
@@ -141,6 +146,105 @@ describe("Chooser generated service worker", () => {
     await expect(
       validateServiceWorkerRelease(distDir, { buildId: "hook-build" }),
     ).resolves.toMatchObject({ buildId: "hook-build" });
+    expect(await readFile(join(distDir, "assets/app.js"), "utf8")).toBe(
+      `${createReleaseBanner({ buildId: "hook-build" })}\nconsole.log(1);`,
+    );
+    expect(await readFile(join(distDir, "sw.js"), "utf8")).toMatch(
+      /^\/\*! Chooser Web \| GPL-3\.0-or-later \| Source revision: hook-build \| Corresponding Source: pending approval \*\//u,
+    );
+  });
+
+  it("emits exact pending and approved banners for a full release SHA", () => {
+    const buildId = "a".repeat(40);
+    expect(createReleaseBanner({ buildId })).toBe(
+      `/*! Chooser Web | GPL-3.0-or-later | Source revision: ${buildId} | Corresponding Source: pending approval */`,
+    );
+    expect(
+      createReleaseBanner({
+        buildId,
+        sourceStatus: "approved",
+        sourceUrl: `https://example.invalid/chooser/${buildId}.tar.gz`,
+      }),
+    ).toBe(
+      `/*! Chooser Web | GPL-3.0-or-later | Source revision: ${buildId} | Corresponding Source: https://example.invalid/chooser/${buildId}.tar.gz */`,
+    );
+  });
+
+  it("prefixes every JavaScript and CSS bundle exactly once", async () => {
+    const distDir = await createDist();
+    const buildId = "b".repeat(40);
+    const oldBanner = createReleaseBanner({ buildId: "old-build" });
+    await writeFile(
+      join(distDir, "assets/app.css"),
+      `${oldBanner}\n${oldBanner}\nbody { color: black; }`,
+    );
+    await writeFile(
+      join(distDir, "nested/chunk.js"),
+      "export const value = 1;",
+    );
+    await writeFile(
+      join(distDir, "nested/theme.css"),
+      "body { color: white; }",
+    );
+    await writeFile(join(distDir, "nested/chunk.js.map"), "{}");
+
+    const options = { buildId, sourceStatus: "pending", sourceUrl: "" };
+    const first = await prependReleaseBanners(distDir, options);
+    const second = await prependReleaseBanners(distDir, options);
+    const banner = createReleaseBanner(options);
+
+    expect(first.files).toEqual([
+      "/assets/app.css",
+      "/assets/app.js",
+      "/nested/chunk.js",
+      "/nested/theme.css",
+    ]);
+    expect(second).toEqual(first);
+    for (const file of first.files) {
+      const contents = await readFile(join(distDir, file.slice(1)), "utf8");
+      expect(contents.startsWith(`${banner}\n`)).toBe(true);
+      expect(
+        contents.match(/\/\*! Chooser Web \| GPL-3\.0-or-later/gu),
+      ).toHaveLength(1);
+    }
+    expect(await readFile(join(distDir, "nested/chunk.js.map"), "utf8")).toBe(
+      "{}",
+    );
+  });
+
+  it("rejects invalid source status and approved source metadata", () => {
+    const buildId = "c".repeat(40);
+    expect(() =>
+      normalizeReleaseBannerOptions({ buildId, sourceStatus: "unknown" }),
+    ).toThrow(/pending or approved/i);
+    expect(() =>
+      normalizeReleaseBannerOptions({
+        buildId,
+        sourceStatus: "pending",
+        sourceUrl: "https://example.invalid/source",
+      }),
+    ).toThrow(/must not include/i);
+    expect(() =>
+      normalizeReleaseBannerOptions({
+        buildId,
+        sourceStatus: "approved",
+        sourceUrl: "http://example.invalid/source",
+      }),
+    ).toThrow(/immutable HTTPS/i);
+    expect(() =>
+      normalizeReleaseBannerOptions({
+        buildId,
+        sourceStatus: "approved",
+        sourceUrl: "https://example.invalid/source?revision=latest",
+      }),
+    ).toThrow(/immutable HTTPS/i);
+    expect(() =>
+      normalizeReleaseBannerOptions({
+        buildId,
+        sourceStatus: "approved",
+        sourceUrl: `https://example.invalid/source/${"d".repeat(40)}.tar.gz`,
+      }),
+    ).toThrow(/exact build identity/i);
   });
 
   it("rejects stale, unsorted, duplicate, and excluded precache manifests", () => {

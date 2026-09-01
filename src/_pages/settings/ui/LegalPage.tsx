@@ -5,6 +5,12 @@ import styles from "./LegalPage.module.css";
 
 interface LegalPageProps {
   onBack(): void;
+  release: {
+    readonly kind: "candidate" | "development" | "production";
+    readonly revision: string | null;
+    readonly sourceArchivePath: string | null;
+    readonly sourceUrl: string | null;
+  };
 }
 
 const LOCAL_DOCUMENTS = [
@@ -14,7 +20,7 @@ const LOCAL_DOCUMENTS = [
   { href: "/legal/asset-provenance.txt", label: "Asset provenance" },
 ] as const;
 
-export function LegalPage({ onBack }: LegalPageProps) {
+export function LegalPage({ onBack, release }: LegalPageProps) {
   return (
     <main
       aria-labelledby="legal-title"
@@ -91,29 +97,58 @@ export function LegalPage({ onBack }: LegalPageProps) {
 
         <section
           aria-labelledby="legal-release-title"
-          className={`${styles.section} ${styles.releaseSection}`}
+          className={styles.section}
         >
           <h2 id="legal-release-title">Release information</h2>
-          <p className={styles.localBadge}>Local development build</p>
-          <p>
-            This build has not been published as a production release. Release
-            identifiers and corresponding source become available when a release
-            is approved.
+          <p className={styles.localBadge}>
+            {release.kind === "production"
+              ? "Production release"
+              : release.kind === "candidate"
+                ? "Local release candidate"
+                : "Local development build"}
           </p>
+          {release.kind === "production" ? (
+            <p>
+              This deployed build and its Corresponding Source identify the same
+              immutable revision.
+            </p>
+          ) : (
+            <p>
+              This build has not been published as a production release. A
+              public immutable source location still requires release approval.
+            </p>
+          )}
           <dl className={styles.metadata}>
             <div>
-              <dt>Production revision</dt>
-              <dd>Unavailable until release.</dd>
+              <dt>Revision</dt>
+              <dd>{release.revision ?? "Unavailable until release."}</dd>
             </div>
             <div>
               <dt>Corresponding source</dt>
               <dd>
-                Unavailable until a public immutable location is approved.
+                {release.sourceUrl ? (
+                  <a className={styles.documentLink} href={release.sourceUrl}>
+                    Download exact source
+                  </a>
+                ) : (
+                  "Unavailable until a public immutable location is approved."
+                )}
               </dd>
             </div>
             <div>
               <dt>Source archive</dt>
-              <dd>Unavailable until release.</dd>
+              <dd>
+                {release.sourceArchivePath ? (
+                  <a
+                    className={styles.documentLink}
+                    href={release.sourceArchivePath}
+                  >
+                    Download same-release archive
+                  </a>
+                ) : (
+                  "Unavailable until release."
+                )}
+              </dd>
             </div>
           </dl>
         </section>
@@ -124,8 +159,8 @@ export function LegalPage({ onBack }: LegalPageProps) {
         >
           <h2 id="legal-documents-title">License and notices</h2>
           <p>
-            These records are included in this local build. Offline caching is
-            still preparing.
+            These records are included in this build and remain available after
+            Offline reports Ready.
           </p>
           <ul className={styles.documentList}>
             {LOCAL_DOCUMENTS.map(({ href, label }) => (

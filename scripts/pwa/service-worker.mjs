@@ -6,6 +6,11 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import {
+  createReleaseBanner,
+  normalizeReleaseBannerOptions,
+  prependReleaseBanners,
+} from "./release-banner.mjs";
 import { validateStaticPwaRelease } from "./static-pwa-validator.mjs";
 
 export const SERVICE_WORKER_FILE = "sw.js";
@@ -98,10 +103,21 @@ export async function collectPrecacheUrls(distDir) {
  */
 export async function writeServiceWorker(distDir, options = {}) {
   const buildId = normalizeBuildId(options.buildId);
+  const releaseBanner = normalizeReleaseBannerOptions({
+    buildId,
+    sourceStatus: options.sourceStatus,
+    sourceUrl: options.sourceUrl,
+  });
+  await prependReleaseBanners(distDir, releaseBanner);
   const precacheUrls = await collectPrecacheUrls(distDir);
   assertValidPrecacheUrls(precacheUrls);
 
-  const source = buildServiceWorkerSource({ buildId, precacheUrls });
+  const source = `${createReleaseBanner(releaseBanner)}\n${buildServiceWorkerSource(
+    {
+      buildId,
+      precacheUrls,
+    },
+  )}`;
   const outputPath = join(distDir, SERVICE_WORKER_FILE);
   await writeFile(outputPath, source, "utf8");
 
@@ -387,13 +403,26 @@ self.addEventListener("fetch", (event) => {
  */
 export function createChooserPwaIntegration(options = {}) {
   const buildId = normalizeBuildId(options.buildId);
+  const releaseBanner = normalizeReleaseBannerOptions({
+    buildId,
+    sourceStatus: options.sourceStatus,
+    sourceUrl: options.sourceUrl,
+  });
   return {
     name: "chooser-pwa",
     hooks: {
       "astro:build:done": async ({ dir }) => {
         const distDir = fileURLToPath(dir);
-        await writeServiceWorker(distDir, { buildId });
-        await validateStaticPwaRelease(distDir, { buildId });
+        await writeServiceWorker(distDir, {
+          buildId,
+          sourceStatus: releaseBanner.sourceStatus,
+          sourceUrl: releaseBanner.sourceUrl,
+        });
+        await validateStaticPwaRelease(distDir, {
+          buildId,
+          sourceStatus: releaseBanner.sourceStatus,
+          sourceUrl: releaseBanner.sourceUrl,
+        });
       },
     },
   };

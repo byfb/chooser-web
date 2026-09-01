@@ -18,9 +18,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
 ## Status
 
 This repository is being developed locally first. The current tree is not an
-external publication or a conveyed production release. No public
-Corresponding Source location has been approved yet, and no GitHub repository
-is created by the local bootstrap.
+external publication or a conveyed production release until its guarded local
+deployment completes. No GitHub repository is created or required.
 
 **Web adaptation; modified 2026.** The upstream project
 is Copyright (C) 2025 UrAvgCode and is available at
@@ -40,16 +39,11 @@ program under that license. The program comes without warranty, to the extent
 permitted by applicable law; see the license for the controlling terms. This
 project adds no EULA or term that restricts GPL rights.
 
-Before any external deployment, the release must have an approved immutable
-public Corresponding Source location for the exact deployed commit. A future
-release will also serve a matching archive at
-`/source/chooser-web-<full-sha>.tar.gz`. A moving branch, mutable landing page,
-or unrelated source snapshot is not Corresponding Source for a release.
-
-The source path, full release SHA, and same-release archive are intentionally
-unresolved while this repository remains local. Any future deployment command
-must fail closed until they are resolved and agree with the clean commit and
-the generated artifacts.
+Each deployment serves its complete, normalized Corresponding Source archive
+at `/source/chooser-web-<full-sha>.tar.gz` on the same origin. The archive,
+Legal page, service worker, and emitted JavaScript/CSS banners identify the
+same full Git SHA. A moving branch, mutable landing page, or unrelated source
+snapshot is not Corresponding Source for a release.
 
 ## Development
 
@@ -76,12 +70,13 @@ pnpm build
 pnpm verify
 ```
 
-`pnpm verify` is the local, non-mutating quality gate. It is expected to grow
-with the release implementation to check deterministic artifacts, legal
-records, the service worker, and the static distribution. The local Cloudflare
-Pages deployment command (`pnpm deploy`) is intentionally added only with the
-later guarded release implementation; it must not be treated as available or
-as a publication in this foundation commit.
+`pnpm build` requires a clean Git commit. It performs two isolated
+frozen-lockfile Astro builds, proves their outputs and source archives are
+byte-identical, and materializes the verified candidate into `dist`.
+`pnpm verify` runs the complete local, non-mutating quality gate and finishes
+with that deterministic release build. Release metadata stays outside the
+deployable tree under ignored `.artifacts/release/`; `dist` contains only the
+static application and its SHA-named source archive.
 
 The source follows Feature-Sliced Design: application concerns live under
 `src/app`, page slices under `src/_pages`, shared configuration under

@@ -43,6 +43,23 @@ describe("static PWA release validator", () => {
     });
   });
 
+  it("rejects a stale GPL/source banner even when the worker contract still matches", async () => {
+    const distDir = await createStaticDist();
+    const workerPath = join(distDir, "sw.js");
+    const worker = await readFile(workerPath, "utf8");
+    await writeFile(
+      workerPath,
+      worker.replace(
+        "Corresponding Source: pending approval",
+        "Corresponding Source: stale",
+      ),
+    );
+
+    await expect(
+      validateStaticPwaRelease(distDir, { buildId: "build-a" }),
+    ).rejects.toThrow(/GPL\/source banner/i);
+  });
+
   it.each([
     ["id", (manifest) => ({ ...manifest, id: "/app" })],
     ["description", (manifest) => ({ ...manifest, description: "Chooser" })],

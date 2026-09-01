@@ -10,7 +10,7 @@ const checks = [
   ["FSD boundaries", ["fsd:check"]],
   ["GPL and provenance", ["legal:check"]],
   ["tests and coverage", ["test:coverage"]],
-  ["static build", ["build"]],
+  ["deterministic release candidate", ["build"]],
 ];
 
 for (const [label, args] of checks) {

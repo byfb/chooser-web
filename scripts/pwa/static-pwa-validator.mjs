@@ -4,6 +4,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
+import { validateReleaseBanners } from "./release-banner.mjs";
 import { validateServiceWorkerRelease } from "./service-worker.mjs";
 
 export const PWA_MANIFEST_PATH = "/manifest.webmanifest";
@@ -134,6 +135,11 @@ export async function validateStaticPwaRelease(distDir, options = {}) {
   const worker = await validateServiceWorkerRelease(distDir, {
     buildId: options.buildId,
   });
+  const banners = await validateReleaseBanners(distDir, {
+    buildId: options.buildId,
+    sourceStatus: options.sourceStatus,
+    sourceUrl: options.sourceUrl,
+  });
 
   return {
     manifest: PWA_MANIFEST_PATH,
@@ -142,6 +148,7 @@ export async function validateStaticPwaRelease(distDir, options = {}) {
     headers: "/_headers",
     notFound: NOT_FOUND_DOCUMENT_PATH,
     worker,
+    banners,
   };
 }
 
