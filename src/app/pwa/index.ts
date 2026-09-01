@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 export {
+  CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS,
   CHOOSER_PWA_HANDSHAKE_REQUEST,
   CHOOSER_PWA_HANDSHAKE_RESPONSE,
   CHOOSER_PWA_SERVICE_WORKER_SCOPE,
@@ -17,6 +18,7 @@ export type {
   ChooserPwaRuntime,
   ChooserPwaRuntimeOptions,
   ChooserPwaSnapshot,
+  ChooserPwaVisibilityState,
   ChooserServiceWorker,
   ChooserServiceWorkerContainer,
   ChooserServiceWorkerRegistration,

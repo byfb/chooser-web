@@ -230,5 +230,13 @@ function createWindowPwaBrowser(): ChooserPwaBrowserPort {
       navigator.serviceWorker as unknown as ChooserServiceWorkerContainer,
     setTimeout: (callback, timeoutMs) => window.setTimeout(callback, timeoutMs),
     clearTimeout: (handle) => window.clearTimeout(handle as number),
+    get visibilityState() {
+      return document.visibilityState === "visible" ? "visible" : "hidden";
+    },
+    now: () => window.performance.now(),
+    addEventListener: (_type, listener) =>
+      document.addEventListener("visibilitychange", listener),
+    removeEventListener: (_type, listener) =>
+      document.removeEventListener("visibilitychange", listener),
   };
 }

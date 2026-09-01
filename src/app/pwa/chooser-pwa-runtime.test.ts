@@ -4,11 +4,13 @@
 import { describe, expect, it, vi } from "vitest";
 
 import {
+  CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS,
   CHOOSER_PWA_HANDSHAKE_RESPONSE,
   createChooserPwaRuntime,
   type ChooserPwaBrowserPort,
   type ChooserPwaMessage,
   type ChooserPwaMessageEvent,
+  type ChooserPwaVisibilityState,
   type ChooserServiceWorker,
   type ChooserServiceWorkerContainer,
   type ChooserServiceWorkerRegistration,
@@ -216,7 +218,98 @@ describe("Chooser PWA runtime", () => {
     expect(browser.listenerCounts).toEqual({
       controllerchange: 0,
       message: 0,
+      visibilitychange: 0,
     });
+  });
+
+  it("updates only at or after the 24-hour foreground threshold", async () => {
+    const browser = createBrowser({ now: 1_000 });
+    const runtime = createChooserPwaRuntime(browser.port, "build-a");
+
+    runtime.start();
+    await settle();
+
+    browser.setNow(1_000 + CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS - 1);
+    browser.setVisibilityState("hidden");
+    browser.emitVisibilityChange();
+    browser.setVisibilityState("visible");
+    browser.emitVisibilityChange();
+    expect(browser.registrationUpdate).not.toHaveBeenCalled();
+
+    browser.setNow(1_000 + CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS);
+    browser.setVisibilityState("hidden");
+    browser.emitVisibilityChange();
+    browser.setVisibilityState("visible");
+    browser.emitVisibilityChange();
+    await settle();
+
+    expect(browser.registrationUpdate).toHaveBeenCalledTimes(1);
+  });
+
+  it("ignores visible events that do not follow a hidden state", async () => {
+    const browser = createBrowser({ now: 1_000 });
+    const runtime = createChooserPwaRuntime(browser.port, "build-a");
+
+    runtime.start();
+    await settle();
+
+    browser.setNow(1_000 + CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS);
+    browser.setVisibilityState("visible");
+    browser.emitVisibilityChange();
+    browser.emitVisibilityChange();
+    expect(browser.registrationUpdate).not.toHaveBeenCalled();
+
+    browser.setVisibilityState("hidden");
+    browser.emitVisibilityChange();
+    browser.setVisibilityState("visible");
+    browser.emitVisibilityChange();
+    browser.emitVisibilityChange();
+    await settle();
+
+    expect(browser.registrationUpdate).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(["sync", "async"] as const)(
+    "swallows %s foreground update failures and records the check",
+    async (updateFailure) => {
+      const browser = createBrowser({ now: 1_000, updateFailure });
+      const runtime = createChooserPwaRuntime(browser.port, "build-a");
+
+      runtime.start();
+      await settle();
+      browser.setNow(1_000 + CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS);
+      browser.setVisibilityState("hidden");
+      browser.emitVisibilityChange();
+      browser.setVisibilityState("visible");
+      expect(() => browser.emitVisibilityChange()).not.toThrow();
+      await settle();
+
+      browser.setVisibilityState("hidden");
+      browser.emitVisibilityChange();
+      browser.setVisibilityState("visible");
+      browser.emitVisibilityChange();
+      await settle();
+
+      expect(browser.registrationUpdate).toHaveBeenCalledTimes(1);
+    },
+  );
+
+  it("removes foreground listeners on stop", async () => {
+    const browser = createBrowser({ now: 1_000 });
+    const runtime = createChooserPwaRuntime(browser.port, "build-a");
+
+    const stop = runtime.start();
+    await settle();
+    stop();
+
+    browser.setNow(1_000 + CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS);
+    browser.setVisibilityState("hidden");
+    browser.emitVisibilityChange();
+    browser.setVisibilityState("visible");
+    browser.emitVisibilityChange();
+
+    expect(browser.registrationUpdate).not.toHaveBeenCalled();
+    expect(browser.listenerCounts.visibilitychange).toBe(0);
   });
 });
 
@@ -251,13 +344,20 @@ function createBrowser(
     controllerMismatch?: boolean;
     registrationFailure?: boolean;
     supported?: boolean;
+    now?: number;
+    updateFailure?: "async" | "sync";
+    visibilityState?: ChooserPwaVisibilityState;
     waitingWorker?: boolean;
   } = {},
 ) {
   const controllerChangeListeners = new Set<() => void>();
   const messageListeners = new Set<(event: ChooserPwaMessageEvent) => void>();
+  const visibilityChangeListeners = new Set<() => void>();
   const registerCalls: Array<{ scriptUrl: string; scope: string }> = [];
   let timerId = 0;
+  let now = options.now ?? 0;
+  let visibilityState: ChooserPwaVisibilityState =
+    options.visibilityState ?? "visible";
   const timers = new Map<number, () => void>();
   const worker: ChooserServiceWorker & { messages: unknown[] } = {
     messages: [],
@@ -272,13 +372,22 @@ function createBrowser(
     },
   };
   const activeWorker: ChooserServiceWorker | null = worker;
+  const registrationUpdate = vi.fn(() => {
+    if (options.updateFailure === "sync") {
+      throw new Error("update failed");
+    }
+    if (options.updateFailure === "async") {
+      return Promise.reject(new Error("update failed"));
+    }
+    return Promise.resolve();
+  });
   const registration: ChooserServiceWorkerRegistration = {
     get active() {
       return activeWorker;
     },
     installing: null,
     waiting: options.waitingWorker ? replacementWorker : null,
-    update: vi.fn(async () => undefined),
+    update: registrationUpdate,
   };
   let controller: ChooserServiceWorker | null =
     options.controlled === false
@@ -329,12 +438,25 @@ function createBrowser(
     clearTimeout(handle) {
       timers.delete(handle as number);
     },
+    get visibilityState() {
+      return visibilityState;
+    },
+    now() {
+      return now;
+    },
+    addEventListener(_type, listener) {
+      visibilityChangeListeners.add(listener);
+    },
+    removeEventListener(_type, listener) {
+      visibilityChangeListeners.delete(listener);
+    },
   };
 
   return {
     port,
     worker,
     registerCalls,
+    registrationUpdate,
     emitMessage(data: unknown) {
       messageListeners.forEach((listener) => listener({ data }));
     },
@@ -344,10 +466,20 @@ function createBrowser(
     setControlled(value: boolean) {
       controller = value ? worker : null;
     },
+    setNow(value: number) {
+      now = value;
+    },
+    setVisibilityState(value: ChooserPwaVisibilityState) {
+      visibilityState = value;
+    },
+    emitVisibilityChange() {
+      visibilityChangeListeners.forEach((listener) => listener());
+    },
     get listenerCounts() {
       return {
         controllerchange: controllerChangeListeners.size,
         message: messageListeners.size,
+        visibilitychange: visibilityChangeListeners.size,
       };
     },
     runTimers() {

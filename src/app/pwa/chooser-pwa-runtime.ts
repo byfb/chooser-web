@@ -6,8 +6,10 @@ export const CHOOSER_PWA_SERVICE_WORKER_SCOPE = "/" as const;
 export const CHOOSER_PWA_HANDSHAKE_REQUEST = "CHOOSER_PWA_HANDSHAKE" as const;
 export const CHOOSER_PWA_HANDSHAKE_RESPONSE =
   "CHOOSER_PWA_HANDSHAKE_RESULT" as const;
+export const CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS = 24 * 60 * 60 * 1_000;
 
 export type OfflineStatus = "Preparing" | "Ready" | "Unavailable";
+export type ChooserPwaVisibilityState = "hidden" | "visible";
 
 export interface ChooserPwaSnapshot {
   readonly offline: OfflineStatus;
@@ -67,6 +69,10 @@ export interface ChooserPwaBrowserPort {
   readonly serviceWorker?: ChooserServiceWorkerContainer;
   readonly setTimeout?: (callback: () => void, timeoutMs: number) => unknown;
   readonly clearTimeout?: (handle: unknown) => void;
+  readonly visibilityState?: ChooserPwaVisibilityState;
+  readonly now?: () => number;
+  addEventListener?(type: "visibilitychange", listener: () => void): void;
+  removeEventListener?(type: "visibilitychange", listener: () => void): void;
 }
 
 export interface ChooserPwaRuntime {
@@ -102,6 +108,7 @@ export function createChooserPwaRuntime(
         handle as ReturnType<typeof globalThis.setTimeout>,
       ));
   const handshakeTimeoutMs = normalizeTimeout(options.handshakeTimeoutMs);
+  const readNow = browser.now ?? (() => globalThis.performance?.now() ?? 0);
 
   let snapshot = INITIAL_SNAPSHOT;
   let stop: (() => void) | undefined;
@@ -110,6 +117,8 @@ export function createChooserPwaRuntime(
   let lifecycleGeneration = 0;
   let requestSequence = 0;
   let pendingHandshake: PendingHandshake | undefined;
+  let lastUpdateCheckAt: number | undefined;
+  let previousVisibilityState: ChooserPwaVisibilityState = "visible";
 
   const notify = () => listeners.forEach((listener) => listener());
 
@@ -155,6 +164,35 @@ export function createChooserPwaRuntime(
     void registerAndVerify();
   };
 
+  const onVisibilityChange = () => {
+    if (!stop || !registration) {
+      return;
+    }
+
+    const visibilityState = browser.visibilityState ?? "visible";
+    const becameVisible =
+      previousVisibilityState === "hidden" && visibilityState === "visible";
+    previousVisibilityState = visibilityState;
+    if (!becameVisible) {
+      return;
+    }
+
+    const now = readNow();
+    if (
+      lastUpdateCheckAt === undefined ||
+      now - lastUpdateCheckAt < CHOOSER_PWA_FOREGROUND_UPDATE_INTERVAL_MS
+    ) {
+      return;
+    }
+
+    lastUpdateCheckAt = now;
+    try {
+      void Promise.resolve(registration.update()).catch(() => undefined);
+    } catch {
+      // Update checks are opportunistic and must never affect the app.
+    }
+  };
+
   async function registerAndVerify() {
     if (!serviceWorker || registrationRequest) {
       return registrationRequest;
@@ -162,6 +200,7 @@ export function createChooserPwaRuntime(
 
     const generation = ++lifecycleGeneration;
     setOfflineStatus("Preparing");
+    lastUpdateCheckAt = readNow();
     let registrationResult: Promise<ChooserServiceWorkerRegistration>;
     try {
       registrationResult = serviceWorker.register(
@@ -309,11 +348,14 @@ export function createChooserPwaRuntime(
           onControllerChange,
         );
         serviceWorker.removeEventListener("message", onMessage);
+        browser.removeEventListener?.("visibilitychange", onVisibilityChange);
       };
 
       stop = cleanup;
+      previousVisibilityState = browser.visibilityState ?? "visible";
       serviceWorker.addEventListener("controllerchange", onControllerChange);
       serviceWorker.addEventListener("message", onMessage);
+      browser.addEventListener?.("visibilitychange", onVisibilityChange);
       void registerAndVerify();
       return cleanup;
     },
