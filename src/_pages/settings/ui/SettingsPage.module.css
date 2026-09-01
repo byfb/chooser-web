@@ -1,0 +1,236 @@
+/* SPDX-FileCopyrightText: 2026 byfb */
+/* SPDX-FileCopyrightText: 2025 UrAvgCode */
+/* SPDX-FileContributor: Patch4Code */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+
+.content {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 1.25rem;
+}
+
+.persistenceStatus {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  color: #ffd8a8;
+  font-weight: 650;
+  border: 1px solid #8f5b20;
+  border-radius: 0.9rem;
+  background: #2a1d0f;
+}
+
+.section {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.section h2 {
+  margin: 0 0 0 0.25rem;
+  color: #b8b8b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.sectionBody {
+  overflow: hidden;
+  border: 1px solid #303030;
+  border-radius: 1rem;
+  background: #191919;
+}
+
+.switchRow,
+.readonlyRow,
+.rangeRow {
+  box-sizing: border-box;
+  min-height: 3.75rem;
+  padding: 0.8rem 1rem;
+}
+
+.switchRow,
+.readonlyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.switchRow + .switchRow,
+.rangeRow + .rangeRow,
+.switchRow + .rangeRow,
+.rangeRow + .switchRow {
+  border-top: 1px solid #2d2d2d;
+}
+
+.switchValue {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.statusValue {
+  color: #b8b8b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.switchInput {
+  position: relative;
+  flex: 0 0 auto;
+  width: 3.1rem;
+  height: 1.8rem;
+  margin: 0;
+  border: 2px solid #737373;
+  border-radius: 999px;
+  appearance: none;
+  background: #303030;
+  cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.switchInput::before {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: #efefef;
+  content: "";
+  transition: transform 140ms ease;
+}
+
+.switchInput:checked {
+  border-color: #8ec9ff;
+  background: #1769aa;
+}
+
+.switchInput:checked::before {
+  transform: translateX(1.3rem);
+}
+
+.switchInput:disabled {
+  opacity: 0.56;
+  cursor: not-allowed;
+}
+
+.rangeRow {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.rangeHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rangeHeading output {
+  color: #c9e7ff;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.rangeRow input {
+  width: 100%;
+  min-height: 1.6rem;
+  margin: 0;
+  accent-color: #7fc4ff;
+  cursor: pointer;
+}
+
+.navigationRow,
+.resetButton {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 0.8rem 1rem;
+  color: inherit;
+  font-weight: 650;
+  text-align: left;
+  border: 1px solid #303030;
+  border-radius: 1rem;
+  background: #191919;
+}
+
+.resetButton {
+  color: #ffb5ad;
+}
+
+.navigationRow:hover,
+.resetButton:hover {
+  background: #292929;
+}
+
+.navigationRow:focus-visible,
+.resetButton:focus-visible,
+.switchInput:focus-visible,
+.rangeRow input:focus-visible,
+.dialog button:focus-visible {
+  outline: 3px solid #90caf9;
+  outline-offset: 2px;
+}
+
+.dialog {
+  box-sizing: border-box;
+  width: min(calc(100% - 2rem), 28rem);
+  padding: 1.25rem;
+  color: #f5f5f5;
+  border: 1px solid #444;
+  border-radius: 1.25rem;
+  background: #202020;
+  box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 55%);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 72%);
+  backdrop-filter: blur(0.2rem);
+}
+
+.dialog h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dialog p {
+  margin: 0.8rem 0 1.4rem;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.dialogActions button {
+  min-width: 5rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  color: inherit;
+  font-weight: 650;
+  border: 1px solid #555;
+  border-radius: 0.75rem;
+  background: #303030;
+}
+
+.dialogActions .confirmResetButton {
+  color: #240500;
+  border-color: #ff9e94;
+  background: #ff9e94;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switchInput,
+  .switchInput::before {
+    transition: none;
+  }
+}

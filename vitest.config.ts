@@ -18,6 +18,9 @@ export default defineConfig({
       include: ["src/**/*.ts", "scripts/**/*.mjs"],
       exclude: ["src/**/*.test.ts", "scripts/**/*.test.mjs"],
       thresholds: {
+        "src/_pages/settings/model/settings-capability-model.ts": {
+          100: true,
+        },
         "src/app/model/chooser-settings-store.ts": {
           100: true,
         },
