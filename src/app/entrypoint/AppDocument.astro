@@ -1,0 +1,30 @@
+---
+// SPDX-FileCopyrightText: 2026 byfb
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+import { APP_DESCRIPTION, APP_NAME, APP_THEME_COLOR } from "@/shared/config";
+
+import { ChooserApp } from "./ChooserApp";
+import "../styles/global.css";
+
+const initialPathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="description" content={APP_DESCRIPTION} />
+    <meta name="theme-color" content={APP_THEME_COLOR} />
+    <title>{APP_NAME}</title>
+  </head>
+  <body>
+    <div id="chooser-root">
+      <ChooserApp {initialPathname} client:load />
+    </div>
+  </body>
+</html>
