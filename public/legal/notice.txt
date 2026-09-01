@@ -77,7 +77,8 @@ from build-only tooling. They must be reviewed and regenerated from
 `pnpm-lock.yaml`, the shipped-build-output declaration, and the explicit asset
 inventory before every conveyed release.
 
-No third-party font, icon, image, vector, audio file, or other media is claimed
-as shipped by this foundation baseline. Original 2026 icon and synthesized
-audio sources are pending and must receive a complete provenance entry before
-they enter `dist`.
+No third-party font, icon, image, vector, audio file, or other media is shipped.
+The three original 2026 mode-icon SVG sources are included and recorded in the
+asset provenance inventory. Launcher derivatives and synthesized audio sources
+remain pending and must receive complete provenance entries before they enter
+`dist`.

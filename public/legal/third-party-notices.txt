@@ -177,11 +177,12 @@ package is intentionally bundled in the current browser client.
 
 ## Assets
 
-The foundation build ships no third-party images, fonts, icons, vectors, or
-audio. Planned original assets are listed as pending in
-[`legal/asset-provenance.md`](legal/asset-provenance.md). They will be
-authored by byfb in 2026 and released as part of this GPL work only
-after their editable sources and generated derivatives are recorded.
+The build ships no third-party images, fonts, icons, vectors, or audio. The
+three mode icons are original editable SVGs authored by byfb in 2026
+and released as part of this GPL work. Their source paths and license basis are
+recorded in
+[`legal/asset-provenance.md`](legal/asset-provenance.md). Planned
+launcher derivatives and synthesized audio remain pending there.
 
 The following reference materials are explicitly excluded and must not enter
 source output or `dist`:

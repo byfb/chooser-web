@@ -1,0 +1,11 @@
+<!--
+SPDX-FileCopyrightText: 2026 byfb
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle cx="10" cy="24" r="5" fill="#fff"/>
+  <circle cx="24" cy="24" r="5" fill="#fff" opacity=".75"/>
+  <circle cx="38" cy="24" r="5" fill="#fff" opacity=".5"/>
+  <path d="M15 24h4M29 24h4" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+  <path d="m31 17 7-7m0 0v5m0-5h-5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>

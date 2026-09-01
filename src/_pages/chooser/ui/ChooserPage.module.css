@@ -1,0 +1,95 @@
+/* SPDX-FileCopyrightText: 2026 byfb */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+
+.surface {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.surface:focus-visible {
+  outline: 3px solid #90caf9;
+  outline-offset: -3px;
+}
+
+.controls {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+
+.control {
+  position: absolute;
+  top: calc(
+    max(env(safe-area-inset-top, 0px), 24px) + var(--chooser-top-padding)
+  );
+  display: grid;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  border: 0;
+  border-radius: 50%;
+  background: #303238;
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 38%),
+    inset 0 1px 0 rgb(255 255 255 / 12%);
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    transform 400ms ease,
+    opacity 400ms ease;
+  cursor: pointer;
+  pointer-events: auto;
+  place-items: center;
+}
+
+.modeControl {
+  left: calc(env(safe-area-inset-left, 0px) + 24px);
+}
+
+.countControl {
+  right: calc(env(safe-area-inset-right, 0px) + 24px);
+  font-size: 38px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.controlsHidden .control {
+  opacity: 0;
+  transform: translateY(calc(-100% - 80px));
+  pointer-events: none;
+}
+
+.control:hover {
+  background: #3b3e45;
+}
+
+.control:active {
+  transform: scale(0.94);
+}
+
+.control:focus-visible {
+  outline: 3px solid #90caf9;
+  outline-offset: 3px;
+}
+
+.modeIcon {
+  display: block;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
+  }
+}

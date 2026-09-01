@@ -16,17 +16,18 @@ Chooser project is Copyright (C) 2025 UrAvgCode and is available at
 `@author UrAvgCode, Patch4Code`; that contributor attribution is retained in
 the legal notices when the related Settings expression is adapted.
 
-## Included original assets — pending implementation
+## Included and planned original assets
 
-These entries describe assets that must be independently authored. “Pending”
-means the editable source and release derivative do not exist in this
-foundation commit yet; no reference file is being copied or traced.
+These entries describe independently authored assets. “Present” means the
+editable source is included in this repository. “Pending” means the editable
+source or release derivative does not exist yet. No reference file is copied
+or traced.
 
 | Asset                                     | Preferred editable source                                                                    | Author        | Creation/adaptation date         | License basis                                                                                         | Status  |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------- | ------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------- | ------- |
-| Single-mode icon                          | `src/_pages/chooser/assets/single.svg`                                                       | byfb | 2026, to be created              | GPL-3.0-or-later; original SVG redraw preserving only the concept                                     | Pending |
-| Group-mode icon                           | `src/_pages/chooser/assets/group.svg`                                                        | byfb | 2026, to be created              | GPL-3.0-or-later; original SVG redraw preserving only the concept                                     | Pending |
-| Order-mode icon                           | `src/_pages/chooser/assets/order.svg`                                                        | byfb | 2026, to be created              | GPL-3.0-or-later; original SVG redraw preserving only the concept                                     | Pending |
+| Single-mode icon                          | `src/_pages/chooser/ui/icons/single.svg`                                                     | byfb | 2026-09-01                       | GPL-3.0-or-later; original editable SVG preserving only the Single-selection concept                  | Present |
+| Group-mode icon                           | `src/_pages/chooser/ui/icons/group.svg`                                                      | byfb | 2026-09-01                       | GPL-3.0-or-later; original editable SVG preserving only the Group-selection concept                   | Present |
+| Order-mode icon                           | `src/_pages/chooser/ui/icons/order.svg`                                                      | byfb | 2026-09-01                       | GPL-3.0-or-later; original editable SVG preserving only the Order-selection concept                   | Present |
 | Launcher icon                             | `src/app/assets/launcher.svg`                                                                | byfb | 2026, to be created              | GPL-3.0-or-later; original SVG preserving the Chooser concept without copying the Android vector path | Pending |
 | Regular install rasters (192 px, 512 px)  | Generated from `src/app/assets/launcher.svg` into `public/icons/`                            | byfb | 2026, generated at release build | GPL-3.0-or-later as original derivatives of the launcher source                                       | Pending |
 | Maskable install rasters (192 px, 512 px) | Generated from `src/app/assets/launcher.svg` into `public/icons/` with a safe maskable field | byfb | 2026, generated at release build | GPL-3.0-or-later as original derivatives of the launcher source                                       | Pending |

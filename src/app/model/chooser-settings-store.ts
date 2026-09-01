@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: 2026 byfb
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+import type { ChooserSettings, SelectionMode } from "@/_pages/chooser";
+
+export type { ChooserSettings, SelectionMode };
+
 export const CHOOSER_SETTINGS_STORAGE_KEY = "chooser.settings";
 
 export const CHOOSER_SETTINGS_CONSTRAINTS = {
@@ -9,23 +13,6 @@ export const CHOOSER_SETTINGS_CONSTRAINTS = {
   selectionDelayMs: { minimum: 0, maximum: 5000, step: 500 },
   circleLifetimeMs: { minimum: 0, maximum: 3000, step: 500 },
 } as const;
-
-export type SelectionMode = "single" | "group" | "order";
-
-export interface ChooserSettings {
-  selectionMode: SelectionMode;
-  selectionCount: number;
-  soundEnabled: boolean;
-  vibrationEnabled: boolean;
-  topPaddingPx: number;
-  circleSizePercent: number;
-  singleDelayMs: number;
-  groupDelayMs: number;
-  orderDelayMs: number;
-  singleLifetimeMs: number;
-  groupLifetimeMs: number;
-  orderLifetimeMs: number;
-}
 
 export type SettingsPersistence = "saved" | "not-saved";
 

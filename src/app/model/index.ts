@@ -6,10 +6,9 @@ export {
   CHOOSER_SETTINGS_STORAGE_KEY,
   DEFAULT_CHOOSER_SETTINGS,
   createChooserSettingsStore,
-  type ChooserSettings,
   type ChooserSettingsSnapshot,
   type ChooserSettingsStore,
-  type SelectionMode,
   type SettingsPersistence,
   type SettingsStorage,
 } from "./chooser-settings-store";
+export type { ChooserSettings, SelectionMode } from "@/_pages/chooser";

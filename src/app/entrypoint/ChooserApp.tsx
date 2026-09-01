@@ -144,7 +144,13 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
     return <LegalPage onBack={() => router?.back()} />;
   }
 
-  return <ChooserPage />;
+  return (
+    <ChooserPage
+      onOpenSettings={() => router?.navigate(APP_ROUTES.settings)}
+      onUpdateSettings={(patch) => settingsStore?.update(patch)}
+      settings={settingsSnapshot.settings}
+    />
+  );
 }
 
 function createWindowPort(): ChooserBrowserPort {
