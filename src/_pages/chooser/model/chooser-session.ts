@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import type { ChooserSettings, SelectionMode } from "./chooser-settings";
+import { chooserParticipantHitRadius } from "./chooser-rendering";
 
 /** The input family that owns a collecting round. */
 export type ChooserInputFamily = "direct" | "simulated";
@@ -1032,7 +1033,7 @@ export function createChooserSession(options: {
   }
 
   function findHitSimulatedParticipant(position: Readonly<ChooserPosition>) {
-    const radius = Math.max(0, settings.circleSizePercent) * 0.5 + 8;
+    const radius = chooserParticipantHitRadius(settings.circleSizePercent);
     const hitRadiusSquared = radius * radius;
     let nearestIndex = -1;
     let nearestDistanceSquared = Number.POSITIVE_INFINITY;

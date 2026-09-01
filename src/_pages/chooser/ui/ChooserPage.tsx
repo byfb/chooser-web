@@ -16,6 +16,8 @@ import {
   type ChooserScheduler,
 } from "../model/chooser-session";
 import type { ChooserSettings, SelectionMode } from "../model/chooser-settings";
+import { clientToChooserPosition } from "../model/chooser-rendering";
+import { ChooserCanvas } from "./ChooserCanvas";
 import styles from "./ChooserPage.module.css";
 import groupIcon from "./icons/group.svg";
 import orderIcon from "./icons/order.svg";
@@ -277,6 +279,7 @@ export function ChooserPage({
 
     const position = normalizePosition(event);
     if (type === "pointer-down") {
+      event.currentTarget.focus({ preventScroll: true });
       capturePointer(event.currentTarget, event.pointerId);
       session.send({
         type,
@@ -391,21 +394,11 @@ export function ChooserPage({
       }}
       tabIndex={0}
     >
-      <div aria-hidden="true" className={styles.participantLayer}>
-        {snapshot.participants.map((participant) => (
-          <span
-            className={styles.participant}
-            data-participant-id={participant.id}
-            data-state={participant.state}
-            key={participant.id}
-            style={participantStyle(participant, settings.circleSizePercent)}
-          >
-            {participant.rank === undefined ? null : (
-              <span className={styles.rank}>{participant.rank}</span>
-            )}
-          </span>
-        ))}
-      </div>
+      <ChooserCanvas
+        className={styles.canvas}
+        settings={settings}
+        snapshot={snapshot}
+      />
 
       <div
         aria-hidden={!controlsVisible}
@@ -485,27 +478,6 @@ export function ChooserPage({
   );
 }
 
-type ChooserParticipant = ReturnType<
-  typeof createChooserSession
->["getSnapshot"] extends () => infer Snapshot
-  ? Snapshot extends { participants: readonly (infer Participant)[] }
-    ? Participant
-    : never
-  : never;
-
-function participantStyle(
-  participant: ChooserParticipant,
-  sizePercent: number,
-): CSSProperties {
-  const displayColor = participant.targetColor ?? participant.color;
-  return {
-    "--participant-color": `rgb(${displayColor.r} ${displayColor.g} ${displayColor.b})`,
-    "--participant-scale": Math.max(0.5, Math.min(1.5, sizePercent / 100)),
-    left: `${participant.position.x}px`,
-    top: `${participant.position.y}px`,
-  } as CSSProperties;
-}
-
 function getChooserAnnouncement(phase: string, activeParticipantCount: number) {
   if (phase === "idle") {
     return `Ready. ${activeParticipantCount} participants.`;
@@ -528,10 +500,7 @@ function normalizePointerType(pointerType: string) {
 
 function normalizePosition(event: ReactPointerEvent<HTMLElement>) {
   const rect = event.currentTarget.getBoundingClientRect();
-  return {
-    x: event.clientX - rect.left,
-    y: event.clientY - rect.top,
-  };
+  return clientToChooserPosition(event, rect);
 }
 
 function capturePointer(element: HTMLElement, pointerId: number) {
