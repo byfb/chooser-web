@@ -28,7 +28,8 @@ export interface ChooserParticipant {
   readonly position: Readonly<ChooserPosition>;
   readonly color: Readonly<ChooserColor>;
   readonly createdAtMs: number;
-  readonly state: "active" | "selected" | "retiring" | "grouped";
+  readonly state: "active" | "selected" | "retiring" | "grouped" | "ranked";
+  readonly rank?: number;
   readonly groupId?: number;
   readonly targetColor?: Readonly<ChooserColor>;
 }
@@ -46,6 +47,14 @@ export type ChooserResult =
         readonly groupId: number;
         readonly participantIds: readonly string[];
         readonly color: Readonly<ChooserColor>;
+      }>[];
+      readonly background: Readonly<ChooserColor>;
+    }>
+  | Readonly<{
+      readonly kind: "order";
+      readonly ranks: readonly Readonly<{
+        readonly participantId: string;
+        readonly rank: number;
       }>[];
       readonly background: Readonly<ChooserColor>;
     }>;
@@ -134,6 +143,7 @@ interface InternalParticipant {
   readonly color: ChooserColor;
   readonly createdAtMs: number;
   state: ChooserParticipant["state"];
+  rank?: number;
   groupId?: number;
   targetColor?: ChooserColor;
 }
@@ -149,6 +159,16 @@ interface ScheduledSelection {
   readonly handle: unknown;
   readonly generation: number;
 }
+
+interface ScheduledOrder {
+  readonly handle: unknown;
+  readonly token: number;
+}
+
+type OrderRank = Readonly<{
+  readonly participantId: string;
+  readonly rank: number;
+}>;
 
 const DEFAULT_POSITION: ChooserPosition = Object.freeze({ x: 0, y: 0 });
 const DEFAULT_COLOR: ChooserColor = Object.freeze({ r: 0, g: 0, b: 0 });
@@ -181,6 +201,9 @@ export function createChooserSession(options: {
   let phase: ChooserPhase = "idle";
   let inputFamily: ChooserInputFamily | null = null;
   let selectionWork: ScheduledSelection | undefined;
+  let orderWork: ScheduledOrder | undefined;
+  let orderToken = 0;
+  let orderRanks: readonly OrderRank[] = Object.freeze([]);
   let generation = 0;
   let simulatedSequence = 0;
   let destroyed = false;
@@ -244,6 +267,7 @@ export function createChooserSession(options: {
       destroyed = true;
       generation += 1;
       cancelSelectionWork();
+      cancelOrderWork();
       pendingMouseActivations.clear();
       listeners.clear();
     },
@@ -436,6 +460,10 @@ export function createChooserSession(options: {
   }
 
   function removeDirectParticipant(pointerId: number, deliberate: boolean) {
+    if (phase === "order-revealing") {
+      return removeOrderDirectParticipant(pointerId);
+    }
+
     if (phase !== "collecting") {
       return false;
     }
@@ -455,6 +483,22 @@ export function createChooserSession(options: {
       playSound("up");
     }
     finishIfEmpty();
+    publish();
+    return true;
+  }
+
+  function removeOrderDirectParticipant(pointerId: number) {
+    const index = participants.findIndex(
+      (participant) =>
+        participant.state === "active" &&
+        participant.inputFamily === "direct" &&
+        participant.pointerId === pointerId,
+    );
+    if (index < 0) {
+      return false;
+    }
+
+    participants.splice(index, 1);
     publish();
     return true;
   }
@@ -534,6 +578,15 @@ export function createChooserSession(options: {
   function finishSelectionAttempt(scheduledGeneration: number) {
     selectionWork = undefined;
 
+    if (settings.selectionMode === "order") {
+      if (activeParticipantCount() < 2) {
+        return;
+      }
+
+      startOrderReveal(scheduledGeneration);
+      return;
+    }
+
     if (
       (settings.selectionMode !== "single" &&
         settings.selectionMode !== "group") ||
@@ -547,6 +600,85 @@ export function createChooserSession(options: {
     } else {
       settleGroup(scheduledGeneration);
     }
+  }
+
+  function startOrderReveal(scheduledGeneration: number) {
+    if (generation !== scheduledGeneration || phase !== "collecting") {
+      return;
+    }
+
+    phase = "order-revealing";
+    background = cloneColor(DEFAULT_COLOR);
+    orderRanks = Object.freeze([]);
+    revealOrderRank();
+  }
+
+  function revealOrderRank() {
+    const candidates = participants.filter(
+      (participant) => participant.state === "active",
+    );
+    if (candidates.length === 0) {
+      settleOrder();
+      return;
+    }
+
+    const participant =
+      candidates[Math.floor(randomFraction() * candidates.length)];
+    if (participant === undefined) {
+      settleOrder();
+      return;
+    }
+
+    const rank = Object.freeze({
+      participantId: participant.id,
+      rank: orderRanks.length + 1,
+    });
+    participant.state = "ranked";
+    participant.rank = rank.rank;
+    orderRanks = Object.freeze([...orderRanks, rank]);
+    result = createOrderResult(orderRanks);
+    playSound("up");
+    vibrate(40);
+
+    if (participants.some((candidate) => candidate.state === "active")) {
+      scheduleOrderReveal();
+      publish();
+      return;
+    }
+
+    settleOrder();
+  }
+
+  function scheduleOrderReveal() {
+    cancelOrderWork();
+
+    const token = ++orderToken;
+    const visibleCount = participants.reduce(
+      (count, participant) =>
+        count +
+        (participant.state === "active" || participant.state === "ranked"
+          ? 1
+          : 0),
+      0,
+    );
+    const delayMs = Math.min(3000 / visibleCount, 800);
+    const handle = options.scheduler.setTimeout(() => {
+      if (!isCurrentOrder(token)) {
+        return;
+      }
+
+      orderWork = undefined;
+      revealOrderRank();
+    }, delayMs);
+    orderWork = { handle, token };
+  }
+
+  function settleOrder() {
+    phase = "result";
+    generation += 1;
+    cancelSelectionWork();
+    cancelOrderWork();
+    publish();
   }
 
   function settleSingle(scheduledGeneration: number) {
@@ -695,6 +827,12 @@ export function createChooserSession(options: {
     );
   }
 
+  function isCurrentOrder(token: number) {
+    return (
+      !destroyed && phase === "order-revealing" && orderWork?.token === token
+    );
+  }
+
   function cancelSelectionWork() {
     if (selectionWork === undefined) {
       return;
@@ -706,6 +844,14 @@ export function createChooserSession(options: {
       options.scheduler.clearTimeout(selectionWork.handle);
     }
     selectionWork = undefined;
+  }
+
+  function cancelOrderWork() {
+    if (orderWork !== undefined) {
+      options.scheduler.clearTimeout(orderWork.handle);
+      orderWork = undefined;
+    }
+    orderToken += 1;
   }
 
   function publish() {
@@ -723,6 +869,7 @@ export function createChooserSession(options: {
         color: cloneColor(participant.color),
         createdAtMs: participant.createdAtMs,
         state: participant.state,
+        ...(participant.rank === undefined ? {} : { rank: participant.rank }),
         ...(participant.groupId === undefined
           ? {}
           : { groupId: participant.groupId }),
@@ -742,6 +889,14 @@ export function createChooserSession(options: {
       participants: Object.freeze(frozenParticipants),
       result,
       background: cloneColor(background),
+    });
+  }
+
+  function createOrderResult(ranks: readonly OrderRank[]): ChooserResult {
+    return Object.freeze({
+      kind: "order" as const,
+      ranks: Object.freeze([...ranks]),
+      background: cloneColor(DEFAULT_COLOR),
     });
   }
 

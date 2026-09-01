@@ -317,7 +317,11 @@ export function ChooserPage({
             data-state={participant.state}
             key={participant.id}
             style={participantStyle(participant, settings.circleSizePercent)}
-          />
+          >
+            {participant.rank === undefined ? null : (
+              <span className={styles.rank}>{participant.rank}</span>
+            )}
+          </span>
         ))}
       </div>
 

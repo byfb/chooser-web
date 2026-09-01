@@ -54,6 +54,23 @@
   transform: translate(-50%, -50%) scale(0);
 }
 
+.participant[data-state="ranked"] {
+  display: grid;
+  width: calc(120px * var(--participant-scale));
+  opacity: 1;
+  place-items: center;
+}
+
+.rank {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: calc(44px * var(--participant-scale));
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 3px 0 rgb(0 0 0 / 45%);
+}
+
 .participant::after {
   position: absolute;
   inset: 7%;
