@@ -3,7 +3,11 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 
-import { ChooserPage } from "@/_pages/chooser";
+import {
+  ChooserPage,
+  createChooserFeedback,
+  type ChooserFeedback,
+} from "@/_pages/chooser";
 import {
   createSettingsCapabilityModel,
   LegalPage,
@@ -69,6 +73,7 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
       ? null
       : createSettingsCapabilityModel(createWindowCapabilityBrowser()),
   );
+  const [feedback] = useState<ChooserFeedback>(() => createChooserFeedback());
   const route = useSyncExternalStore(
     router?.subscribe ?? emptySubscribe,
     router?.getSnapshot ?? (() => initialRoute),
@@ -87,6 +92,23 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
 
   useEffect(() => router?.start(), [router]);
   useEffect(() => capabilityModel?.start(), [capabilityModel]);
+  useEffect(() => {
+    const unlock = (event: Event) => {
+      feedback.unlockFromInteraction(event.isTrusted);
+    };
+    window.addEventListener("click", unlock, true);
+    window.addEventListener("keydown", unlock, true);
+    window.addEventListener("pointerdown", unlock, true);
+    window.addEventListener("pointerup", unlock, true);
+
+    return () => {
+      window.removeEventListener("click", unlock, true);
+      window.removeEventListener("keydown", unlock, true);
+      window.removeEventListener("pointerdown", unlock, true);
+      window.removeEventListener("pointerup", unlock, true);
+      feedback.destroy();
+    };
+  }, [feedback]);
   useEffect(() => {
     settingsStore?.load();
   }, [settingsStore]);
@@ -146,6 +168,7 @@ export function ChooserApp({ initialPathname }: ChooserAppProps) {
 
   return (
     <ChooserPage
+      effects={feedback}
       onOpenSettings={() => router?.navigate(APP_ROUTES.settings)}
       onUpdateSettings={(patch) => settingsStore?.update(patch)}
       settings={settingsSnapshot.settings}

@@ -80,6 +80,17 @@ export function SettingsPage({
       </header>
 
       <div className={`settings-route-content ${styles.content}`}>
+        <p aria-atomic="true" aria-live="polite" className={styles.liveRegion}>
+          {describeCapabilityState(
+            "Fullscreen",
+            fullscreen.active,
+            fullscreen.status,
+          )}{" "}
+          {vibrationSupported
+            ? "Vibration available."
+            : "Vibration unavailable."}
+        </p>
+
         {persistence === "not-saved" ? (
           <p className={styles.persistenceStatus} role="status">
             Not saved
@@ -368,4 +379,15 @@ function RangeRow({
 
 function formatSeconds(milliseconds: number) {
   return `${milliseconds / 1000} s`;
+}
+
+function describeCapabilityState(
+  label: string,
+  active: boolean,
+  status: "App mode" | "Unavailable" | null,
+) {
+  if (status !== null) {
+    return `${label}: ${status}.`;
+  }
+  return `${label} ${active ? "on" : "off"}.`;
 }

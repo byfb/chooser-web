@@ -13,8 +13,10 @@ import {
 import {
   createChooserSession,
   type ChooserClock,
+  type ChooserEffects,
   type ChooserScheduler,
 } from "../model/chooser-session";
+import { getChooserAnnouncement } from "../model/chooser-announcement";
 import type { ChooserSettings, SelectionMode } from "../model/chooser-settings";
 import { clientToChooserPosition } from "../model/chooser-rendering";
 import { ChooserCanvas } from "./ChooserCanvas";
@@ -51,6 +53,7 @@ const modeName: Record<SelectionMode, string> = {
 };
 
 export interface ChooserPageProps {
+  effects: ChooserEffects;
   settings: Readonly<ChooserSettings>;
   onOpenSettings(): void;
   onUpdateSettings(patch: Partial<ChooserSettings>): void;
@@ -64,6 +67,7 @@ interface PendingHold {
 }
 
 export function ChooserPage({
+  effects,
   settings,
   onOpenSettings,
   onUpdateSettings,
@@ -76,10 +80,7 @@ export function ChooserPage({
   const [session] = useState(() =>
     createChooserSession({
       clock: createBrowserClock(),
-      effects: {
-        playSound: () => undefined,
-        vibrate: () => undefined,
-      },
+      effects,
       random: { next: () => Math.random() },
       scheduler: createBrowserScheduler(),
       settings,
@@ -91,6 +92,10 @@ export function ChooserPage({
     () => session.getSnapshot(),
   );
   const controlsVisible = snapshot.controlsVisible;
+  const previousAnnouncementSnapshotRef = useRef(snapshot);
+  const [announcement, setAnnouncement] = useState(
+    () => getChooserAnnouncement(null, snapshot) ?? "",
+  );
 
   const clearPendingHold = () => {
     const pendingHold = pendingHoldRef.current;
@@ -116,6 +121,17 @@ export function ChooserPage({
       clearPendingHold();
     }
   }, [controlsVisible]);
+
+  useEffect(() => {
+    const next = getChooserAnnouncement(
+      previousAnnouncementSnapshotRef.current,
+      snapshot,
+    );
+    previousAnnouncementSnapshotRef.current = snapshot;
+    if (next !== null) {
+      setAnnouncement(next);
+    }
+  }, [snapshot]);
 
   useEffect(() => {
     if (session.getSnapshot().phase === "idle") {
@@ -233,6 +249,13 @@ export function ChooserPage({
 
       pendingHoldRef.current = null;
       suppressNextClickRef.current = true;
+      if (settings.vibrationEnabled) {
+        try {
+          effects.vibrate(40);
+        } catch {
+          // Long-press haptics are optional and cannot block Settings access.
+        }
+      }
       onOpenSettings();
     }, LONG_PRESS_DURATION_MS);
     pendingHoldRef.current = { pointerId, startX, startY, timer };
@@ -468,24 +491,11 @@ export function ChooserPage({
         )}
       </div>
 
-      <p aria-live="polite" className={styles.liveRegion}>
-        {getChooserAnnouncement(
-          snapshot.phase,
-          snapshot.activeParticipantCount,
-        )}
+      <p aria-atomic="true" aria-live="polite" className={styles.liveRegion}>
+        {announcement}
       </p>
     </main>
   );
-}
-
-function getChooserAnnouncement(phase: string, activeParticipantCount: number) {
-  if (phase === "idle") {
-    return `Ready. ${activeParticipantCount} participants.`;
-  }
-  if (phase === "collecting") {
-    return `Collecting ${activeParticipantCount} participants.`;
-  }
-  return `Chooser ${phase}. ${activeParticipantCount} participants.`;
 }
 
 function normalizePointerType(pointerType: string) {
