@@ -47,12 +47,12 @@ const requiredText = new Map([
   [
     "THIRD_PARTY_NOTICES.md",
     [
-      "react@19.2.8",
-      "react-dom@19.2.8",
-      "scheduler@0.27.0",
-      "astro@7.2.10",
-      "@astrojs/react@6.0.5",
-      "rolldown@1.2.6",
+      "react@19.3.1",
+      "react-dom@19.3.1",
+      "scheduler@0.28.0",
+      "astro@7.4.0",
+      "@astrojs/react@6.0.6",
+      "rolldown@1.2.14",
       "Meta Platforms, Inc. and affiliates",
       "Copyright (c) 2017 [these people](https://github.com/rollup/rollup/graphs/contributors)",
       "Copyright (c) 2020 Evan Wallace",

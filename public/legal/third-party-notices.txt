@@ -13,9 +13,9 @@ packages used only to develop, test, check, or publish the application.
 The project is not permitted to ship a package or asset with unknown,
 missing, or incompatible license metadata. The deterministic
 [`legal/dependency-inventory.json`](legal/dependency-inventory.json)
-records all 676 packages in this exact lockfile, including platform variants,
-and separates the six packages whose code is installed or generated into the
-browser release from 670 build-only packages. Verification fails when the
+records every package in this exact lockfile, including platform variants,
+and separates packages whose code is installed or generated into the
+browser release from build-only packages. Verification fails when the
 lockfile or shipped package set changes without a regenerated and reviewed
 inventory.
 
@@ -25,14 +25,14 @@ The current hydrated client can bundle the following package code. All are
 compatible with this GPL application because their licenses permit
 redistribution and modification:
 
-| Package                                  | License | Source / copyright                                                                                                                                                                                                                                                                             |
-| ---------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `react@19.2.8`                           | MIT     | [facebook/react](https://github.com/facebook/react); Copyright (c) Meta Platforms, Inc. and affiliates.                                                                                                                                                                                        |
-| `react-dom@19.2.8`                       | MIT     | [facebook/react](https://github.com/facebook/react); Copyright (c) Meta Platforms, Inc. and affiliates.                                                                                                                                                                                        |
-| `scheduler@0.27.0`                       | MIT     | [facebook/react](https://github.com/facebook/react); Copyright (c) Meta Platforms, Inc. and affiliates.                                                                                                                                                                                        |
-| `astro@7.2.10`                           | MIT     | [withastro/astro](https://github.com/withastro/astro); Copyright (c) 2021 Fred K. Schott; includes retained notices for Copyright (c) 2020 SvelteKit contributors and Copyright (c) 2019-present Yuxi (Evan) You and Vite contributors.                                                        |
-| `@astrojs/react@6.0.5`                   | MIT     | [withastro/astro](https://github.com/withastro/astro); Copyright (c) 2021 Fred K. Schott; the package license retains the same SvelteKit and Vite contributor notices described above.                                                                                                         |
-| `rolldown@1.2.6` generated bundle helper | MIT     | [rolldown/rolldown](https://github.com/rolldown/rolldown); Copyright (c) 2024-present VoidZero Inc. & Contributors. The package records externally maintained derived-library notices in its [third-party license file](https://github.com/rolldown/rolldown/blob/v1.2.6/THIRD-PARTY-LICENSE). |
+| Package                                   | License | Source / copyright                                                                                                                                                                                                                                                                              |
+| ----------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `react@19.3.1`                            | MIT     | [facebook/react](https://github.com/facebook/react); Copyright (c) Meta Platforms, Inc. and affiliates.                                                                                                                                                                                         |
+| `react-dom@19.3.1`                        | MIT     | [facebook/react](https://github.com/facebook/react); Copyright (c) Meta Platforms, Inc. and affiliates.                                                                                                                                                                                         |
+| `scheduler@0.28.0`                        | MIT     | [facebook/react](https://github.com/facebook/react); Copyright (c) Meta Platforms, Inc. and affiliates.                                                                                                                                                                                         |
+| `astro@7.4.0`                             | MIT     | [withastro/astro](https://github.com/withastro/astro); Copyright (c) 2021 Fred K. Schott; includes retained notices for Copyright (c) 2020 SvelteKit contributors and Copyright (c) 2019-present Yuxi (Evan) You and Vite contributors.                                                         |
+| `@astrojs/react@6.0.6`                    | MIT     | [withastro/astro](https://github.com/withastro/astro); Copyright (c) 2021 Fred K. Schott; the package license retains the same SvelteKit and Vite contributor notices described above.                                                                                                          |
+| `rolldown@1.2.14` generated bundle helper | MIT     | [rolldown/rolldown](https://github.com/rolldown/rolldown); Copyright (c) 2024-present VoidZero Inc. & Contributors. The package records externally maintained derived-library notices in its [third-party license file](https://github.com/rolldown/rolldown/blob/v1.2.14/THIRD-PARTY-LICENSE). |
 
 Astro's island bootstrap and React integration client are emitted at build
 time even though Astro and its integration are development dependencies. The
@@ -73,7 +73,7 @@ committed lockfile, identify the notices to which this permission text applies.
 ### Rolldown derived-library notices
 
 The emitted Rolldown helper also carries the following notices from the
-derived-library record included with `rolldown@1.2.6`. They are reproduced
+derived-library record included with `rolldown@1.2.14`. They are reproduced
 locally so the notice remains available offline.
 
 #### Rollup contributors
