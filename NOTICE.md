@@ -52,11 +52,9 @@ uncommitted reset change is captured as
 
 ## Corresponding Source
 
-This repository is local-first. There is currently no approved immutable
-public Corresponding Source URL and no external production release. Before a
-release is deployed, the release record must identify a public immutable
-location for the exact full Git commit and serve the matching preferred-form
-source archive at:
+Each release record identifies the exact full Git commit and its public
+immutable Corresponding Source URL. Deployment serves the matching
+preferred-form source archive at:
 
 ```text
 /source/chooser-web-<full-sha>.tar.gz
@@ -64,7 +62,7 @@ source archive at:
 
 The Legal surface and emitted application bundles must carry the same exact
 revision. A mutable branch or unrelated source snapshot is not a substitute.
-The eventual local `pnpm deploy` gate must refuse promotion while this source
+The local `pnpm run deploy` gate refuses promotion while this source
 location is unresolved or any revision/archive/legal record disagrees.
 
 ## Third-party and asset notices
@@ -78,7 +76,6 @@ from build-only tooling. They must be reviewed and regenerated from
 inventory before every conveyed release.
 
 No third-party font, icon, image, vector, audio file, or other media is shipped.
-The three original 2026 mode-icon SVG sources are included and recorded in the
-asset provenance inventory. Launcher derivatives and synthesized audio sources
-remain pending and must receive complete provenance entries before they enter
-`dist`.
+The original 2026 mode-icon and launcher SVG sources, generated install icons,
+and synthesized audio sources are included and recorded in the asset
+provenance inventory.

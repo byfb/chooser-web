@@ -23,18 +23,18 @@ editable source is included in this repository. “Pending” means the editable
 source or release derivative does not exist yet. No reference file is copied
 or traced.
 
-| Asset                                     | Preferred editable source                                                  | Author        | Creation/adaptation date | License basis                                                                                         | Status  |
-| ----------------------------------------- | -------------------------------------------------------------------------- | ------------- | ------------------------ | ----------------------------------------------------------------------------------------------------- | ------- |
-| Single-mode icon                          | `src/_pages/chooser/ui/icons/single.svg`                                   | byfb | 2026-09-01               | GPL-3.0-or-later; original editable SVG preserving only the Single-selection concept                  | Present |
-| Group-mode icon                           | `src/_pages/chooser/ui/icons/group.svg`                                    | byfb | 2026-09-01               | GPL-3.0-or-later; original editable SVG preserving only the Group-selection concept                   | Present |
-| Order-mode icon                           | `src/_pages/chooser/ui/icons/order.svg`                                    | byfb | 2026-09-01               | GPL-3.0-or-later; original editable SVG preserving only the Order-selection concept                   | Present |
-| Launcher icon                             | `src/app/branding/launcher.svg`                                            | byfb | 2026-09-01               | GPL-3.0-or-later; original SVG preserving the Chooser concept without copying the Android vector path | Present |
-| Regular install rasters (192 px, 512 px)  | `public/icons/icon-192.png`; `public/icons/icon-512.png`                   | byfb | 2026-09-01               | GPL-3.0-or-later as original derivatives of the launcher source                                       | Present |
-| Maskable install rasters (192 px, 512 px) | `public/icons/icon-192-maskable.png`; `public/icons/icon-512-maskable.png` | byfb | 2026-09-01               | GPL-3.0-or-later as original derivatives of the launcher source with a safe maskable field            | Present |
-| iOS touch icon                            | `public/icons/apple-touch-icon.png`                                        | byfb | 2026-09-01               | GPL-3.0-or-later as an original derivative of the launcher source                                     | Present |
-| Finger-down cue                           | `src/_pages/chooser/model/chooser-feedback.ts`                             | byfb | 2026-09-01               | GPL-3.0-or-later; original Web Audio oscillator/envelope definition                                   | Present |
-| Finger-up cue                             | `src/_pages/chooser/model/chooser-feedback.ts`                             | byfb | 2026-09-01               | GPL-3.0-or-later; original Web Audio oscillator/envelope definition                                   | Present |
-| Chosen cue                                | `src/_pages/chooser/model/chooser-feedback.ts`                             | byfb | 2026-09-01               | GPL-3.0-or-later; original Web Audio oscillator/envelope definition                                   | Present |
+| Asset                                     | Preferred editable source                                                  | Author | Creation/adaptation date | License basis                                                                                         | Status  |
+| ----------------------------------------- | -------------------------------------------------------------------------- | ------ | ------------------------ | ----------------------------------------------------------------------------------------------------- | ------- |
+| Single-mode icon                          | `src/_pages/chooser/ui/icons/single.svg`                                   | byfb   | 2026-09-01               | GPL-3.0-or-later; original editable SVG preserving only the Single-selection concept                  | Present |
+| Group-mode icon                           | `src/_pages/chooser/ui/icons/group.svg`                                    | byfb   | 2026-09-01               | GPL-3.0-or-later; original editable SVG preserving only the Group-selection concept                   | Present |
+| Order-mode icon                           | `src/_pages/chooser/ui/icons/order.svg`                                    | byfb   | 2026-09-01               | GPL-3.0-or-later; original editable SVG preserving only the Order-selection concept                   | Present |
+| Launcher icon                             | `src/app/branding/launcher.svg`                                            | byfb   | 2026-09-01               | GPL-3.0-or-later; original SVG preserving the Chooser concept without copying the Android vector path | Present |
+| Regular install rasters (192 px, 512 px)  | `public/icons/icon-192.png`; `public/icons/icon-512.png`                   | byfb   | 2026-09-01               | GPL-3.0-or-later as original derivatives of the launcher source                                       | Present |
+| Maskable install rasters (192 px, 512 px) | `public/icons/icon-192-maskable.png`; `public/icons/icon-512-maskable.png` | byfb   | 2026-09-01               | GPL-3.0-or-later as original derivatives of the launcher source with a safe maskable field            | Present |
+| iOS touch icon                            | `public/icons/apple-touch-icon.png`                                        | byfb   | 2026-09-01               | GPL-3.0-or-later as an original derivative of the launcher source                                     | Present |
+| Finger-down cue                           | `src/_pages/chooser/model/chooser-feedback.ts`                             | byfb   | 2026-09-01               | GPL-3.0-or-later; original Web Audio oscillator/envelope definition                                   | Present |
+| Finger-up cue                             | `src/_pages/chooser/model/chooser-feedback.ts`                             | byfb   | 2026-09-01               | GPL-3.0-or-later; original Web Audio oscillator/envelope definition                                   | Present |
+| Chosen cue                                | `src/_pages/chooser/model/chooser-feedback.ts`                             | byfb   | 2026-09-01               | GPL-3.0-or-later; original Web Audio oscillator/envelope definition                                   | Present |
 
 The audio entries are source-code assets, not copied recordings. The release
 must document waveform parameters, duration, peak bound, and generated
@@ -47,13 +47,13 @@ These text/configuration files are authored project assets rather than
 third-party media. Their provenance is the repository history and the
 accepted release contract:
 
-| Asset                         | Source                                                              | Author/date                                                                                          | License basis                                          | Status                                                  |
-| ----------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| GPL license text              | `LICENSE`                                                           | Free Software Foundation, Inc.; canonical GPLv3 text, preserved unmodified                           | GPLv3 license text; no project modification            | Required foundation artifact                            |
-| Program notice                | `NOTICE.md`                                                         | byfb, 2026; preserves UrAvgCode 2025 and Patch4Code attribution                             | GPL-3.0-or-later                                       | Present in this foundation commit                       |
-| Dependency notices            | `THIRD_PARTY_NOTICES.md` and `legal/dependency-inventory.json` | byfb, 2026; deterministically derived and reviewed from `package.json` and `pnpm-lock.yaml` | Per-package licenses, recorded in the notice inventory | Present; six shipped and 670 build-only package records |
-| Asset provenance record       | `legal/asset-provenance.md`                                    | byfb, 2026                                                                                  | GPL-3.0-or-later                                       | Present in this foundation commit                       |
-| Captured upstream reset patch | `legal/upstream/chooser-041dd0c-reset.patch`                         | Derived from UrAvgCode Chooser commit `041dd0c31f9a2fe0586ef226dfeb49bc5b043b61`                     | Upstream GPL-3.0-or-later source record                | Present; exact working-tree delta preserved             |
+| Asset                         | Source                                                         | Author/date                                                                                 | License basis                                          | Status                                                       |
+| ----------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
+| GPL license text              | `LICENSE`                                                      | Free Software Foundation, Inc.; canonical GPLv3 text, preserved unmodified                  | GPLv3 license text; no project modification            | Required foundation artifact                                 |
+| Program notice                | `NOTICE.md`                                                    | byfb, 2026; preserves UrAvgCode 2025 and Patch4Code attribution                             | GPL-3.0-or-later                                       | Present in this foundation commit                            |
+| Dependency notices            | `THIRD_PARTY_NOTICES.md` and `legal/dependency-inventory.json` | byfb, 2026; deterministically derived and reviewed from `package.json` and `pnpm-lock.yaml` | Per-package licenses, recorded in the notice inventory | Present; shipped and build-only packages recorded separately |
+| Asset provenance record       | `legal/asset-provenance.md`                                    | byfb, 2026                                                                                  | GPL-3.0-or-later                                       | Present in this foundation commit                            |
+| Captured upstream reset patch | `legal/upstream/chooser-041dd0c-reset.patch`                   | Derived from UrAvgCode Chooser commit `041dd0c31f9a2fe0586ef226dfeb49bc5b043b61`            | Upstream GPL-3.0-or-later source record                | Present; exact working-tree delta preserved                  |
 
 The deployed offline Legal route will expose these records through local
 `text/plain; charset=utf-8` links. The same-release source archive is online
@@ -82,10 +82,8 @@ here.
 
 ## Corresponding Source status
 
-The local source tree is not yet tied to an approved public immutable
-Corresponding Source location. Before external deployment, this record,
-`NOTICE.md`, the Legal route, emitted source-revision banner, and the
-SHA-named source archive must all identify the same clean full commit. The
-future source archive is expected at
-`/source/chooser-web-<full-sha>.tar.gz`; its exact public host remains an
-explicit release-time decision.
+Before external deployment, the Legal route, emitted source-revision banner,
+and SHA-named source archive must identify the same clean full commit. The
+release process serves the archive at `/source/chooser-web-<full-sha>.tar.gz`
+and requires an approved same-origin public URL for that exact revision.
+See `DEVELOPMENT.md` for the deployment procedure.
