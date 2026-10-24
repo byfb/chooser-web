@@ -95,6 +95,8 @@ export async function deploy(options = {}) {
     ...(options.contract ?? {}),
   };
   const environment = options.env ?? process.env;
+  const readProjectDetails =
+    options.readProjectDetails ?? readPagesProjectDetails;
 
   await runChecked(
     runCommand,
@@ -120,7 +122,8 @@ export async function deploy(options = {}) {
     { cwd, env: environment },
     "WRANGLER_WHOAMI_FAILED",
   );
-  assertWranglerIdentity(parseJsonOutput(whoamiOutput.stdout), contract);
+  const identity = parseJsonOutput(whoamiOutput.stdout);
+  assertWranglerIdentity(identity, contract);
 
   const projectListOutput = await runChecked(
     runCommand,
@@ -145,7 +148,13 @@ export async function deploy(options = {}) {
   let createdProject = false;
 
   if (existingProject) {
-    validatePagesProject(existingProject, contract);
+    const project = await readProjectDetails({
+      cwd,
+      env: environment,
+      identity,
+      projectName: contract.projectName,
+    });
+    validatePagesProject(project, contract);
   }
 
   if (!existingProject) {
@@ -653,7 +662,7 @@ export function validatePagesProject(project, contract = DEPLOYMENT_CONTRACT) {
       "Existing Pages project has Git integration; refusing reuse",
     );
   }
-  if (hasConfiguredValue(project.build_config)) {
+  if (Object.values(project.build_config ?? {}).some(hasConfiguredValue)) {
     throw new DeployGuardError(
       "PAGES_PROJECT_BUILD_CONFIG",
       "Existing Pages project has an unexpected build configuration; refusing reuse",
@@ -668,6 +677,28 @@ export function validatePagesProject(project, contract = DEPLOYMENT_CONTRACT) {
     ["preview Functions", project.deployment_configs?.preview?.functions],
     ["preview bindings", project.deployment_configs?.preview?.bindings],
   ];
+  for (const [environment, config] of Object.entries(
+    project.deployment_configs ?? {},
+  )) {
+    for (const field of [
+      "env_vars",
+      "kv_namespaces",
+      "durable_object_namespaces",
+      "d1_databases",
+      "r2_buckets",
+      "services",
+      "analytics_engine_datasets",
+      "ai_bindings",
+      "queue_producers",
+      "hyperdrive_bindings",
+      "vectorize_bindings",
+      "mtls_certificates",
+      "browser",
+      "images",
+    ]) {
+      forbiddenConfiguration.push([`${environment} ${field}`, config?.[field]]);
+    }
+  }
   for (const [label, value] of forbiddenConfiguration) {
     if (hasConfiguredValue(value)) {
       throw new DeployGuardError(
@@ -678,6 +709,87 @@ export function validatePagesProject(project, contract = DEPLOYMENT_CONTRACT) {
   }
 
   return project;
+}
+
+/** Wrangler's project table omits the branch, source, and runtime configuration. */
+export async function readPagesProjectDetails({
+  cwd,
+  env,
+  identity,
+  projectName,
+  readCredentials = readWranglerCredentials,
+  fetchImpl = fetch,
+}) {
+  const accounts = (identity.result ?? identity).accounts ?? [];
+  const accountId =
+    env.CLOUDFLARE_ACCOUNT_ID ??
+    env.CF_ACCOUNT_ID ??
+    (accounts.length === 1 ? accounts[0].id : undefined);
+  if (typeof accountId !== "string" || !accountId) {
+    throw new DeployGuardError(
+      "PAGES_ACCOUNT_AMBIGUOUS",
+      "Set CLOUDFLARE_ACCOUNT_ID to select the Pages account",
+    );
+  }
+
+  const credentials = await readCredentials({ cwd, env });
+  let headers;
+  if (typeof credentials.token === "string" && credentials.token) {
+    headers = { Authorization: `Bearer ${credentials.token}` };
+  } else if (
+    credentials.type === "api_key" &&
+    credentials.key &&
+    credentials.email
+  ) {
+    headers = {
+      "X-Auth-Key": credentials.key,
+      "X-Auth-Email": credentials.email,
+    };
+  } else {
+    throw new DeployGuardError(
+      "WRANGLER_AUTH_INVALID",
+      "Wrangler did not return usable credentials",
+    );
+  }
+
+  try {
+    const response = await fetchImpl(
+      `https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(accountId)}/pages/projects/${encodeURIComponent(projectName)}`,
+      { headers, redirect: "error", signal: AbortSignal.timeout(15_000) },
+    );
+    const data = await response.json();
+    if (!response.ok || data.success !== true || !data.result) {
+      throw new Error("Project details unavailable");
+    }
+    return data.result;
+  } catch {
+    throw new DeployGuardError(
+      "PAGES_PROJECT_LOOKUP_FAILED",
+      "Could not read complete Pages project metadata; refusing upload",
+    );
+  }
+}
+
+async function readWranglerCredentials({ cwd, env }) {
+  try {
+    // Wrangler also records stdout in debug logs unless disk logging is disabled.
+    const { stdout } = await execFileAsync(
+      "pnpm",
+      ["exec", "wrangler", "auth", "token", "--json"],
+      {
+        cwd,
+        env: { ...env, WRANGLER_WRITE_LOGS: "false" },
+        encoding: "utf8",
+        maxBuffer: 1024 * 1024,
+      },
+    );
+    return JSON.parse(stdout);
+  } catch {
+    throw new DeployGuardError(
+      "WRANGLER_AUTH_FAILED",
+      "Could not retrieve Wrangler credentials for the Pages project lookup",
+    );
+  }
 }
 
 /** Parse the JSON shape emitted by `wrangler pages project list --json`. */

@@ -13,6 +13,7 @@ import {
   computeDirectoryDigest,
   deploy,
   parseWranglerDeploymentOutput,
+  readPagesProjectDetails,
   validatePagesProject,
 } from "./deploy.mjs";
 
@@ -240,6 +241,84 @@ describe("Cloudflare deployment guard", () => {
     ).not.toThrow();
   });
 
+  it("reads complete metadata when Wrangler lists an existing project as a table row", async () => {
+    const fixture = await makeFixture({ sourceStatus: "approved" });
+    const calls = [];
+    const identity = { loggedIn: true, accounts: [{ id: "account" }] };
+    const result = await deploy({
+      cwd: fixture.root,
+      readProjectDetails: async (options) => {
+        expect(options).toMatchObject({
+          cwd: fixture.root,
+          identity,
+          projectName: "chooser-web",
+        });
+        return {
+          name: "chooser-web",
+          production_branch: "main",
+          build_config: { web_analytics_tag: null, web_analytics_token: null },
+          deployment_configs: { production: {}, preview: {} },
+        };
+      },
+      runCommand: async (command, args, options) => {
+        calls.push(args);
+        if (command === "git") {
+          return createCleanGitRunner()(command, args);
+        }
+        if (args[0] === "verify") return { stdout: "" };
+        if (args.includes("whoami")) {
+          return { stdout: JSON.stringify(identity) };
+        }
+        if (args.includes("list")) {
+          return {
+            stdout: JSON.stringify([
+              { "Project Name": "chooser-web", "Git Provider": "No" },
+            ]),
+          };
+        }
+        if (args.includes("deploy")) {
+          await writeFile(
+            options.env.WRANGLER_OUTPUT_FILE_PATH,
+            JSON.stringify(deploymentOutput()),
+          );
+          return { stdout: "deployed" };
+        }
+        throw new Error(`unexpected command: ${command} ${args.join(" ")}`);
+      },
+    });
+
+    expect(result.commitHash).toBe(TEST_SHA);
+    expect(calls.filter((args) => args.includes("deploy"))).toHaveLength(1);
+    expect(calls.some((args) => args.includes("create"))).toBe(false);
+  });
+
+  it("accepts null build defaults but rejects configured build commands", () => {
+    expect(() =>
+      validatePagesProject({
+        name: "chooser-web",
+        production_branch: "main",
+        source: null,
+        build_config: { build_command: "npm run build" },
+      }),
+    ).toThrow(/build configuration/i);
+  });
+
+  it.each(["production", "preview"])(
+    "rejects API binding fields in the %s environment",
+    (environment) => {
+      expect(() =>
+        validatePagesProject({
+          name: "chooser-web",
+          production_branch: "main",
+          source: null,
+          deployment_configs: {
+            [environment]: { kv_namespaces: { DATA: { namespace_id: "id" } } },
+          },
+        }),
+      ).toThrow(/kv_namespaces/i);
+    },
+  );
+
   it("fails before upload when the canonical dist changes after verification", async () => {
     const fixture = await makeFixture({ sourceStatus: "approved" });
     const calls = [];
@@ -248,6 +327,11 @@ describe("Cloudflare deployment guard", () => {
     await expect(
       deploy({
         cwd: fixture.root,
+        readProjectDetails: async () => ({
+          name: "chooser-web",
+          production_branch: "main",
+          source: { type: "direct_upload" },
+        }),
         runCommand: async (command, args, options) => {
           calls.push({ command, args, options });
           if (command === "pnpm" && args[0] === "verify") {
@@ -316,6 +400,56 @@ describe("Cloudflare deployment guard", () => {
         TEST_SHA,
       ),
     ).toThrow(/commit/i);
+  });
+});
+
+describe("Pages project metadata lookup", () => {
+  it("uses Wrangler credentials only with the Cloudflare API and rejects redirects", async () => {
+    const project = { name: "chooser-web", production_branch: "main" };
+    const result = await readPagesProjectDetails({
+      cwd: "/test",
+      env: {},
+      identity: { accounts: [{ id: "account" }] },
+      projectName: "chooser-web",
+      readCredentials: async () => ({ type: "oauth", token: "test-token" }),
+      fetchImpl: async (url, options) => {
+        expect(url).toBe(
+          "https://api.cloudflare.com/client/v4/accounts/account/pages/projects/chooser-web",
+        );
+        expect(options.headers).toEqual({ Authorization: "Bearer test-token" });
+        expect(options.redirect).toBe("error");
+        return Response.json({ success: true, result: project });
+      },
+    });
+    expect(result).toEqual(project);
+  });
+
+  it("fails closed when the API cannot provide project details", async () => {
+    await expect(
+      readPagesProjectDetails({
+        env: {},
+        identity: { accounts: [{ id: "account" }] },
+        projectName: "chooser-web",
+        readCredentials: async () => ({ type: "oauth", token: "test-token" }),
+        fetchImpl: async () =>
+          Response.json({ success: false }, { status: 403 }),
+      }),
+    ).rejects.toMatchObject({ code: "PAGES_PROJECT_LOOKUP_FAILED" });
+  });
+
+  it("requires an explicit account when the login has multiple accounts", async () => {
+    await expect(
+      readPagesProjectDetails({
+        env: {},
+        identity: { accounts: [{ id: "one" }, { id: "two" }] },
+        projectName: "chooser-web",
+        readCredentials: async () => {
+          throw new Error(
+            "Credentials should not be read before selecting an account",
+          );
+        },
+      }),
+    ).rejects.toMatchObject({ code: "PAGES_ACCOUNT_AMBIGUOUS" });
   });
 });
 
