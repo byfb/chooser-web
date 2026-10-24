@@ -135,28 +135,26 @@ served from `dist`; they are included here so the preferred source form and
 the reproducible local build remain auditable. A package moves to the runtime
 section if a future bundle intentionally ships its code.
 
-| Package                          |   Version | License           | Role                                      |
-| -------------------------------- | --------: | ----------------- | ----------------------------------------- |
-| `@astrojs/check`                 |  `0.9.10` | MIT               | Astro diagnostics and type checks         |
-| `@eslint/js`                     |  `10.0.1` | MIT               | ESLint defaults                           |
-| `@feature-sliced/steiger-plugin` |   `0.7.0` | MIT               | FSD architecture rules                    |
-| `@types/node`                    |  `26.4.0` | MIT               | Node.js types                             |
-| `@types/react`                   | `19.2.18` | MIT               | React types                               |
-| `@types/react-dom`               |  `19.2.5` | MIT               | React DOM types                           |
-| `@vitest/coverage-v8`            |  `4.1.11` | MIT               | Vitest coverage provider                  |
-| `eslint`                         |  `10.9.1` | MIT               | Linting                                   |
-| `eslint-config-prettier`         |  `10.1.8` | MIT               | ESLint/Prettier compatibility             |
-| `eslint-plugin-react-hooks`      |   `7.1.1` | MIT               | React Hooks lint rules                    |
-| `fast-check`                     |   `4.9.0` | MIT               | Property-based tests                      |
-| `globals`                        | `17.11.0` | MIT               | ESLint global definitions                 |
-| `prettier`                       |   `3.9.6` | MIT               | Formatting                                |
-| `prettier-plugin-astro`          |  `0.14.1` | MIT               | Astro formatting                          |
-| `steiger`                        |   `0.6.0` | MIT               | FSD architecture checking                 |
-| `typescript`                     |   `5.9.3` | Apache-2.0        | TypeScript compiler                       |
-| `typescript-eslint`              |  `8.69.0` | MIT               | TypeScript-aware ESLint                   |
-| `vite`                           |   `8.2.2` | MIT               | Astro build engine                        |
-| `vitest`                         |  `4.1.11` | MIT               | Unit and property tests                   |
-| `wrangler`                       | `4.127.1` | MIT OR Apache-2.0 | Local Cloudflare Pages deployment tooling |
+| Package                     |   Version | License           | Role                                      |
+| --------------------------- | --------: | ----------------- | ----------------------------------------- |
+| `@astrojs/check`            |  `0.9.10` | MIT               | Astro diagnostics and type checks         |
+| `@eslint/js`                |  `10.0.1` | MIT               | ESLint defaults                           |
+| `@types/node`               |  `26.4.0` | MIT               | Node.js types                             |
+| `@types/react`              | `19.2.18` | MIT               | React types                               |
+| `@types/react-dom`          |  `19.2.5` | MIT               | React DOM types                           |
+| `@vitest/coverage-v8`       |  `4.1.11` | MIT               | Vitest coverage provider                  |
+| `eslint`                    |  `10.9.1` | MIT               | Linting                                   |
+| `eslint-config-prettier`    |  `10.1.8` | MIT               | ESLint/Prettier compatibility             |
+| `eslint-plugin-react-hooks` |   `7.1.1` | MIT               | React Hooks lint rules                    |
+| `fast-check`                |   `4.9.0` | MIT               | Property-based tests                      |
+| `globals`                   | `17.11.0` | MIT               | ESLint global definitions                 |
+| `prettier`                  |   `3.9.6` | MIT               | Formatting                                |
+| `prettier-plugin-astro`     |  `0.14.1` | MIT               | Astro formatting                          |
+| `typescript`                |   `5.9.3` | Apache-2.0        | TypeScript compiler                       |
+| `typescript-eslint`         |  `8.69.0` | MIT               | TypeScript-aware ESLint                   |
+| `vite`                      |   `8.2.2` | MIT               | Astro build engine                        |
+| `vitest`                    |  `4.1.11` | MIT               | Unit and property tests                   |
+| `wrangler`                  | `4.127.1` | MIT OR Apache-2.0 | Local Cloudflare Pages deployment tooling |
 
 Source and full license texts for these packages are available from the exact
 package-version locations in the reviewed dependency inventory. Build-only

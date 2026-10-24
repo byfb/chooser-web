@@ -184,7 +184,6 @@ async function verifySpdxHeaders() {
     "astro.config.mjs",
     "eslint.config.mjs",
     "pnpm-workspace.yaml",
-    "steiger.config.ts",
     "vitest.config.ts",
     "wrangler.toml",
     "README.md",
